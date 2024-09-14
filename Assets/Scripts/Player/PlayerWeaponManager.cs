@@ -75,7 +75,7 @@ public class PlayerWeaponManager : MonoBehaviour
         p_WeaponSoundClip = wt.p_WeaponSoundClip;
         isAuto = wt.isAuto;
         Destroy(wt.gameObject);
-        knifeObject.SetActive(false);
+        //knifeObject.SetActive(false);
         currWeaponObject.SetActive(true);
 
         s_PlayerUI.PickUpWeaponUI(null);
@@ -103,7 +103,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
         if (isAuto)
         {
-            if (Input.GetButton("Fire") && Time.time >= nexttime_ToFire && p_TotalAmmo > 0)
+            if (Input.GetMouseButtonDown(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0)
             {
                 nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
                 Shoot();
@@ -111,7 +111,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 s_PlayerUI.UpdateWeaponUI();
             }
         }
-        else if (Input.GetButtonDown("Fire") && Time.time >= nexttime_ToFire && p_TotalAmmo > 0)
+        else if (Input.GetMouseButtonDown(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0)
         {
             nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
             Shoot();
@@ -119,7 +119,7 @@ public class PlayerWeaponManager : MonoBehaviour
             s_PlayerUI.UpdateWeaponUI();
 
         }
-        if (Input.GetMouseButtonDown(1) && WeaponEquipped)
+        if (Input.GetKeyDown(KeyCode.Q) && WeaponEquipped)
         {
             ThrowWeapon();
         }
@@ -128,13 +128,13 @@ public class PlayerWeaponManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             ChangeWeapon(pickupWeapon);
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (!isSlowDown && currSlowDownTime > 0)
-                StartSlowDownTime();
-            else
-                StopSlowDownTime();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    if (!isSlowDown && currSlowDownTime > 0)
+        //        StartSlowDownTime();
+        //    else
+        //        StopSlowDownTime();
+        //}
         if (isSlowDown)
         {
             ActivateSlowDownEffect();
