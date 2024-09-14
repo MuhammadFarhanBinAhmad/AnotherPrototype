@@ -9,17 +9,33 @@ public class PlayerFist : MonoBehaviour
     public float punchCooldownMax = 1f;
     public float punchCooldownCurrent;
 
-    public int knockbackForce;
+    public GameObject player;
+    public float knockbackForce;
+
+
     public bool isGrabbing = false; // prop is being grabbed in hand
+    [SerializeField]
+    private Transform cameraTransform;
+    [SerializeField]
+    private LayerMask pickUpLayerMask;
+    [SerializeField]
+    private Transform objectGrabPoint;
+    public float grabDistance;
+    private PropGrab propGrab;
+    public float throwForce;
 
 
-    Animator anim;
+    public Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         punchCooldownCurrent = punchCooldownMax;
+
+        cameraTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -35,13 +51,20 @@ public class PlayerFist : MonoBehaviour
         {
             Punch();
         }
-        if (Input.GetKeyDown(KeyCode.F) && isGrabbing == false)
+        if (Input.GetKeyDown(KeyCode.F))// && isGrabbing == false)
         {
-            Grab();
+            if (propGrab == null) // not carrying an object
+            {
+                Grab();
+            }
+            else
+            {
+                Throw(throwForce);
+            }
         }
         if (Input.GetKeyDown(KeyCode.F) && isGrabbing == true)
         {
-            Throw();
+            Throw(throwForce);
         }
     }
 
@@ -50,15 +73,17 @@ public class PlayerFist : MonoBehaviour
         if (other.GetComponent<EnemyHealth>() != null)
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Vector3 dir = (other.transform.position - player.transform.position).normalized;
+            other.gameObject.GetComponent<Rigidbody>().AddForce(dir * knockbackForce, ForceMode.Impulse); // knockback doesnt work
         }
     }
 
     public void Punch()
     {
         punchCooldownCurrent = 0;
-        if (isGrabbing == true) // throw prop
+        if (propGrab != null) // carrying an object
         {
-            Throw();
+            Throw(throwForce);
         }
         else // punch (nothing grabbed in hand)
         {
@@ -69,19 +94,22 @@ public class PlayerFist : MonoBehaviour
 
     public void Grab()
     {
-        isGrabbing = true;
-        anim.SetTrigger("Grab");
+        //anim.SetTrigger("Grab");
+
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, grabDistance, pickUpLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out propGrab))
+            {
+                propGrab.Grab(objectGrabPoint);
+            }
+        }
     }
 
-    public void Throw()
+    public void Throw(float throwForce)
     {
-        isGrabbing = false;
         anim.SetTrigger("Throw");
-    }
 
-    //public IEnumerator ResetPunch()
-    //{
-    //    yield return new WaitForSeconds(0.25f);
-    //    anim.SetBool("Punch", false);
-    //}
+        propGrab.Throw(throwForce);
+        propGrab = null;
+    }
 }
