@@ -292,6 +292,9 @@ MonoBehaviour:
   m_Range: 15
   m_CenterPoint: {fileID: 0}
   m_Target: {fileID: 0}
+  isStun: 0
+  e_StunTime: 0
+  e_StunTimeLeft: 0
 --- !u!195 &592338260422675272
 NavMeshAgent:
   m_ObjectHideFlags: 0

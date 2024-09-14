@@ -26,8 +26,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(DeathSoundObject);
-/*            FindObjectOfType<CameraControl>().SlowDownEffect();
-*/          for (int i = 0; i < AmountOfExpDrop; i++)
+            for (int i = 0; i < AmountOfExpDrop; i++)
             {
                 GameObject exp = Instantiate(ExpDrop,transform.position,transform.rotation);
                 Rigidbody rb = exp.GetComponent<Rigidbody>();
@@ -58,9 +57,5 @@ public class EnemyHealth : MonoBehaviour
             FindObjectOfType<CameraShake>().Shake(.1f, .75f, .75f);
             Destroy(gameObject);
         }
-        else
-        {
-/*            FindObjectOfType<CameraControl>().ShakeCamera(1f, .1f);
-*/        }
     }
 }

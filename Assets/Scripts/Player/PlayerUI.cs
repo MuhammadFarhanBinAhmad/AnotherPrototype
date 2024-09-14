@@ -13,7 +13,7 @@ public class PlayerUI : MonoBehaviour
     PlayerSkills s_PlayerSkills;
 
     [Header("HealthUI")]
-    public GameObject[] health = new GameObject[3];
+    public Image i_Healthbar;
 
     [Header("WeaponUI")]
     public TextMeshProUGUI t_CurrAmmoLeft;
@@ -38,44 +38,9 @@ public class PlayerUI : MonoBehaviour
         s_PlayerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
         s_PlayerSkills = FindObjectOfType<PlayerSkills>();
     }
-    private void Start()
-    {
-    }
     public void UpdateHealthUI()
     {
-        switch (s_PlayerHealth.p_Health)
-        {
-            case 0:
-                {
-                    health[0].SetActive(false);
-                    health[1].SetActive(false);
-                    health[2].SetActive(false);
-                    break;
-                }
-            case 1:
-                {
-                    health[0].SetActive(true);
-                    health[1].SetActive(false);
-                    health[2].SetActive(false);
-                    break;
-                }
-            case 2:
-                {
-                    health[0].SetActive(true);
-                    health[1].SetActive(true);
-                    health[2].SetActive(false);
-                    break;
-                }
-            case 3:
-                {
-                    health[0].SetActive(true);
-                    health[1].SetActive(true);
-                    health[2].SetActive(true);
-                    break;
-                }
-        }
-
-
+        i_Healthbar.fillAmount = (float)(float)s_PlayerHealth.p_Health/(float)(s_PlayerHealth.p_MaxHealth);
     }
     public void PickUpWeaponUI(string name)
     {
