@@ -34,7 +34,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     float nexttime_ToFire;
 
-    public GameObject knifeObject;
+    //public GameObject knifeObject;
     public GameObject currWeaponObject;
     public GameObject WeaponObject;
     public bool WeaponEquipped;
@@ -165,7 +165,7 @@ public class PlayerWeaponManager : MonoBehaviour
         w_rb.velocity = transform.forward * 30f;
         ClearWeapon();
 
-        knifeObject.SetActive(true);
+        //knifeObject.SetActive(true);
         currWeaponObject.SetActive(false);
     }
     public void StartSlowDownTime()

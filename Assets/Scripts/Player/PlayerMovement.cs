@@ -42,8 +42,8 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f; // Small downward force to keep grounded
         }
-
     }
+
     void Movement()
     {
         float moveX = Input.GetAxis("Horizontal");
