@@ -9,35 +9,17 @@ public class PlayerFist : MonoBehaviour
     public float punchCooldownMax = 1f;
     public float punchCooldownCurrent;
 
-    public GameObject player;
-    public float knockbackForce;
-    public GameObject HitShotEffect;
-
+    public int knockbackForce;
     public bool isGrabbing = false; // prop is being grabbed in hand
-    [SerializeField]
-    private Transform cameraTransform;
-    [SerializeField]
-    private LayerMask pickUpLayerMask;
-    [SerializeField]
-    private Transform objectGrabPoint;
-    public float grabDistance;
-    private PropGrab propGrab;
-    public float throwForce;
 
-    public Animator anim;
 
-    public bool canBigFist = false;
-    public BigFistCollider bigFistCollider;
-
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         punchCooldownCurrent = punchCooldownMax;
-
-        cameraTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
@@ -51,31 +33,15 @@ public class PlayerFist : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && punchCooldownCurrent >= punchCooldownMax)
         {
-            if (canBigFist == true)
-            {
-                BigFist();
-            }
-            else
-            {
-                Punch();
-            }
+            Punch();
         }
-
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && isGrabbing == false)
         {
-            if (propGrab == null) // not carrying an object
-            {
-                Grab();
-            }
-            else
-            {
-                Throw(throwForce);
-            }
+            Grab();
         }
-
         if (Input.GetKeyDown(KeyCode.F) && isGrabbing == true)
         {
-            Throw(throwForce);
+            Throw();
         }
     }
 
@@ -84,48 +50,38 @@ public class PlayerFist : MonoBehaviour
         if (other.GetComponent<EnemyHealth>() != null)
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
-            Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
-            other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, player.transform.position, -knockbackForce);
         }
     }
 
     public void Punch()
     {
         punchCooldownCurrent = 0;
-        if (propGrab != null) // carrying an object
+        if (isGrabbing == true) // throw prop
         {
-            Throw(throwForce);
+            Throw();
         }
         else // punch (nothing grabbed in hand)
         {
             anim.SetTrigger("Punch");
         }
+        //StartCoroutine(ResetPunch());
     }
 
     public void Grab()
     {
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, grabDistance, pickUpLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out propGrab))
-            {
-                propGrab.Grab(objectGrabPoint);
-            }
-        }
+        isGrabbing = true;
+        anim.SetTrigger("Grab");
     }
 
-    public void Throw(float throwForce)
+    public void Throw()
     {
+        isGrabbing = false;
         anim.SetTrigger("Throw");
-
-        propGrab.Throw(throwForce);
-        propGrab = null;
     }
 
-    public void BigFist()
-    {
-        anim.SetTrigger("BigFist");
-
-        bigFistCollider.canBigFist = true;
-        canBigFist = false;
-    }
+    //public IEnumerator ResetPunch()
+    //{
+    //    yield return new WaitForSeconds(0.25f);
+    //    anim.SetBool("Punch", false);
+    //}
 }
