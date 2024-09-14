@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerKnife : MonoBehaviour
 {
-
     public int damage;
     Animator anim;
 
