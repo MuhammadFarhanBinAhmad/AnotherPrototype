@@ -12,9 +12,13 @@ public class ExplosivePropObjects : MonoBehaviour
     {
         if (other.GetComponent<PlayerProjectile>() !=null)
         {
-            Instantiate(Explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Explode();
         }
+    }
 
+    public void Explode()
+    {
+        Instantiate(Explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
