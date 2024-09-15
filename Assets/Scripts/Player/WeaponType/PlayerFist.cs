@@ -11,6 +11,7 @@ public class PlayerFist : MonoBehaviour
 
     public GameObject player;
     public float knockbackForce;
+    public GameObject HitShotEffect;
 
 
     public bool isGrabbing = false; // prop is being grabbed in hand
@@ -51,7 +52,7 @@ public class PlayerFist : MonoBehaviour
         {
             Punch();
         }
-        if (Input.GetKeyDown(KeyCode.F))// && isGrabbing == false)
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (propGrab == null) // not carrying an object
             {
@@ -73,6 +74,7 @@ public class PlayerFist : MonoBehaviour
         if (other.GetComponent<EnemyHealth>() != null)
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
             Vector3 dir = (other.transform.position - player.transform.position).normalized;
             other.gameObject.GetComponent<Rigidbody>().AddForce(dir * knockbackForce, ForceMode.Impulse); // knockback doesnt work
         }

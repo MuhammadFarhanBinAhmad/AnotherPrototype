@@ -12,12 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd14c3d7a5976ac479afda84b23d5661, type: 3}
   m_Name: Lee Enfield
   m_EditorClassIdentifier: 
-  GunShotAudio: {fileID: 8300000, guid: 79d4bb35d304f3e4f856d549499cd02c, type: 3}
   p_WeaponName: Rifle
+  p_WeaponModel: {fileID: 0}
   p_WeaponFireRate: 1.5
+  p_WeaponChargeRate: 0
+  p_WeaponChargeCap: 0
+  p_BulletCount: 1
+  p_BulletInterval: 0
   p_TotalAmmo: 10
+  p_ProjectileType: {fileID: 0}
   p_BulletSpeed: 45
   p_BulletMaxDamage: 40
   p_BulletMinDamage: 35
   p_TimeBeforeSelfDestruct: 6
+  p_GunShotAudio: {fileID: 0}
+  p_GunPickupAudio: {fileID: 0}
   isAuto: 0
+  isCharge: 0

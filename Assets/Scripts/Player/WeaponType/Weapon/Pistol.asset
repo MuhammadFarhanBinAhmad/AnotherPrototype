@@ -12,12 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd14c3d7a5976ac479afda84b23d5661, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  GunShotAudio: {fileID: 8300000, guid: 49c89821b8d82554bbb63850e01f46e2, type: 3}
   p_WeaponName: Pistol
+  p_WeaponModel: {fileID: 0}
   p_WeaponFireRate: 2
+  p_WeaponChargeRate: 0
+  p_WeaponChargeCap: 0
+  p_BulletCount: 1
+  p_BulletInterval: 0
   p_TotalAmmo: 10
+  p_ProjectileType: {fileID: 584065255677097293, guid: ca3ad3c93c23dc64187cd331fff8942f, type: 3}
   p_BulletSpeed: 30
   p_BulletMaxDamage: 12
   p_BulletMinDamage: 10
   p_TimeBeforeSelfDestruct: 3
+  p_GunShotAudio: {fileID: 0}
+  p_GunPickupAudio: {fileID: 0}
   isAuto: 0
+  isCharge: 0
