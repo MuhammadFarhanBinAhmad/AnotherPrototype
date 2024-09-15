@@ -123,7 +123,7 @@ MonoBehaviour:
   AmountOfRoundDrop: 0
   DeathSoundObject: {fileID: 3646501114554089712, guid: ccdbd68b62955984d9028c5f2e38e584, type: 3}
   ExpDrop: {fileID: 9010908387928248077, guid: 4598e446aab897c41a736058f4de5495, type: 3}
-  WeaponPrefab: {fileID: 4145088066944936216, guid: 81fe9b9fa882e5a4098a5a0b12aab7c5, type: 3}
+  WeaponPrefab: {fileID: 0}
   e_EnemyUI: {fileID: 0}
 --- !u!114 &3617042488020301602
 MonoBehaviour:

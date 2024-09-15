@@ -492,7 +492,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2057
+  m_VersionIndex: 2054
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -604,21 +604,13 @@ MonoBehaviour:
   p_WeaponName: 
   p_WeaponModel: {fileID: 0}
   p_WeaponFireRate: 0
-  p_WeaponChargeRate: 0
-  p_WeaponChargeCap: 0
-  p_BulletCount: 0
   p_TotalAmmo: 0
-  p_ProjectileType: {fileID: 0}
   p_BulletSpeed: 0
   p_BulletMaxDamage: 0
   p_BulletMinDamage: 0
   p_TimeBeforeSelfDestruct: 0
-  p_isPiercing: 0
-  p_GunShotAudio: {fileID: 0}
-  p_GunPickupAudio: {fileID: 0}
-  p_GunActionAudio: {fileID: 0}
+  p_WeaponSoundClip: {fileID: 0}
   isAuto: 0
-  isCharge: 0
 --- !u!54 &2443193323236318022
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -661,6 +653,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactForceThreshold: 10
-  knockbackForce: 0
-  damage: 0
-  hitShotEffect: {fileID: 0}
