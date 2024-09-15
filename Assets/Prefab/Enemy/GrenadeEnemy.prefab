@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 712732797486776653}
   - component: {fileID: 4079408575016062124}
   - component: {fileID: 1682798514017884634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 448315841311481575}
   - component: {fileID: 5163914774906970551}
   - component: {fileID: 1379457137101676112}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2122130600091219322}
   - component: {fileID: 2122130600091219299}
   - component: {fileID: 6673228907914854147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrenadeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122130600741143183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DetectionSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122130600780442462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 2122130601774884629}
   - component: {fileID: 2122130601774884631}
   - component: {fileID: 2122130601774884628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 3522006432715583472}
   - component: {fileID: 77957384757152593}
   - component: {fileID: 2861252570695484836}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

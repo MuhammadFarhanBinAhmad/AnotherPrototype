@@ -5,21 +5,32 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "Weapon", order = 0)]
 public class WeaponType : ScriptableObject
 {
-
-    public AudioClip GunShotAudio;
+    [Header("General")]
     public string p_WeaponName;
+    public GameObject p_WeaponModel;
 
-    [Header("FireRate")]
+    [Header("ShootProperties")]
     public float p_WeaponFireRate;
+    public float p_WeaponChargeRate; // only applicable for charging weapons
+    public float p_WeaponChargeCap;
+    public int p_BulletCount; // shooting many bullets at once
 
     [Header("Ammo")]
     public int p_TotalAmmo;
 
     [Header("ProjectileStats")]
+    public GameObject p_ProjectileType;
     public float p_BulletSpeed;
     public float p_BulletMaxDamage;
     public float p_BulletMinDamage;
     public float p_TimeBeforeSelfDestruct;
+    public bool p_isPiercing;
 
+    [Header("Audio")]
+    public AudioClip p_GunShotAudio;
+    public AudioClip p_GunPickupAudio;
+
+    [Header("WeaponFireMode")]
     public bool isAuto;
+    public bool isCharge;
 }
