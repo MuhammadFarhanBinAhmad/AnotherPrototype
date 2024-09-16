@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Weapon : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Weapon : MonoBehaviour
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
     public AudioClip p_GunPickupAudio;
+    public AudioClip p_GunActionAudio; // stuff like charging up railgun
 
     [Header("WeaponFireMode")]
     public bool isAuto;
@@ -61,6 +63,7 @@ public class Weapon : MonoBehaviour
             p_WeaponModel = p_WeaponType.p_WeaponModel;
             p_GunShotAudio = p_WeaponType.p_GunShotAudio;
             p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
+            p_GunActionAudio = p_WeaponType.p_GunActionAudio;
             isAuto = p_WeaponType.isAuto;
             isCharge = p_WeaponType.isCharge;
         }
@@ -82,6 +85,7 @@ public class Weapon : MonoBehaviour
         p_WeaponModel = p_WeaponType.p_WeaponModel;
         p_GunShotAudio = p_WeaponType.p_GunShotAudio;
         p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
+        p_GunActionAudio = p_WeaponType.p_GunActionAudio;
         isAuto = p_WeaponType.isAuto;
         isCharge = p_WeaponType.isCharge;
     }
@@ -102,6 +106,7 @@ public class Weapon : MonoBehaviour
         p_WeaponModel = wt.p_WeaponModel;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;
+        p_GunActionAudio = wt.p_GunActionAudio;
         isAuto = wt.isAuto;
         isCharge = wt.isCharge;
     }
