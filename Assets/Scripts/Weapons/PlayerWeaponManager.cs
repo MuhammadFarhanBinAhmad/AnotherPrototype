@@ -32,6 +32,7 @@ public class PlayerWeaponManager : MonoBehaviour
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
     public AudioClip p_GunPickupAudio;
+    public AudioClip p_GunActionAudio; // stuff like charging up railgun
 
     [Header("SlowDownStats")]
     public bool isSlowDown;
@@ -97,6 +98,7 @@ public class PlayerWeaponManager : MonoBehaviour
             weapon.p_WeaponModel = p_WeaponModel;
             weapon.p_GunShotAudio = p_GunShotAudio;
             weapon.p_GunPickupAudio = p_GunPickupAudio;
+            weapon.p_GunActionAudio = p_GunActionAudio;
             weapon.isAuto = isAuto;
             weapon.isCharge = isCharge;
         }
@@ -116,6 +118,7 @@ public class PlayerWeaponManager : MonoBehaviour
         p_WeaponModel = wt.p_WeaponModel;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;
+        p_GunActionAudio = wt.p_GunActionAudio;
         isAuto = wt.isAuto;
         isCharge = wt.isCharge;
 
@@ -148,6 +151,7 @@ public class PlayerWeaponManager : MonoBehaviour
         p_WeaponModel = null;
         p_GunShotAudio = null;
         p_GunPickupAudio = null;
+        p_GunActionAudio = null;
         isAuto = false;
         isCharge = false;
         WeaponEquipped = false;
@@ -205,7 +209,11 @@ public class PlayerWeaponManager : MonoBehaviour
         else if (isCharge)
         {
             if (Input.GetMouseButton(1) && p_TotalAmmo > 0) // charging weapon
-            { 
+            {
+                if (p_GunShotAudio != null)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(p_GunActionAudio);
+                }
                 currentCharge += Time.deltaTime * p_WeaponChargeRate;
                 if (currentCharge >= p_WeaponChargeCap)
                 {
@@ -289,6 +297,7 @@ public class PlayerWeaponManager : MonoBehaviour
         weapon.p_WeaponModel = p_WeaponModel;
         weapon.p_GunShotAudio = p_GunShotAudio;
         weapon.p_GunPickupAudio = p_GunPickupAudio;
+        weapon.p_GunActionAudio = p_GunActionAudio;
         weapon.isAuto = isAuto;
         weapon.isCharge = isCharge;
 

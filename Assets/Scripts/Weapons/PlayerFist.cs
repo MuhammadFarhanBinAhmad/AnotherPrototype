@@ -13,7 +13,6 @@ public class PlayerFist : MonoBehaviour
     public float knockbackForce;
     public GameObject HitShotEffect;
 
-
     public bool isGrabbing = false; // prop is being grabbed in hand
     [SerializeField]
     private Transform cameraTransform;
@@ -25,8 +24,10 @@ public class PlayerFist : MonoBehaviour
     private PropGrab propGrab;
     public float throwForce;
 
-
     public Animator anim;
+
+    public bool canBigFist = false;
+    public BigFistCollider bigFistCollider;
 
 
     // Start is called before the first frame update
@@ -50,8 +51,16 @@ public class PlayerFist : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && punchCooldownCurrent >= punchCooldownMax)
         {
-            Punch();
+            if (canBigFist == true)
+            {
+                BigFist();
+            }
+            else
+            {
+                Punch();
+            }
         }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (propGrab == null) // not carrying an object
@@ -63,6 +72,7 @@ public class PlayerFist : MonoBehaviour
                 Throw(throwForce);
             }
         }
+
         if (Input.GetKeyDown(KeyCode.F) && isGrabbing == true)
         {
             Throw(throwForce);
@@ -75,8 +85,7 @@ public class PlayerFist : MonoBehaviour
         {
             other.GetComponent<EnemyHealth>().TakeDamage(damage);
             Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
-            Vector3 dir = (other.transform.position - player.transform.position).normalized;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(dir * knockbackForce, ForceMode.Impulse); // knockback doesnt work
+            other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, player.transform.position, -knockbackForce);
         }
     }
 
@@ -91,13 +100,10 @@ public class PlayerFist : MonoBehaviour
         {
             anim.SetTrigger("Punch");
         }
-        //StartCoroutine(ResetPunch());
     }
 
     public void Grab()
     {
-        //anim.SetTrigger("Grab");
-
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, grabDistance, pickUpLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out propGrab))
@@ -113,5 +119,13 @@ public class PlayerFist : MonoBehaviour
 
         propGrab.Throw(throwForce);
         propGrab = null;
+    }
+
+    public void BigFist()
+    {
+        anim.SetTrigger("BigFist");
+
+        bigFistCollider.canBigFist = true;
+        canBigFist = false;
     }
 }

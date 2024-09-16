@@ -27,7 +27,8 @@ public class PropGrab : MonoBehaviour
     {
         this.objectGrabPoint = objectGrabPoint;
         rb.useGravity = false;
-        rb.freezeRotation = true;
+        //rb.freezeRotation = true;
+        //gameObject.GetComponent<Collider>().isTrigger = true;
         playerFist.anim.SetTrigger("Grab");
     }
 
@@ -35,51 +36,59 @@ public class PropGrab : MonoBehaviour
     {
         if (objectGrabPoint != null)
         {
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPoint.position, Time.deltaTime * lerpSpeed);
-            rb.MovePosition(newPosition);
+            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPoint.position, Time.deltaTime * lerpSpeed); //lerp unused
+            //rb.MovePosition(newPosition);
+            rb.MovePosition(objectGrabPoint.position);
+            transform.forward = player.transform.forward;
         }
 
-        if (rb.velocity.magnitude <= 0.5f && isFlying == true)
-        {
-            gameObject.GetComponent<Collider>().isTrigger = false;
-            isFlying = false;
-        }
+        //if (rb.velocity.magnitude <= 0.5f && isFlying == true)
+        //{
+        //    gameObject.GetComponent<Collider>().isTrigger = false;
+        //    isFlying = false;
+        //}
     }
 
     public void Throw(float throwForce)
     {
         this.objectGrabPoint = null;
         rb.useGravity = true;
-        rb.freezeRotation = false;
+        //rb.freezeRotation = false;
 
         Vector3 dir = (transform.position - player.transform.position).normalized;
-        gameObject.GetComponent<Rigidbody>().AddForce(dir * throwForce, ForceMode.Impulse);
-        gameObject.GetComponent<Collider>().isTrigger = true;
+        //gameObject.GetComponent<Rigidbody>().AddForce(dir * throwForce, ForceMode.Impulse);
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 30f;
+        //gameObject.GetComponent<Collider>().isTrigger = true;
         isFlying = true;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<EnemyMovement>() != null && isFlying == true) // if prop hits enemy in mid air
-        {
-            if (gameObject.GetComponent<ExplosivePropObjects>() != null) // this prop goes boom
-            {
-                gameObject.GetComponent<ExplosivePropObjects>().Explode();
-                Debug.Log("Splode");
-            }
-            else // this prop goes bonk
-            {
-                other.GetComponent<EnemyMovement>().StunEnemy();
-                Debug.Log("Stun");
-            }
-        }
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.GetComponent<EnemyMovement>() != null && isFlying == true) // if prop hits enemy in mid air
+    //    {
+    //        if (gameObject.GetComponent<ExplosivePropObjects>() != null) // this prop goes boom
+    //        {
+    //            gameObject.GetComponent<ExplosivePropObjects>().Explode();
+    //            Debug.Log("Splode");
+    //            isFlying = false;
+    //            gameObject.GetComponent<Collider>().isTrigger = false;
+    //        }
+    //        else // this prop goes bonk
+    //        {
+    //            other.GetComponent<EnemyMovement>().StunEnemy();
+    //            Debug.Log("Stun");
+    //            isFlying = false;
+    //            gameObject.GetComponent<Collider>().isTrigger = false;
+    //        }
+    //    }
 
-        gameObject.GetComponent<Collider>().isTrigger = false;
+    //    gameObject.GetComponent<Collider>().isTrigger = false;
 
-        //if (other.tag == ("Wall"))
-        //{
-        //    gameObject.GetComponent<Collider>().isTrigger = false;
-        //    isFlying = false;
-        //}
-    }
+    //    if (other.tag == ("Wall"))
+    //    {
+    //        gameObject.GetComponent<Collider>().isTrigger = false;
+    //        isFlying = false;
+    //        gameObject.GetComponent<Collider>().isTrigger = false;
+    //    }
+    //}
 }

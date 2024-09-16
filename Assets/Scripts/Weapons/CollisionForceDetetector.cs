@@ -5,6 +5,9 @@ using UnityEngine;
 public class CollisionForceDetetector : MonoBehaviour
 {
     public float impactForceThreshold = 10f; // A threshold to determine if the collision was strong enough.
+    public float knockbackForce;
+    public int damage;
+    public GameObject hitShotEffect;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -27,7 +30,21 @@ public class CollisionForceDetetector : MonoBehaviour
                 Debug.Log("Strong collision detected!");
                 if (collision.transform.GetComponent<EnemyMovement>() != null)
                 {
-                    collision.transform.GetComponent<EnemyMovement>().StunEnemy();
+                    collision.transform.GetComponent<EnemyMovement>().StunEnemy(); // everything stuns
+
+                    if (gameObject.GetComponent<ExplosivePropObjects>() != null)
+                    {
+                        gameObject.GetComponent<ExplosivePropObjects>().Explode(); // barrel explodes
+                    } 
+
+                    if (gameObject.GetComponent<PropGrab>() != null) // crate knocks back, deals damage and self destructs
+                    {
+                        collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        Instantiate(hitShotEffect, gameObject.transform.position, gameObject.transform.rotation);
+
+                        collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, gameObject.transform.position, -knockbackForce);
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

@@ -29,6 +29,7 @@ public class WeaponType : ScriptableObject
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
     public AudioClip p_GunPickupAudio;
+    public AudioClip p_GunActionAudio; // stuff like charging up railgun
 
     [Header("WeaponFireMode")]
     public bool isAuto;
