@@ -15113,7 +15113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &944112464
 Transform:
   m_ObjectHideFlags: 0
@@ -15372,7 +15372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47aa850efe1d102448e1c3cdc25c7fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1000
+  mouseSensitivity: 100
   playerBody: {fileID: 977527933}
 --- !u!114 &963194230
 MonoBehaviour:
@@ -28416,7 +28416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1843055325
 AudioSource:
   m_ObjectHideFlags: 0
@@ -30040,7 +30040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1990502957
 Transform:
   m_ObjectHideFlags: 0
