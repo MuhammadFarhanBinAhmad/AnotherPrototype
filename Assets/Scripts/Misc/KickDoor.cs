@@ -12,7 +12,7 @@ public class KickDoor : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (fistAnimator == null)
+        if (fistAnimator != null)
         {
             fistAnimator = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<Animator>();
         }
