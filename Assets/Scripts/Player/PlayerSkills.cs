@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-
     PlayerUI s_PlayerUI;
+    public PlayerFist playerFist;
 
     public int currentLevel;
     public int totalExpPoint;
@@ -16,6 +16,15 @@ public class PlayerSkills : MonoBehaviour
     {
         s_PlayerUI = FindObjectOfType<PlayerUI>();
     }
+
+    public void BigFist(bool canBigFist)
+    {
+        if (canBigFist == true)
+        {
+            playerFist.canBigFist = true;
+        }
+    }
+
     public void AddExp(int exp)
     {
         totalExpPoint += exp;
@@ -27,6 +36,5 @@ public class PlayerSkills : MonoBehaviour
         }
 
         //s_PlayerUI.UpdateEXP();
-
-    }    
+    }
 }

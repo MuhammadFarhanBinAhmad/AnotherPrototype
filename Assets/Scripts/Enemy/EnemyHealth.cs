@@ -41,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
                 if (!GetComponent<EnemyRangeAttackBehaviour>().e_GrenadeEnemy)
                 {
                     GameObject weapondrop = Instantiate(WeaponPrefab, transform.position, transform.rotation);
+                    WeaponPrefab = null;
                     weapondrop.GetComponent<Weapon>().SetWeapon(GetComponent<EnemyRangeAttackBehaviour>().e_weaponType);
                     Rigidbody weapondrop_rb = weapondrop.GetComponent<Rigidbody>();
                     Vector3 AmmoDirection = Random.insideUnitSphere.normalized;

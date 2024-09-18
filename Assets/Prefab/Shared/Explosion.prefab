@@ -4888,7 +4888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_BlastRadius: 10
-  p_Damage: 1
+  p_Damage: 100
   p_TimeBeforSelfDestruct: 0.5
 --- !u!54 &5513153464002220482
 Rigidbody:
