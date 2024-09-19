@@ -8,9 +8,10 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth;
     public int AmountOfExpDrop;
     public int AmountOfRoundDrop;
+    public bool dropKey = false;
 
     public GameObject DeathSoundObject;
-    public GameObject ExpDrop;
+    public GameObject DoorKey;
     public GameObject WeaponPrefab;
 
     public EnemyUI e_EnemyUI;
@@ -28,13 +29,13 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(DeathSoundObject);
             for (int i = 0; i < AmountOfExpDrop; i++)
             {
-                GameObject exp = Instantiate(ExpDrop,transform.position,transform.rotation);
+                /*GameObject exp = Instantiate(ExpDrop,transform.position,transform.rotation);
                 Rigidbody rb = exp.GetComponent<Rigidbody>();
                 Vector3 explosionDirection = Random.insideUnitSphere.normalized;
                 if (rb!=null)
                 {
                     rb.AddForce(explosionDirection * .5f, ForceMode.Impulse);
-                }
+                }*/
             }
             if (GetComponent<EnemyRangeAttackBehaviour>() != null)
             {   
@@ -50,7 +51,12 @@ public class EnemyHealth : MonoBehaviour
                         weapondrop_rb.AddForce(AmmoDirection * .5f, ForceMode.Impulse);
                     }
                 }
+            }
 
+            if (dropKey == true)
+            {
+                Instantiate(DoorKey, transform.position, transform.rotation);
+                dropKey = false;
             }
 
             FindObjectOfType<Flash>().Flashing();
