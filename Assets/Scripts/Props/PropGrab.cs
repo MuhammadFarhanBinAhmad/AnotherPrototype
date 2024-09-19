@@ -20,9 +20,10 @@ public class PropGrab : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
         //Ka Long this one i settle with you
+        // sorry bossku i was notty :(
 
-/*        player = GameObject.FindGameObjectWithTag("Player");
-        playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();*/
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
     }
 
     public void Grab(Transform objectGrabPoint)

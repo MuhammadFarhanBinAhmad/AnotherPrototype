@@ -10,7 +10,7 @@ public class ExpPoint : MonoBehaviour
     {
         if (other.GetComponent<PlayerSkills>() !=null)
         {
-            other.GetComponent<PlayerSkills>().AddExp(expPoint);
+            //other.GetComponent<PlayerSkills>().AddExp(expPoint);
             Destroy(transform.parent.gameObject);
         }
     }

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 500f;
+    public Slider slider;
     public Transform playerBody;
 
     private float xRotation = 0f;
@@ -28,5 +31,10 @@ public class PlayerCamera : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Clamp the rotation to avoid flipping
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    public void AdjustSensitivity(float newSens)
+    {
+        mouseSensitivity = newSens * 10;
     }
 }

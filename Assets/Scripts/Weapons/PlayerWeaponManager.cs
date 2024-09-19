@@ -82,6 +82,7 @@ public class PlayerWeaponManager : MonoBehaviour
         if (WeaponEquipped)
         {
             GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
+            Debug.Log("spawn");
             Weapon weapon = w.GetComponent<Weapon>();
             weapon.p_WeaponName = p_WeaponName;
             weapon.p_WeaponFireRate = p_WeaponFireRate;
@@ -103,7 +104,7 @@ public class PlayerWeaponManager : MonoBehaviour
             weapon.isCharge = isCharge;
         }
 
-        p_WeaponName = wt.p_WeaponName;
+        p_WeaponName = wt.p_WeaponName;  // this stuff makes new weapon take on intended properties
         p_WeaponFireRate = wt.p_WeaponFireRate;
         p_WeaponChargeRate = wt.p_WeaponChargeRate;
         p_WeaponChargeCap = wt.p_WeaponChargeCap;
@@ -122,12 +123,13 @@ public class PlayerWeaponManager : MonoBehaviour
         isAuto = wt.isAuto;
         isCharge = wt.isCharge;
 
+        Destroy(initialWeapon);
         Destroy(wt.gameObject);
         //knifeObject.SetActive(false);
         currWeaponObject.SetActive(true);
         GameObject m = Instantiate(p_WeaponModel, currWeaponObject.transform.position, currWeaponObject.transform.rotation); // generate weapon model
         m.transform.parent = currWeaponObject.transform;
-
+        initialWeapon = m;
         s_PlayerUI.PickUpWeaponUI(null);
 
         WeaponEquipped = true;
@@ -172,6 +174,7 @@ public class PlayerWeaponManager : MonoBehaviour
             {
                 ChangeWeapon(pickupWeapon);
                 playerFist.anim.SetTrigger("Swap");
+
                 if (pickupWeapon.p_GunPickupAudio != null)
                 {
                     GetComponent<AudioSource>().PlayOneShot(pickupWeapon.p_GunPickupAudio);

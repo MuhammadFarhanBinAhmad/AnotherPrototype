@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BigFistPickup : MonoBehaviour
 {
-    public bool canBigFist;
+    public bool canBigFist = false;
 
     private void OnTriggerEnter(Collider other)
     {
