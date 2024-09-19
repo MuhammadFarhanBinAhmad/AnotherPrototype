@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSkills : MonoBehaviour
 {
     PlayerUI s_PlayerUI;
-    public PlayerFist playerFist;
+    //public PlayerFist playerFist;
 
     public int currentLevel;
     public int totalExpPoint;
@@ -21,7 +21,7 @@ public class PlayerSkills : MonoBehaviour
     {
         if (canBigFist == true)
         {
-            playerFist.canBigFist = true;
+            //playerFist.canBigFist = true;
         }
     }
 
