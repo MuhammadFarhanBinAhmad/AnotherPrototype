@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("WeaponGameplayScene"); // replace with initial scene name from level manager
+        SceneManager.LoadScene("Level 1"); // replace with initial scene name from level manager
     }
 
     public void RestartScene()

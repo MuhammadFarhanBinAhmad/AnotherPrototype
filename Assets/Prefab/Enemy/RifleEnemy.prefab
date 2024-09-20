@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3617042488020301601}
   - component: {fileID: 3617042488020301624}
   - component: {fileID: 3617042488020301625}
+  - component: {fileID: -5568380107395124924}
   m_Layer: 7
   m_Name: RifleEnemy
   m_TagString: Untagged
@@ -121,8 +122,9 @@ MonoBehaviour:
   maxHealth: 1
   AmountOfExpDrop: 5
   AmountOfRoundDrop: 0
+  dropKey: 0
   DeathSoundObject: {fileID: 3646501114554089712, guid: ccdbd68b62955984d9028c5f2e38e584, type: 3}
-  ExpDrop: {fileID: 9010908387928248077, guid: 4598e446aab897c41a736058f4de5495, type: 3}
+  DoorKey: {fileID: 2879703620406202734, guid: 6b819966f9729004089373af519ef60d, type: 3}
   WeaponPrefab: {fileID: 4145088066944936216, guid: 81fe9b9fa882e5a4098a5a0b12aab7c5, type: 3}
   e_EnemyUI: {fileID: 0}
 --- !u!114 &3617042488020301602
@@ -182,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e68151fa8f723645ae612034c620109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_weaponType: {fileID: 0}
+  e_weaponType: {fileID: 11400000, guid: 8025d6b8158a4e745945e768c4c97cb6, type: 2}
   e_Projectile: {fileID: 584065255677097293, guid: 5e8767b9300708f4895a5eeb53bdbc55, type: 3}
   e_SpawnPos: {fileID: 3617042488414550675}
   e_RateOfAttack: 2
@@ -287,6 +289,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5568380107395124924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617042488020301600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec990cdfb824864489917fc1d3fa570e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: {fileID: 0}
+  roomManager: {fileID: 0}
+  dropKey: 0
+  roomKey: {fileID: 2879703620406202734, guid: 6b819966f9729004089373af519ef60d, type: 3}
 --- !u!1 &3617042488209267678
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,11 @@ public class PlayerSkills : MonoBehaviour
     PlayerUI s_PlayerUI;
     public PlayerFist playerFist;
 
-    public int currentLevel;
-    public int totalExpPoint;
-    public int nextPointToLevelUp;
+    public int keyCount = 0;
+
+    //public int currentLevel;
+    //public int totalExpPoint;
+    //public int nextPointToLevelUp;
 
 
     private void Start()
@@ -25,16 +27,25 @@ public class PlayerSkills : MonoBehaviour
         }
     }
 
-    public void AddExp(int exp)
+    public void AddKey(int key)
     {
-        totalExpPoint += exp;
-        if (totalExpPoint >= nextPointToLevelUp)
-        {
-            currentLevel++;
-            nextPointToLevelUp *= 2;
-            totalExpPoint = 0;
-        }
-
-        //s_PlayerUI.UpdateEXP();
+        keyCount++;
     }
+    public void RemoveKey(int key)
+    {
+        keyCount--;
+    }
+
+    //public void AddExp(int exp)
+    //{
+    //    totalExpPoint += exp;
+    //    if (totalExpPoint >= nextPointToLevelUp)
+    //    {
+    //        currentLevel++;
+    //        nextPointToLevelUp *= 2;
+    //        totalExpPoint = 0;
+    //    }
+
+    //    s_PlayerUI.UpdateEXP();
+    //}
 }

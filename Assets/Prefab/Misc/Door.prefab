@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4543240352842043586}
   - component: {fileID: 4543240352842043594}
   - component: {fileID: 4543240352842043585}
+  - component: {fileID: 5375506806379347539}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 7960858020925669548
+    rid: 8154156796083438386
   m_Size: {x: -2.1480675, y: 3.449767, z: -0.29023743}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -281,7 +282,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7960858020925669548
+    - rid: 8154156796083438386
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!23 &4543240352842043590
 MeshRenderer:
@@ -389,3 +390,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inrange: 0
   isKick: 0
+  fistAnimator: {fileID: 0}
+  playerSkills: {fileID: 0}
+--- !u!114 &5375506806379347539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543240352842043584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059fc401fbc7f9e49b575cb042a0aa21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomManager: {fileID: 0}

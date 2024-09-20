@@ -68,11 +68,11 @@ public class PlayerUI : MonoBehaviour
     {
 /*        t_CurrGrenadeRemaining.text = "x" + s_PlayerWeaponManager.p_GrenadeRemaining;
 */    }
-    public void UpdateEXP()
-    {
-        t_EXP.text = s_PlayerSkills.totalExpPoint.ToString() + '/' + s_PlayerSkills.nextPointToLevelUp.ToString();
-        i_EXP.fillAmount = (float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp;
-        print((float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp);
-        t_CurrentLevel.text = "Level: " + s_PlayerSkills.currentLevel.ToString();
-    }
+    //public void UpdateEXP()
+    //{
+    //    t_EXP.text = s_PlayerSkills.totalExpPoint.ToString() + '/' + s_PlayerSkills.nextPointToLevelUp.ToString();
+    //    i_EXP.fillAmount = (float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp;
+    //    print((float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp);
+    //    t_CurrentLevel.text = "Level: " + s_PlayerSkills.currentLevel.ToString();
+    //}
 }
