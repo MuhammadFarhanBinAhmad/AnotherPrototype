@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/WeaponSOs/Old/Shotgun.asset.meta
 guid: 106ed74a3313dfa46a412ac040ca6a57
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+========
+guid: 77855de271fb82a45a2724bf4d90c10f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+>>>>>>>> f5349d13a5606e7e33a02de6eba983a29e21830a:Assets/Scenes/Level 1/NavMesh.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
