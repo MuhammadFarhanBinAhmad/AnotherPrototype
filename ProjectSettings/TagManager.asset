@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Wall
+  - LeftFist
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - BigFist
   - 
   - 
   - 
