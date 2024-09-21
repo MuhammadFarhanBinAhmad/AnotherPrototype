@@ -29,9 +29,13 @@ public class EnemyMovement : MonoBehaviour
 
     public Transform m_Target;
 
-    public bool isStun;
+    public bool isStunned;
     public float e_StunTime;
     public float e_StunTimeLeft;
+    public bool isFrozen;
+    public float e_FreezeTime;
+    public float e_FreezeTimeLeft;
+
 
     private void Start()
     {
@@ -60,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 case MODE.ATTACKING:
                 {
-                    if (!isStun)
+                    if (!isStunned)
                     {
                         m_Agent.SetDestination(m_Target.position);
                         if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
@@ -75,16 +79,19 @@ public class EnemyMovement : MonoBehaviour
                     break;
                 }
         }
-        if (isStun)
+        if (isStunned)
         {
             CountStunTimer();
         }
-
+        if (isFrozen)
+        {
+            CountFreezeTimer();
+        }
 
     }
     public void StunEnemy()
     {
-        isStun = true;
+        isStunned = true;
         e_StunTimeLeft = e_StunTime;
         m_Agent.speed = 0;
     }
@@ -96,10 +103,29 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            isStun=false;
+            isStunned = false;
             m_Agent.speed = s_MovementSpeed;
         }
     }
+    public void FreezeEnemy()
+    {
+        isFrozen = true;
+        e_FreezeTimeLeft = e_FreezeTime;
+        m_Agent.speed = s_MovementSpeed / 2;
+    }
+    void CountFreezeTimer()
+    {
+        if (e_FreezeTimeLeft > 0)
+        {
+            e_FreezeTimeLeft -= Time.deltaTime;
+        }
+        else
+        {
+            isFrozen = false;
+            m_Agent.speed = s_MovementSpeed;
+        }
+    }
+
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
@@ -151,3 +177,4 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.DrawRay(coneTip.position, left);
     }
 }
+

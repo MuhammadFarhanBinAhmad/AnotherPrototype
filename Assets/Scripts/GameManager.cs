@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.R))
         {
-            RestartGame();
+            //RestartGame();
+            RestartScene();
         }
     }
 

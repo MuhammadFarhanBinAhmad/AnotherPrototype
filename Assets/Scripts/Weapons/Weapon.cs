@@ -14,13 +14,11 @@ public class Weapon : MonoBehaviour
     public GameObject p_WeaponModel;
 
     [Header("ShootProperties")]
+    public int p_TotalAmmo;
     public float p_WeaponFireRate;
     public float p_WeaponChargeRate; // only applicable for charging weapons
     public float p_WeaponChargeCap;
     public int p_BulletCount; // shooting many bullets at once
-
-    [Header("Ammo")]
-    public int p_TotalAmmo;
 
     [Header("ProjectileStats")]
     public GameObject p_ProjectileType;
@@ -29,6 +27,10 @@ public class Weapon : MonoBehaviour
     public float p_BulletMinDamage;
     public float p_TimeBeforeSelfDestruct;
     public bool p_isPiercing;
+
+    [Header("ProjectileElement")]
+    public string p_ProjectileElement;
+    public float p_ElementStackOnHit;
 
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
@@ -60,6 +62,8 @@ public class Weapon : MonoBehaviour
             p_BulletCount = p_WeaponType.p_BulletCount;
             p_TimeBeforeSelfDestruct = p_WeaponType.p_TimeBeforeSelfDestruct;
             p_isPiercing = p_WeaponType.p_isPiercing;
+            p_ProjectileElement = p_WeaponType.p_ProjectileElement;
+            p_ElementStackOnHit = p_WeaponType.p_ElementStackOnHit;
             p_WeaponModel = p_WeaponType.p_WeaponModel;
             p_GunShotAudio = p_WeaponType.p_GunShotAudio;
             p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
@@ -82,6 +86,8 @@ public class Weapon : MonoBehaviour
         p_BulletCount = p_WeaponType.p_BulletCount;
         p_TimeBeforeSelfDestruct = p_WeaponType.p_TimeBeforeSelfDestruct;
         p_isPiercing = p_WeaponType.p_isPiercing;
+        p_ProjectileElement = p_WeaponType.p_ProjectileElement;
+        p_ElementStackOnHit = p_WeaponType.p_ElementStackOnHit;
         p_WeaponModel = p_WeaponType.p_WeaponModel;
         p_GunShotAudio = p_WeaponType.p_GunShotAudio;
         p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
@@ -103,6 +109,8 @@ public class Weapon : MonoBehaviour
         p_BulletCount = wt.p_BulletCount;
         p_TimeBeforeSelfDestruct = wt.p_TimeBeforeSelfDestruct;
         p_isPiercing = wt.p_isPiercing;
+        p_ProjectileElement = wt.p_ProjectileElement;
+        p_ElementStackOnHit = wt.p_ElementStackOnHit;
         p_WeaponModel = wt.p_WeaponModel;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;

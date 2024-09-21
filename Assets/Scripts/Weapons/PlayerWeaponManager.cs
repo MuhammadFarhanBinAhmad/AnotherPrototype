@@ -13,13 +13,11 @@ public class PlayerWeaponManager : MonoBehaviour
     public Transform p_Spawnpos; // spawnpoint for both weapons and projectiles
 
     [Header("ShootProperties")]
+    public int p_TotalAmmo;
     public float p_WeaponFireRate;
     public float p_WeaponChargeRate; // only applicable for charging weapons
     public float p_WeaponChargeCap;
     public int p_BulletCount; // shooting many bullets at once
-
-    [Header("Ammo")]
-    public int p_TotalAmmo;
 
     [Header("ProjectileStats")]
     public GameObject p_ProjectileType;
@@ -28,6 +26,10 @@ public class PlayerWeaponManager : MonoBehaviour
     public float p_BulletMinDamage;
     public float p_TimeBeforeSelfDestruct;
     public bool p_isPiercing;
+
+    [Header("ProjectileElement")]
+    public string p_ProjectileElement;
+    public float p_ElementStackOnHit;
 
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
@@ -96,6 +98,8 @@ public class PlayerWeaponManager : MonoBehaviour
             weapon.p_BulletCount = p_BulletCount;
             weapon.p_TimeBeforeSelfDestruct = p_TimeBeforeSelfDestruct;
             weapon.p_isPiercing = p_isPiercing;
+            weapon.p_ProjectileElement = p_ProjectileElement;
+            weapon.p_ElementStackOnHit = p_ElementStackOnHit;
             weapon.p_WeaponModel = p_WeaponModel;
             weapon.p_GunShotAudio = p_GunShotAudio;
             weapon.p_GunPickupAudio = p_GunPickupAudio;
@@ -116,6 +120,8 @@ public class PlayerWeaponManager : MonoBehaviour
         p_BulletCount = wt.p_BulletCount;
         p_TimeBeforeSelfDestruct = wt.p_TimeBeforeSelfDestruct;
         p_isPiercing = wt.p_isPiercing;
+        p_ProjectileElement = wt.p_ProjectileElement;
+        p_ElementStackOnHit = wt.p_ElementStackOnHit;
         p_WeaponModel = wt.p_WeaponModel;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;
@@ -150,6 +156,8 @@ public class PlayerWeaponManager : MonoBehaviour
         p_BulletCount = 0;
         p_TimeBeforeSelfDestruct = 0;
         p_isPiercing = false;
+        p_ProjectileElement = null;
+        p_ElementStackOnHit = 0;
         p_WeaponModel = null;
         p_GunShotAudio = null;
         p_GunPickupAudio = null;
@@ -265,6 +273,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
+                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
             }
             else // 1 bullet, dead center
             {
@@ -272,6 +281,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
+                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
             }
         }
 
@@ -297,6 +307,8 @@ public class PlayerWeaponManager : MonoBehaviour
         weapon.p_BulletCount = p_BulletCount;
         weapon.p_TimeBeforeSelfDestruct = p_TimeBeforeSelfDestruct;
         weapon.p_isPiercing = p_isPiercing;
+        weapon.p_ProjectileElement = p_ProjectileElement;
+        weapon.p_ElementStackOnHit = p_ElementStackOnHit;
         weapon.p_WeaponModel = p_WeaponModel;
         weapon.p_GunShotAudio = p_GunShotAudio;
         weapon.p_GunPickupAudio = p_GunPickupAudio;

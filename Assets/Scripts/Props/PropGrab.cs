@@ -60,7 +60,7 @@ public class PropGrab : MonoBehaviour
 
         Vector3 dir = (transform.position - player.transform.position).normalized;
         //gameObject.GetComponent<Rigidbody>().AddForce(dir * throwForce, ForceMode.Impulse);
-        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 30f;
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * throwForce;
         //gameObject.GetComponent<Collider>().isTrigger = true;
         isFlying = true;
     }

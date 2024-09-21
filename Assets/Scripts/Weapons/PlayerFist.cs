@@ -22,6 +22,7 @@ public class PlayerFist : MonoBehaviour
     private Transform objectGrabPoint;
     public float grabDistance;
     private PropGrab propGrab;
+    private EnemyGrab enemyGrab;
     public float throwForce;
 
     public Animator anim;
@@ -63,7 +64,7 @@ public class PlayerFist : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (propGrab == null) // not carrying an object
+            if (propGrab == null && enemyGrab == null) // not carrying an object or enemy
             {
                 Grab();
             }
@@ -71,11 +72,6 @@ public class PlayerFist : MonoBehaviour
             {
                 Throw(throwForce);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F) && isGrabbing == true)
-        {
-            Throw(throwForce);
         }
     }
 
@@ -96,6 +92,10 @@ public class PlayerFist : MonoBehaviour
         {
             Throw(throwForce);
         }
+        else if (enemyGrab != null) // carrying an enemy
+        {
+            Throw(throwForce);
+        }
         else // punch (nothing grabbed in hand)
         {
             anim.SetTrigger("Punch");
@@ -110,6 +110,14 @@ public class PlayerFist : MonoBehaviour
             {
                 propGrab.Grab(objectGrabPoint);
             }
+
+            if (raycastHit.transform.TryGetComponent(out enemyGrab))
+            {
+                if (enemyGrab.canGrab == true)
+                {
+                    enemyGrab.Grab(objectGrabPoint);
+                }
+            }
         }
     }
 
@@ -117,8 +125,16 @@ public class PlayerFist : MonoBehaviour
     {
         anim.SetTrigger("Throw");
 
-        propGrab.Throw(throwForce);
-        propGrab = null;
+        if (propGrab != null)
+        {
+            propGrab.Throw(throwForce);
+            propGrab = null;
+        }
+        if (enemyGrab != null)
+        {
+            enemyGrab.Throw(throwForce);
+            enemyGrab = null;
+        }
     }
 
     public void BigFist()

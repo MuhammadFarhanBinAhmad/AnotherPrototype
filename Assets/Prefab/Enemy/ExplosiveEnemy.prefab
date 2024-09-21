@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5973689531339308251}
   - component: {fileID: 196732257998267202}
   - component: {fileID: 2678907979419308231}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_HealthUI: {fileID: 6701041008338041494}
+  cam: {fileID: 0}
 --- !u!1 &3063601573025825381
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3063601573025825382}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: DetectionSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +158,7 @@ GameObject:
   - component: {fileID: 3063601573961520702}
   - component: {fileID: 3063601573961520696}
   - component: {fileID: 3063601573961520703}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +248,7 @@ GameObject:
   - component: {fileID: 3063601574370041576}
   - component: {fileID: 3063601574370041559}
   - component: {fileID: 8431888480649574274}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ExplosiveEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,8 +353,9 @@ MonoBehaviour:
   maxHealth: 5
   AmountOfExpDrop: 0
   AmountOfRoundDrop: 0
+  dropKey: 0
   DeathSoundObject: {fileID: 3646501114554089712, guid: ccdbd68b62955984d9028c5f2e38e584, type: 3}
-  ExpDrop: {fileID: 9010908387928248077, guid: 4598e446aab897c41a736058f4de5495, type: 3}
+  DoorKey: {fileID: 0}
   WeaponPrefab: {fileID: 0}
   e_EnemyUI: {fileID: 0}
 --- !u!114 &3063601574370041578
@@ -539,7 +541,7 @@ GameObject:
   - component: {fileID: 4513806687609849151}
   - component: {fileID: 3320156147068707959}
   - component: {fileID: 6701041008338041494}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
