@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionForceDetetector : MonoBehaviour
+public class CollisionForceDetector : MonoBehaviour
 {
     public float impactForceThreshold = 10f; // A threshold to determine if the collision was strong enough.
     public float knockbackForce;

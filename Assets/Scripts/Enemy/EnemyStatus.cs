@@ -8,6 +8,7 @@ using static UnityEditor.Rendering.FilterWindow;
 
 public class EnemyStatus : MonoBehaviour
 {
+    [Header ("Stacks")]
     public float stacks;
     public float maxStacks;
 
@@ -18,16 +19,24 @@ public class EnemyStatus : MonoBehaviour
     private string newElementType;
     private string currentElementType;
 
+    [Header("Checks")]
     public bool isStunned = false;
     public bool isBurnt = false;
     public bool isShocked = false;
     public bool isFrozen = false;
+    public float stunRecovery;
+    public float burnRecovery;
+    public float shockRecovery;
+    public float freezeRecovery;
 
+    [Header("Effects")]
+    private bool canSpawnEffect = true;
     public GameObject stunEffect;
     public GameObject burnEffect;
     public GameObject shockEffect;
     public GameObject freezeEffect;
 
+    [Header("Audio")]
     public AudioSource audioSource;
 
     public AudioClip stunAudio;
@@ -35,6 +44,7 @@ public class EnemyStatus : MonoBehaviour
     public AudioClip shockAudio;
     public AudioClip freezeAudio;
 
+    [Header("Conditions")]
     public EnemyUI e_EnemyUI;
     public EnemyGrab enemyGrab;
 
@@ -55,6 +65,7 @@ public class EnemyStatus : MonoBehaviour
         enemyMovement = gameObject.GetComponent<EnemyMovement>();
         enemyMeleeAttackBehaviour = gameObject.GetComponent<EnemyMeleeAttackBehaviour>();
         enemyRangeAttackBehaviour = gameObject.GetComponent<EnemyRangeAttackBehaviour>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     public void TakeStacks(float stackAmount)
@@ -133,15 +144,17 @@ public class EnemyStatus : MonoBehaviour
         enemyGrab.canGrab = true;
         enemyMovement.StunEnemy();
 
-        if (stunAudio != null)
+        if (stunAudio != null && canSpawnEffect == true)
         {
             audioSource.PlayOneShot(stunAudio);
         }
-        if (stunEffect != null)
+        if (stunEffect != null && canSpawnEffect == true)
         {
-            Instantiate(stunEffect, gameObject.transform.position, gameObject.transform.rotation);
+            var effect = Instantiate(stunEffect, gameObject.transform.position, gameObject.transform.rotation);
+            effect.transform.parent = gameObject.transform;
+            canSpawnEffect = false;
         }
-        StartCoroutine(ResetState());
+        StartCoroutine(ResetState(stunRecovery));
     }
     public void Burnt()
     {
@@ -153,11 +166,13 @@ public class EnemyStatus : MonoBehaviour
         {
             audioSource.PlayOneShot(burnAudio);
         }
-        if (burnEffect != null)
+        if (burnEffect != null && canSpawnEffect == true)
         {
-            Instantiate(burnEffect, gameObject.transform.position, gameObject.transform.rotation);
+            var effect = Instantiate(burnEffect, gameObject.transform.position, gameObject.transform.rotation);
+            effect.transform.parent = gameObject.transform;
+            canSpawnEffect = false;
         }
-        StartCoroutine(ResetState());
+        StartCoroutine(ResetState(burnRecovery));
     }
     public void Shocked()
     {
@@ -176,11 +191,13 @@ public class EnemyStatus : MonoBehaviour
         {
             audioSource.PlayOneShot(shockAudio);
         }
-        if (shockEffect != null)
+        if (shockEffect != null && canSpawnEffect == true)
         {
-            Instantiate(shockEffect, gameObject.transform.position, gameObject.transform.rotation);
+            var effect = Instantiate(shockEffect, gameObject.transform.position, gameObject.transform.rotation);
+            effect.transform.parent = gameObject.transform;
+            canSpawnEffect = false;
         }
-        StartCoroutine(ResetState());
+        StartCoroutine(ResetState(shockRecovery));
     }
     public void Frozen()
     {
@@ -192,14 +209,16 @@ public class EnemyStatus : MonoBehaviour
         {
             audioSource.PlayOneShot(freezeAudio);
         }
-        if (freezeEffect != null)
+        if (freezeEffect != null && canSpawnEffect == true)
         {
-            Instantiate(freezeEffect, gameObject.transform.position, gameObject.transform.rotation);
+            var effect = Instantiate(freezeEffect, gameObject.transform.position, gameObject.transform.rotation);
+            effect.transform.parent = gameObject.transform;
+            canSpawnEffect = false;
         }
-        StartCoroutine(ResetState());
+        StartCoroutine(ResetState(freezeRecovery));
     }
 
-    public IEnumerator ResetState()
+    public IEnumerator ResetState(float recoveryTime)
     {
         yield return new WaitForSeconds(recoveryTime);
 

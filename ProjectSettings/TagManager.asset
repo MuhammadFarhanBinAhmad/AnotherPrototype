@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - LeftFist
   - EnemyYeeter
+  - ShockAura
   layers:
   - Default
   - TransparentFX

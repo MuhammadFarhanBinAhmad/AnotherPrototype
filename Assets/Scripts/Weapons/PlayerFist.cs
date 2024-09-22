@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class PlayerFist : MonoBehaviour
 {
+    [Header ("Punch Properties")]
     public int damage;
-    public float punchCooldownMax = 1f;
-    public float punchCooldownCurrent;
+    public int damageOnStunned;
+    public int damageOnFrozen;
+    public float punchCooldownMaxO;
+    private float punchCooldownMax;
+    private float punchCooldownCurrent;
+    public float punchCooldownMaxF;
+    public GameObject shockWave;
+    public Vector3 offset = new Vector3(0f, 0.5f, 0);
 
     public GameObject player;
     public float knockbackForce;
     public GameObject HitShotEffect;
 
+    [Header("Grab and Throw Properties")]
     public bool isGrabbing = false; // prop is being grabbed in hand
     [SerializeField]
     private Transform cameraTransform;
@@ -39,6 +47,8 @@ public class PlayerFist : MonoBehaviour
         punchCooldownCurrent = punchCooldownMax;
 
         cameraTransform = Camera.main.transform;
+
+        punchCooldownMax = punchCooldownMaxO;
     }
 
     // Update is called once per frame
@@ -79,7 +89,29 @@ public class PlayerFist : MonoBehaviour
     {
         if (other.GetComponent<EnemyHealth>() != null)
         {
-            other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            if (other.GetComponent<EnemyStatus>().isStunned == true) // enemy is afflicted by stun
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damageOnStunned);
+            }
+            else if (other.GetComponent<EnemyStatus>().isBurnt == true) // enemy is afflicted by burn
+            {
+                other.GetComponent<EnemyHealth>().TakeBurnDamage();
+            }
+            else if (other.GetComponent<EnemyStatus>().isShocked == true) // enemy is afflicted by shock
+            {
+                Instantiate(shockWave, player.transform.position + offset, player.transform.rotation);
+            }
+            else if (other.GetComponent<EnemyStatus>().isFrozen == true) // enemy is afflicted by freeze
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damageOnFrozen);
+                other.GetComponent<EnemyMovement>().FreezeEnemy();
+                punchCooldownMax = punchCooldownMaxF;
+            }
+            else
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damage); // default punch
+                punchCooldownMax = punchCooldownMaxO;
+            }
             Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, player.transform.position, -knockbackForce);
         }

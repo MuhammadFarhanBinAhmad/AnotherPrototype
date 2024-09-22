@@ -18,6 +18,8 @@ public class EnemyGrab : MonoBehaviour
     public GameObject enemyYeeter;
     public bool isThrow = false;
     public bool canGrab = false;
+    public EnemyForceDetector enemyForceDetector;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class EnemyGrab : MonoBehaviour
         playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
 
         enemyYeeter = GameObject.FindGameObjectWithTag("EnemyYeeter");
+        enemyForceDetector = gameObject.GetComponent<EnemyForceDetector>();
     }
 
     public void ToggleAI()
@@ -53,23 +56,22 @@ public class EnemyGrab : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().enabled = true;
         }
 
-        if (gameObject.GetComponent<Collider>().isTrigger == true)
+        if (gameObject.GetComponent<Rigidbody>().isKinematic == true)
         {
-            gameObject.GetComponent<Collider>().isTrigger = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
         else
         {
-            gameObject.GetComponent<Collider>().isTrigger = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
     public void Grab(Transform objectGrabPoint)
     {
         ToggleAI();
+        enemyForceDetector.CheckElement();
         this.objectGrabPoint = objectGrabPoint;
         rb.useGravity = false;
-        //rb.freezeRotation = true;
-        //gameObject.GetComponent<Collider>().isTrigger = true;
         playerFist.anim.SetTrigger("Grab");
     }
 
@@ -81,10 +83,8 @@ public class EnemyGrab : MonoBehaviour
 
         this.objectGrabPoint = null;
         rb.useGravity = true;
-        //rb.freezeRotation = false;
         
         Vector3 dir = (transform.position - player.transform.position).normalized;
-        //gameObject.GetComponent<Rigidbody>().velocity = transform.forward * throwForce; // this dont work for some reason
         StartCoroutine(Delay());
     }
 

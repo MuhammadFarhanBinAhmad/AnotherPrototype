@@ -15,5 +15,4 @@ public class DestroySelfTimed : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }

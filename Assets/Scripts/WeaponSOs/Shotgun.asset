@@ -23,7 +23,7 @@ MonoBehaviour:
   p_BulletSpeed: 30
   p_BulletMaxDamage: 6
   p_BulletMinDamage: 4
-  p_TimeBeforeSelfDestruct: 0.4
+  p_TimeBeforeSelfDestruct: 0.6
   p_isPiercing: 0
   p_ProjectileElement: Stun
   p_ElementStackOnHit: 10

@@ -16,9 +16,16 @@ public class EnemyHealth : MonoBehaviour
 
     public EnemyUI e_EnemyUI;
 
-    public int burnMax;
-    public int burnCount;
+    public int burnTicks;
+    private int burnCount;
     public int burnDamage;
+    public int shockTicks;
+    private int shockCount;
+    public int shockDamage;
+
+    public GameObject burnTickEffect;
+    public GameObject shockTickEffect;
+
 
     private void Start()
     {
@@ -42,13 +49,35 @@ public class EnemyHealth : MonoBehaviour
     public void DoBurn()
     {
         TakeDamage(burnDamage);
-        burnCount += 1;
-        if (burnCount >= burnMax)
+        if (burnTickEffect != null)
         {
-            CancelInvoke();
+            Instantiate(burnTickEffect, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        burnCount += 1;
+        if (burnCount >= burnTicks)
+        {
+            CancelInvoke("DoBurn");
         }
     }
 
+    public void TakeShockDamage()
+    {
+        InvokeRepeating("DoShock", 0.5f, 1f);
+    }
+
+    public void DoShock()
+    {
+        TakeDamage(shockDamage);
+        if (shockTickEffect != null)
+        {
+            Instantiate(shockTickEffect, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        shockCount += 1;
+        if (shockCount >= shockTicks)
+        {
+            CancelInvoke("DoShock");
+        }
+    }
 
     public void Die()
     {

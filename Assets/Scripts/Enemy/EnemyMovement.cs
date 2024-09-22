@@ -44,6 +44,7 @@ public class EnemyMovement : MonoBehaviour
         meleeAttackBehaviour = GetComponent<EnemyMeleeAttackBehaviour>();
 
         m_Agent.speed = s_MovementSpeed;
+        m_CenterPoint = gameObject.transform.parent;
     }
     private void Update()
     {

@@ -3,10 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("GameManager");
+                go.AddComponent<GameManager>();
+            }
+
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +47,10 @@ public class GameManager : MonoBehaviour
         {
             //RestartGame();
             RestartScene();
+        }
+        if (Input.GetKey(KeyCode.F1))
+        {
+            LoadArtGym();
         }
     }
 
@@ -50,6 +76,20 @@ public class GameManager : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadArtGym()
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        if (activeScene.name == "ArtGym")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        else
+        {
+            SceneManager.LoadScene("ArtGym");
+        }
     }
 
     public  void QuitGame()

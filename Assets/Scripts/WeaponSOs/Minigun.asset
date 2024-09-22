@@ -19,7 +19,7 @@ MonoBehaviour:
   p_WeaponChargeRate: 0
   p_WeaponChargeCap: 0
   p_BulletCount: 1
-  p_ProjectileType: {fileID: 1314296845806653309, guid: 8548218d3898d61428299efd2fdf1178, type: 3}
+  p_ProjectileType: {fileID: 584065255677097293, guid: ca3ad3c93c23dc64187cd331fff8942f, type: 3}
   p_BulletSpeed: 35
   p_BulletMaxDamage: 6
   p_BulletMinDamage: 4
