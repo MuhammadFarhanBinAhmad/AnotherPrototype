@@ -48,7 +48,20 @@ public class GameManager : MonoBehaviour
             //RestartGame();
             RestartScene();
         }
+
         if (Input.GetKey(KeyCode.F1))
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        if (Input.GetKey(KeyCode.F2))
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (Input.GetKey(KeyCode.F3))
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        if (Input.GetKey(KeyCode.F4))
         {
             LoadArtGym();
         }

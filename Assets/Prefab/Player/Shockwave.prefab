@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7804b44766c234682147291afd3305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_Speed: 30
-  p_Damage: 15
+  p_Speed: 20
+  p_Damage: 20
   p_TimeBeforeSelfDestruct: 10
   HitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
 --- !u!1 &1848204138878664754

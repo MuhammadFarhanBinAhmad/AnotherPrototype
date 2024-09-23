@@ -22,13 +22,15 @@ public class EnemyForceDetector : MonoBehaviour
     private Vector3 mineOffset2 = new Vector3(-4f, -0.75f, 0f);
     private Vector3 mineOffset3 = new Vector3(0f, -0.75f, 4f);
     private Vector3 mineOffset4 = new Vector3(0f, -0.75f, -4f);
-    public bool minesSpawned = false;
+    private bool canMine = true;
     public GameObject explosion;
-    public bool canExplode = false;
+    private bool canExplode = true;
     public GameObject shockAura;
+    private bool canShockAura = true;
     private Vector3 auraOffset = new Vector3(0f, -0.75f, 0f);
     private bool auraPresent = false;
     public GameObject iceTrail;
+    private bool canIceTrail = true;
     private Vector3 iceOffset = new Vector3(0f, -0.75f, 0f);
     public int maxIce = 6;
     public int currentIce = 0;
@@ -48,38 +50,34 @@ public class EnemyForceDetector : MonoBehaviour
     {
         if (enemyGrab.isThrow == true)
         {
-            if (isStunned == true)
+            if (isStunned == true && canMine == true)
             {
+                canMine = false;
                 StartCoroutine(StunPotato());
             }
-        }
 
-        if (enemyGrab.isThrow == true)
-        {
-            if (isBurnt == true)
+            if (isBurnt == true && canExplode == true)
             {
+                canExplode = false;
                 StartCoroutine(HotPotato());
             }
-        }
 
-        if (enemyGrab.isThrow == true)
-        {
-            if (isShocked == true)
+            if (isShocked == true && canShockAura == true)
             {
+                canShockAura = false;
                 StartCoroutine(ShockPotato());
             }
+
+            if (isFrozen == true && canIceTrail == true)
+            {
+                canIceTrail = false;
+                InvokeRepeating("SpawnIce", 0.25f, 1f);
+            }
         }
+
         if (auraPresent == true)
         {
             shockAura.transform.position = gameObject.transform.position;
-        }
-
-        if (enemyGrab.isThrow == true)
-        {
-            if (isFrozen == true)
-            {
-                InvokeRepeating("SpawnIce", 0.25f, 1f);
-            }
         }
     }
 
@@ -187,14 +185,10 @@ public class EnemyForceDetector : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         if (hasCollided == false)
         {
-            if (minesSpawned == false)
-            {
-                Instantiate(stunMine, gameObject.transform.position + mineOffset1, Quaternion.Euler(new Vector3(0, 0, 0)));
-                Instantiate(stunMine, gameObject.transform.position + mineOffset2, Quaternion.Euler(new Vector3(0, 0, 0)));
-                Instantiate(stunMine, gameObject.transform.position + mineOffset3, Quaternion.Euler(new Vector3(0, 0, 0)));
-                Instantiate(stunMine, gameObject.transform.position + mineOffset4, Quaternion.Euler(new Vector3(0, 0, 0)));
-                minesSpawned = true;
-            }
+            Instantiate(stunMine, gameObject.transform.position + mineOffset1, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Instantiate(stunMine, gameObject.transform.position + mineOffset2, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Instantiate(stunMine, gameObject.transform.position + mineOffset3, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Instantiate(stunMine, gameObject.transform.position + mineOffset4, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
         StartCoroutine(ResetStatus());
     }
@@ -241,7 +235,12 @@ public class EnemyForceDetector : MonoBehaviour
 
         auraPresent = false;
         hasCollided = false;
-        minesSpawned = false;
+
+        canMine = true;
+        canExplode = true;
+        canShockAura = true;
+        canIceTrail = true;
+
         CancelInvoke();
     }
 }

@@ -55,10 +55,10 @@ public class PlayerUI : MonoBehaviour
         t_WeaponName.text = s_PlayerWeaponManager.p_WeaponName;
         t_CurrAmmoLeft.text = "Ammo:" + s_PlayerWeaponManager.p_TotalAmmo; 
     }
-    public void SlowDownUI()
-    {
-        i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
-    }
+    //public void SlowDownUI()
+    //{
+    //    i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
+    //}
 
     public void KickDoorUI(string text)
     {
