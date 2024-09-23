@@ -21,8 +21,8 @@ MonoBehaviour:
   p_BulletCount: 1
   p_ProjectileType: {fileID: 6438349065144996405, guid: df6ba34a0e660ff4fa356e6f4b4bf315, type: 3}
   p_BulletSpeed: 100
-  p_BulletMaxDamage: 100
-  p_BulletMinDamage: 100
+  p_BulletMaxDamage: 80
+  p_BulletMinDamage: 80
   p_TimeBeforeSelfDestruct: 6
   p_isPiercing: 1
   p_ProjectileElement: Shock

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMeleeAttackBehaviour : MonoBehaviour
 {
+    public WeaponType e_weaponType;
+
     public float e_RateOfAttack;
     float nexttime_ToFire;
 

@@ -107,6 +107,23 @@ public class EnemyHealth : MonoBehaviour
                 }
             }
         }
+        if (GetComponent<EnemyMeleeAttackBehaviour>() != null)
+        {
+            Debug.Log("1");
+            if (WeaponPrefab != null)
+            {
+                Debug.Log("2");
+                GameObject weapondrop = Instantiate(WeaponPrefab, transform.position, transform.rotation);
+                WeaponPrefab = null;
+                weapondrop.GetComponent<Weapon>().SetWeapon(GetComponent<EnemyMeleeAttackBehaviour>().e_weaponType);
+                Rigidbody weapondrop_rb = weapondrop.GetComponent<Rigidbody>();
+                Vector3 AmmoDirection = Random.insideUnitSphere.normalized;
+                if (weapondrop_rb != null)
+                {
+                    weapondrop_rb.AddForce(AmmoDirection * .5f, ForceMode.Impulse);
+                }
+            }
+        }
 
         if (dropKey == true)
         {

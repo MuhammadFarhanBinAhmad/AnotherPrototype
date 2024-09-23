@@ -14895,7 +14895,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28770
+  m_Name: pb_Mesh293706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21484,7 +21484,7 @@ MonoBehaviour:
   p_BulletMinDamage: 4
   p_TimeBeforeSelfDestruct: 0.6
   p_isPiercing: 0
-  p_ProjectileElement: Stun
+  p_ProjectileElement: Freeze
   p_ElementStackOnHit: 10
   p_GunShotAudio: {fileID: 8300000, guid: 9340b52d9a87cd746b2f1bf960f436d7, type: 3}
   p_GunPickupAudio: {fileID: 0}
@@ -33112,7 +33112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7768912866206986860, guid: 64cf42080746c9d41a99d18e3811e438, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7768912866206986860, guid: 64cf42080746c9d41a99d18e3811e438, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35801,7 +35801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8900048986995505092, guid: 1426a2568cbf96b4c821dd629335e5e5, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8900048986995505092, guid: 1426a2568cbf96b4c821dd629335e5e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37028,7 +37028,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!43 &1809130365
 Mesh:
@@ -47414,8 +47414,6 @@ MonoBehaviour:
   enemyGrab: {fileID: 0}
   enemyHealth: {fileID: 0}
   enemyMovement: {fileID: 0}
-  burnDamage: 0
-  burnTicks: 0
   enemyMeleeAttackBehaviour: {fileID: 0}
   enemyRangeAttackBehaviour: {fileID: 0}
 --- !u!222 &4613225968263140286
@@ -47464,8 +47462,6 @@ MonoBehaviour:
   enemyGrab: {fileID: 5970267128368329525}
   enemyHealth: {fileID: 0}
   enemyMovement: {fileID: 0}
-  burnDamage: 0
-  burnTicks: 0
   enemyMeleeAttackBehaviour: {fileID: 0}
   enemyRangeAttackBehaviour: {fileID: 0}
 --- !u!4 &5243596997086909263
@@ -48009,7 +48005,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7575477763469269113
 GameObject:

@@ -50,8 +50,6 @@ public class EnemyStatus : MonoBehaviour
 
     public EnemyHealth enemyHealth;
     public EnemyMovement enemyMovement;
-    public int burnDamage;
-    public int burnTicks;
     public EnemyMeleeAttackBehaviour enemyMeleeAttackBehaviour;
     public EnemyRangeAttackBehaviour enemyRangeAttackBehaviour;
 

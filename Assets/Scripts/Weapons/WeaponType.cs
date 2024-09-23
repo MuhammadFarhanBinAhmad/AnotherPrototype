@@ -24,8 +24,15 @@ public class WeaponType : ScriptableObject
     public float p_TimeBeforeSelfDestruct;
     public bool p_isPiercing;
 
+    //public enum Element // your custom enumeration
+    //{
+    //    Stun,
+    //    Burn,
+    //    Shock,
+    //    Freeze
+    //};
     [Header("ProjectileElement")]
-    [Tooltip("Stun, Burn, Shock or Freeze")]
+    //public Element projectileElement;
     public string p_ProjectileElement;
     public float p_ElementStackOnHit;
 
@@ -37,4 +44,9 @@ public class WeaponType : ScriptableObject
     [Header("WeaponFireMode")]
     public bool isAuto;
     public bool isCharge;
+
+    public void Start()
+    {
+        Debug.Log(p_ProjectileElement.ToString());
+    }
 }

@@ -388,7 +388,7 @@ MonoBehaviour:
   AmountOfRoundDrop: 0
   dropKey: 0
   DeathSoundObject: {fileID: 3646501114554089712, guid: ccdbd68b62955984d9028c5f2e38e584, type: 3}
-  DoorKey: {fileID: 0}
+  DoorKey: {fileID: 2879703620406202734, guid: 6b819966f9729004089373af519ef60d, type: 3}
   WeaponPrefab: {fileID: 4145088066944936216, guid: 81fe9b9fa882e5a4098a5a0b12aab7c5, type: 3}
   e_EnemyUI: {fileID: 0}
   burnTicks: 4
@@ -653,8 +653,6 @@ MonoBehaviour:
   enemyGrab: {fileID: 0}
   enemyHealth: {fileID: 0}
   enemyMovement: {fileID: 0}
-  burnDamage: 0
-  burnTicks: 0
   enemyMeleeAttackBehaviour: {fileID: 0}
   enemyRangeAttackBehaviour: {fileID: 0}
 --- !u!114 &9060116034025686754
