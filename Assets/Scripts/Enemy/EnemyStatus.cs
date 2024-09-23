@@ -14,7 +14,6 @@ public class EnemyStatus : MonoBehaviour
 
     public float startingDecay;
     public float currentDecay;
-    public float recoveryTime;
 
     private string newElementType;
     private string currentElementType;
@@ -24,6 +23,7 @@ public class EnemyStatus : MonoBehaviour
     public bool isBurnt = false;
     public bool isShocked = false;
     public bool isFrozen = false;
+    private float recoveryTime;
     public float stunRecovery;
     public float burnRecovery;
     public float shockRecovery;
@@ -96,6 +96,7 @@ public class EnemyStatus : MonoBehaviour
         e_EnemyUI.UpdateEnemyStatus(currentElementType);
     }
 
+
     public void CheckElement(string elementType)
     {
         newElementType = elementType;
@@ -152,7 +153,9 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
-        StartCoroutine(ResetState(stunRecovery));
+
+        recoveryTime = stunRecovery;
+        StartCoroutine(ResetState());
     }
     public void Burnt()
     {
@@ -170,7 +173,9 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
-        StartCoroutine(ResetState(burnRecovery));
+
+        recoveryTime = burnRecovery;
+        StartCoroutine(ResetState());
     }
     public void Shocked()
     {
@@ -195,7 +200,9 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
-        StartCoroutine(ResetState(shockRecovery));
+
+        recoveryTime = shockRecovery;
+        StartCoroutine(ResetState());
     }
     public void Frozen()
     {
@@ -213,12 +220,15 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
-        StartCoroutine(ResetState(freezeRecovery));
+
+        recoveryTime = freezeRecovery;
+        StartCoroutine(ResetState());
     }
 
-    public IEnumerator ResetState(float recoveryTime)
+    public IEnumerator ResetState()
     {
         yield return new WaitForSeconds(recoveryTime);
+        Debug.Log(recoveryTime);
 
         isStunned = false;
         isBurnt = false;

@@ -27,7 +27,7 @@ public class PlayerWeaponManager : MonoBehaviour
     public float p_TimeBeforeSelfDestruct;
     public bool p_isPiercing;
 
-    [Header("ProjectileElement")]
+    [Header("ProjectileElement - 'Stun', 'Burn', 'Shock', 'Freeze'")]
     public string p_ProjectileElement;
     public float p_ElementStackOnHit;
 
@@ -36,11 +36,11 @@ public class PlayerWeaponManager : MonoBehaviour
     public AudioClip p_GunPickupAudio;
     public AudioClip p_GunActionAudio; // stuff like charging up railgun
 
-    [Header("SlowDownStats")]
-    public bool isSlowDown;
-    public float maxSlowDownTime;
-    public float currSlowDownTime;
-    public float slowDownTimeScale;
+    //[Header("SlowDownStats")]
+    //public bool isSlowDown;
+    //public float maxSlowDownTime;
+    //public float currSlowDownTime;
+    //public float slowDownTimeScale;
 
     [Header("WeaponFireMode")]
     public bool isAuto;
@@ -62,6 +62,11 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public PlayerFist playerFist; // ref for anim
 
+    private bool godMode = false;
+    private float o_WeaponFireRate;
+    private float o_BulletMinDamage;
+    private float o_BulletMaxDamage;
+    private int o_TotalAmmo;
 
     private void Start()
     {
@@ -77,7 +82,8 @@ public class PlayerWeaponManager : MonoBehaviour
         startingRotation.y = p_Spawnpos.transform.rotation.y;
         startingRotation.z = p_Spawnpos.transform.rotation.z;
 
-        currSlowDownTime = maxSlowDownTime;
+        o_TotalAmmo = p_TotalAmmo;
+        //currSlowDownTime = maxSlowDownTime;
     }
     public void ChangeWeapon(Weapon wt)
     {
@@ -190,6 +196,34 @@ public class PlayerWeaponManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            p_ProjectileElement = "Stun";
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            p_ProjectileElement = "Burn";
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            p_ProjectileElement = "Shock";
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            p_ProjectileElement = "Freeze";
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            p_TotalAmmo = o_TotalAmmo;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GodMode();
+        }
+
+
+
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    if (!isSlowDown && currSlowDownTime > 0)
@@ -198,10 +232,10 @@ public class PlayerWeaponManager : MonoBehaviour
         //        StopSlowDownTime();
         //}
 
-        if (isSlowDown)
-        {
-            ActivateSlowDownEffect();
-        }
+        //if (isSlowDown)
+        //{
+        //    ActivateSlowDownEffect();
+        //}
     }
 
     public void CheckFireMode()
@@ -325,31 +359,55 @@ public class PlayerWeaponManager : MonoBehaviour
             Destroy(initialWeapon);
         }    
 
-
         //knifeObject.SetActive(true);
         currWeaponObject.SetActive(false);
     }
-    public void StartSlowDownTime()
-    {
-        isSlowDown = true;
-        Time.timeScale = slowDownTimeScale;
-    }
 
-    public void ActivateSlowDownEffect()
+    public void GodMode()
     {
-        if (currSlowDownTime > 0)
+        if (godMode == false)
         {
-            currSlowDownTime -= Time.deltaTime*2f;
+            o_WeaponFireRate = p_WeaponFireRate;
+            o_BulletMinDamage = p_BulletMinDamage;
+            o_BulletMaxDamage = p_BulletMaxDamage;
+            o_TotalAmmo = p_TotalAmmo;
+            p_WeaponFireRate = 50;
+            p_BulletMinDamage = 20;
+            p_BulletMaxDamage = 20;
+            p_TotalAmmo = 10000;
+            godMode = true;
         }
         else
         {
-            StopSlowDownTime();
+            p_WeaponFireRate = o_WeaponFireRate;
+            p_BulletMinDamage = o_BulletMinDamage;
+            p_BulletMaxDamage = o_BulletMaxDamage;
+            p_TotalAmmo = o_TotalAmmo;
+            godMode = false;
         }
-        s_PlayerUI.SlowDownUI();
     }
-    public void StopSlowDownTime()
-    {
-        isSlowDown = false;
-        Time.timeScale = 1;
-    }
+
+    //public void StartSlowDownTime()
+    //{
+    //    isSlowDown = true;
+    //    Time.timeScale = slowDownTimeScale;
+    //}
+
+    //public void ActivateSlowDownEffect()
+    //{
+    //    if (currSlowDownTime > 0)
+    //    {
+    //        currSlowDownTime -= Time.deltaTime*2f;
+    //    }
+    //    else
+    //    {
+    //        StopSlowDownTime();
+    //    }
+    //    s_PlayerUI.SlowDownUI();
+    //}
+    //public void StopSlowDownTime()
+    //{
+    //    isSlowDown = false;
+    //    Time.timeScale = 1;
+    //}
 }

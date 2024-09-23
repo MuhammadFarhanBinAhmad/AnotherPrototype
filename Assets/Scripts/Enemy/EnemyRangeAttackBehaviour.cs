@@ -24,10 +24,12 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public float e_ShockTimeLeft;
     private float e_ShockMultiplier = 1f;
 
+    public bool isLobotomised = false;
+    public GameObject shootTarget;
 
     public void AttackPlayer()
     {
-        if (isShocked == false)
+        if (isShocked == false && isLobotomised == false)
         {
             if (Time.time >= nexttime_ToFire)
             {
@@ -54,6 +56,17 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
         if (isShocked)
         {
             CountShockTimer();
+        }
+
+        if (isLobotomised == true)
+        {
+            gameObject.transform.LookAt(shootTarget.transform.position);
+            if (Time.time >= nexttime_ToFire)
+            {
+                nexttime_ToFire = Time.time + 1f / e_weaponType.p_WeaponFireRate * e_ShockMultiplier;
+                GameObject p = Instantiate(e_Projectile, e_SpawnPos.position, e_SpawnPos.rotation);
+                e_Projectile.GetComponent<EnemyProjectile>().SetProjectileStats(e_ProjectileSpeed, e_ProjectileDamage);
+            }
         }
     }
 

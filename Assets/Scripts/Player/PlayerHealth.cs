@@ -10,11 +10,16 @@ public class PlayerHealth : MonoBehaviour
     public int p_Health;
     public int p_MaxHealth;
 
+    private bool godMode = false;
+    private int o_Health;
+
 
     private void Start()
     {
         s_PlayerUI = FindObjectOfType<PlayerUI>();
         p_Health = p_MaxHealth;
+
+        o_Health = p_Health;
     }
     public void TakeDamage(int dmg)
     {
@@ -43,5 +48,27 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //Destroy(gameObject);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GodMode();
+        }
+    }
+
+    public void GodMode()
+    {
+        if (godMode == false)
+        {
+            p_Health = 10000;
+            godMode = true;
+        }
+        else
+        {
+            p_Health = o_Health;
+            godMode = false;
+        }
     }
 }
