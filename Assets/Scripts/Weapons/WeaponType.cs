@@ -10,13 +10,11 @@ public class WeaponType : ScriptableObject
     public GameObject p_WeaponModel;
 
     [Header("ShootProperties")]
+    public int p_TotalAmmo;
     public float p_WeaponFireRate;
     public float p_WeaponChargeRate; // only applicable for charging weapons
     public float p_WeaponChargeCap;
     public int p_BulletCount; // shooting many bullets at once
-
-    [Header("Ammo")]
-    public int p_TotalAmmo;
 
     [Header("ProjectileStats")]
     public GameObject p_ProjectileType;
@@ -26,6 +24,18 @@ public class WeaponType : ScriptableObject
     public float p_TimeBeforeSelfDestruct;
     public bool p_isPiercing;
 
+    //public enum Element // your custom enumeration
+    //{
+    //    Stun,
+    //    Burn,
+    //    Shock,
+    //    Freeze
+    //};
+    [Header("ProjectileElement")]
+    //public Element projectileElement;
+    public string p_ProjectileElement;
+    public float p_ElementStackOnHit;
+
     [Header("Audio")]
     public AudioClip p_GunShotAudio;
     public AudioClip p_GunPickupAudio;
@@ -34,4 +44,9 @@ public class WeaponType : ScriptableObject
     [Header("WeaponFireMode")]
     public bool isAuto;
     public bool isCharge;
+
+    public void Start()
+    {
+        Debug.Log(p_ProjectileElement.ToString());
+    }
 }

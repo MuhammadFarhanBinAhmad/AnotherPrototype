@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyPickup : MonoBehaviour
 {
     public PlayerSkills playerSkills;
+    public GameObject pickupAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,10 @@ public class KeyPickup : MonoBehaviour
         if (other.GetComponent<PlayerSkills>() != null)
         {
             playerSkills.AddKey(1);
+            if (pickupAudio != null)
+            {
+                Instantiate(pickupAudio, gameObject.transform.position, gameObject.transform.rotation);
+            }
             Destroy(transform.parent.gameObject);
         }
     }

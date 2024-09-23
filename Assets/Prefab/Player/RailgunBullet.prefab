@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6438349063858802600}
   - component: {fileID: 6438349063858802603}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 6438349065144996407}
   - component: {fileID: 6438349065144996404}
   - component: {fileID: 5756783084681231160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RailgunBullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -271,7 +271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Speed: 100
   p_Damage: 100
-  p_IsPiercing: 0
+  p_IsPiercing: 1
+  p_ElementType: Shock
+  p_ElementStack: 100
   p_TimeBeforeSelfDestruct: 6
   HitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
 --- !u!82 &5756783084681231160

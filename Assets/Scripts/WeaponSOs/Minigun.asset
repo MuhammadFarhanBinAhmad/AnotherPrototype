@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_WeaponName: Minigun
   p_WeaponModel: {fileID: 919132149155446097, guid: 63939835fa196584382f46ad633e02b0, type: 3}
+  p_TotalAmmo: 80
   p_WeaponFireRate: 10
   p_WeaponChargeRate: 0
   p_WeaponChargeCap: 0
   p_BulletCount: 1
-  p_TotalAmmo: 80
-  p_ProjectileType: {fileID: 1314296845806653309, guid: 8548218d3898d61428299efd2fdf1178, type: 3}
+  p_ProjectileType: {fileID: 584065255677097293, guid: ca3ad3c93c23dc64187cd331fff8942f, type: 3}
   p_BulletSpeed: 35
   p_BulletMaxDamage: 6
   p_BulletMinDamage: 4
   p_TimeBeforeSelfDestruct: 3
   p_isPiercing: 0
+  p_ProjectileElement: Burn
+  p_ElementStackOnHit: 12
   p_GunShotAudio: {fileID: 8300000, guid: 79d4bb35d304f3e4f856d549499cd02c, type: 3}
   p_GunPickupAudio: {fileID: 0}
   p_GunActionAudio: {fileID: 0}

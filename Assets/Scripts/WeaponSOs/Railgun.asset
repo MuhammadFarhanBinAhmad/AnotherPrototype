@@ -14,18 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_WeaponName: Railgun
   p_WeaponModel: {fileID: 919132149155446097, guid: 747d7801074c1b34fba5ae1384a21e54, type: 3}
+  p_TotalAmmo: 12
   p_WeaponFireRate: 0.5
   p_WeaponChargeRate: 1.2
   p_WeaponChargeCap: 2
   p_BulletCount: 1
-  p_TotalAmmo: 12
   p_ProjectileType: {fileID: 6438349065144996405, guid: df6ba34a0e660ff4fa356e6f4b4bf315, type: 3}
   p_BulletSpeed: 100
-  p_BulletMaxDamage: 100
-  p_BulletMinDamage: 100
+  p_BulletMaxDamage: 80
+  p_BulletMinDamage: 80
   p_TimeBeforeSelfDestruct: 6
   p_isPiercing: 1
+  p_ProjectileElement: Shock
+  p_ElementStackOnHit: 100
   p_GunShotAudio: {fileID: 8300000, guid: fe1d69c704021aa459471224b758e9da, type: 3}
   p_GunPickupAudio: {fileID: 0}
+  p_GunActionAudio: {fileID: 0}
   isAuto: 0
   isCharge: 1

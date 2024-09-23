@@ -160,3 +160,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactForceThreshold: 10
   knockbackForce: 5
+  damage: 75
+  hitShotEffect: {fileID: 0}

@@ -15,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
     {
         s_PlayerUI = FindObjectOfType<PlayerUI>();
         p_Health = p_MaxHealth;
-        s_PlayerUI.UpdateHealthUI();
     }
     public void TakeDamage(int dmg)
     {

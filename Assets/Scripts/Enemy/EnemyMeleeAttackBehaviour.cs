@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMeleeAttackBehaviour : MonoBehaviour
 {
+    public WeaponType e_weaponType;
 
     public float e_RateOfAttack;
     float nexttime_ToFire;
@@ -16,6 +17,12 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     Animator animator;
     bool Attacking;
 
+    public bool isShocked;
+    public float e_ShockTime;
+    public float e_ShockTimeLeft;
+    private float e_ShockMultiplier = 1f;
+
+
     private void Start()
     {
         if (!ExplosiveEnemy)
@@ -23,19 +30,48 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     }
     public void AttackPlayer()
     {
-        if (ExplosiveEnemy)
+        if (isShocked == false)
         {
-            Instantiate(Explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            if (ExplosiveEnemy)
+            {
+                Instantiate(Explosion, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            else
+            {
+                if (Time.time >= nexttime_ToFire)
+                {
+                    nexttime_ToFire = Time.time + 1f / e_RateOfAttack;
+                    animator.SetTrigger("Attacking");
+                }
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if (isShocked)
+        {
+            CountShockTimer();
+        }
+    }
+
+    public void ShockEnemy()
+    {
+        isShocked = true;
+        e_ShockTimeLeft = e_ShockTime;
+        e_ShockMultiplier = 0.25f;
+    }
+    void CountShockTimer()
+    {
+        if (e_ShockTimeLeft > 0)
+        {
+            e_ShockTimeLeft -= Time.deltaTime;
         }
         else
         {
-            if (Time.time >= nexttime_ToFire)
-            {
-                nexttime_ToFire = Time.time + 1f / e_RateOfAttack;
-                animator.SetTrigger("Attacking");
-            }
+            isShocked = false;
+            e_ShockMultiplier = 1f;
         }
-
     }
 }

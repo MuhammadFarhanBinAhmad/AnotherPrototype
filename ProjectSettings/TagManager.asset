@@ -7,6 +7,8 @@ TagManager:
   - Projectile
   - Wall
   - LeftFist
+  - EnemyYeeter
+  - ShockAura
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - UI
   - Player
   - BigFist
-  - 
-  - 
+  - Enemy
+  - EnemyYeeter
   - 
   - 
   - 

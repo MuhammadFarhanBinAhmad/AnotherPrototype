@@ -5,14 +5,22 @@ using UnityEngine;
 
 public class PlayerFist : MonoBehaviour
 {
+    [Header ("Punch Properties")]
     public int damage;
-    public float punchCooldownMax = 1f;
-    public float punchCooldownCurrent;
+    public int damageOnStunned;
+    public int damageOnFrozen;
+    public float punchCooldownMaxO;
+    private float punchCooldownMax;
+    private float punchCooldownCurrent;
+    public float punchCooldownMaxF;
+    public GameObject shockWave;
+    public Vector3 offset = new Vector3(0f, 0.5f, 0);
 
     public GameObject player;
     public float knockbackForce;
     public GameObject HitShotEffect;
 
+    [Header("Grab and Throw Properties")]
     public bool isGrabbing = false; // prop is being grabbed in hand
     [SerializeField]
     private Transform cameraTransform;
@@ -22,6 +30,7 @@ public class PlayerFist : MonoBehaviour
     private Transform objectGrabPoint;
     public float grabDistance;
     private PropGrab propGrab;
+    private EnemyGrab enemyGrab;
     public float throwForce;
 
     public Animator anim;
@@ -38,6 +47,8 @@ public class PlayerFist : MonoBehaviour
         punchCooldownCurrent = punchCooldownMax;
 
         cameraTransform = Camera.main.transform;
+
+        punchCooldownMax = punchCooldownMaxO;
     }
 
     // Update is called once per frame
@@ -63,7 +74,7 @@ public class PlayerFist : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (propGrab == null) // not carrying an object
+            if (propGrab == null && enemyGrab == null) // not carrying an object or enemy
             {
                 Grab();
             }
@@ -72,18 +83,35 @@ public class PlayerFist : MonoBehaviour
                 Throw(throwForce);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.F) && isGrabbing == true)
-        {
-            Throw(throwForce);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<EnemyHealth>() != null)
         {
-            other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            if (other.GetComponent<EnemyStatus>().isStunned == true) // enemy is afflicted by stun
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damageOnStunned);
+            }
+            else if (other.GetComponent<EnemyStatus>().isBurnt == true) // enemy is afflicted by burn
+            {
+                other.GetComponent<EnemyHealth>().TakeBurnDamage();
+            }
+            else if (other.GetComponent<EnemyStatus>().isShocked == true) // enemy is afflicted by shock
+            {
+                Instantiate(shockWave, player.transform.position + offset, player.transform.rotation);
+            }
+            else if (other.GetComponent<EnemyStatus>().isFrozen == true) // enemy is afflicted by freeze
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damageOnFrozen);
+                other.GetComponent<EnemyMovement>().FreezeEnemy();
+                punchCooldownMax = punchCooldownMaxF;
+            }
+            else
+            {
+                other.GetComponent<EnemyHealth>().TakeDamage(damage); // default punch
+                punchCooldownMax = punchCooldownMaxO;
+            }
             Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, player.transform.position, -knockbackForce);
         }
@@ -93,6 +121,10 @@ public class PlayerFist : MonoBehaviour
     {
         punchCooldownCurrent = 0;
         if (propGrab != null) // carrying an object
+        {
+            Throw(throwForce);
+        }
+        else if (enemyGrab != null) // carrying an enemy
         {
             Throw(throwForce);
         }
@@ -110,6 +142,14 @@ public class PlayerFist : MonoBehaviour
             {
                 propGrab.Grab(objectGrabPoint);
             }
+
+            if (raycastHit.transform.TryGetComponent(out enemyGrab))
+            {
+                if (enemyGrab.canGrab == true)
+                {
+                    enemyGrab.Grab(objectGrabPoint);
+                }
+            }
         }
     }
 
@@ -117,8 +157,16 @@ public class PlayerFist : MonoBehaviour
     {
         anim.SetTrigger("Throw");
 
-        propGrab.Throw(throwForce);
-        propGrab = null;
+        if (propGrab != null)
+        {
+            propGrab.Throw(throwForce);
+            propGrab = null;
+        }
+        if (enemyGrab != null)
+        {
+            enemyGrab.Throw(throwForce);
+            enemyGrab = null;
+        }
     }
 
     public void BigFist()

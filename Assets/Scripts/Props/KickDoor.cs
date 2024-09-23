@@ -10,6 +10,8 @@ public class KickDoor : MonoBehaviour
     public Animator fistAnimator;
     public PlayerSkills playerSkills;
 
+    public bool bypassDoor = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,7 +22,23 @@ public class KickDoor : MonoBehaviour
     {
         if (inrange)
         {
-            if (playerSkills.keyCount > 0)
+            if (bypassDoor == true)
+            {
+                if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && !isKick)
+                {
+                    rb.isKinematic = false;
+                    rb.useGravity = true;
+                    rb.velocity = transform.forward * 30f;
+                    isKick = true;
+                    if (fistAnimator != null)
+                    {
+                        fistAnimator.SetTrigger("Punch");
+                    }
+                    StartCoroutine("SlowDownTime");
+                }
+            }
+
+            else if (playerSkills.keyCount > 0)
             {
                 if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && !isKick)
                 {
@@ -46,7 +64,7 @@ public class KickDoor : MonoBehaviour
 
             if (!isKick)
             {
-                if (playerSkills.keyCount >= 1)
+                if (playerSkills.keyCount >= 1 || bypassDoor == true)
                 {
                     FindObjectOfType<PlayerUI>().KickDoorUI("Press 'E' to breach door");
                 }

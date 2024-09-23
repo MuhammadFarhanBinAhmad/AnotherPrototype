@@ -9,6 +9,9 @@ public class PlayerProjectile : MonoBehaviour
     public int p_Damage;
     public bool p_IsPiercing;
 
+    public string p_ElementType;
+    public float p_ElementStack;
+
     public float p_TimeBeforeSelfDestruct;
 
     public GameObject HitShotEffect;
@@ -33,6 +36,12 @@ public class PlayerProjectile : MonoBehaviour
         p_TimeBeforeSelfDestruct = destroyTime;
     }
 
+    public void SetProjectileElements(string elementType, float elementStackOnHit)
+    {
+        p_ElementType = elementType;
+        p_ElementStack = elementStackOnHit;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall"))
@@ -49,6 +58,12 @@ public class PlayerProjectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        if (other.GetComponent<EnemyStatus>() != null)
+        {
+            other.GetComponent<EnemyStatus>().TakeStacks(p_ElementStack);
+            other.GetComponent<EnemyStatus>().CheckElement(p_ElementType);
         }
 
         if (other.GetComponent<PropObjects>() != null)
