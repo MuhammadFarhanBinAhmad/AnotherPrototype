@@ -242,57 +242,69 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (isAuto)
         {
-            if (Input.GetMouseButton(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0) // automated weapon
+            if (playerFist.isGrabbing == false)
+            {
+                if (Input.GetMouseButton(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0) // automated weapon
+                {
+                    nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
+                    Shoot();
+                    p_TotalAmmo--;
+                    s_PlayerUI.UpdateWeaponUI();
+                }
+            }
+        }
+
+        else if (isCharge)
+        {
+            if (playerFist.isGrabbing == false)
+            {
+                if (Input.GetMouseButton(1) && p_TotalAmmo > 0) // charging weapon
+                {
+                    if (p_GunShotAudio != null)
+                    {
+                        GetComponent<AudioSource>().PlayOneShot(p_GunActionAudio);
+                    }
+                    currentCharge += Time.deltaTime * p_WeaponChargeRate;
+                    if (currentCharge >= p_WeaponChargeCap)
+                    {
+                        currentCharge = p_WeaponChargeCap + 0.1f; // +0.1 so weapon can shoot before losing charge
+                    }
+                }
+                else
+                {
+                    if (playerFist.isGrabbing == false)
+                    {
+                        currentCharge -= Time.deltaTime * p_WeaponChargeRate; // weapon loses charge
+                        if (currentCharge <= 0)
+                        {
+                            currentCharge = 0;
+                        }
+                    }
+                }
+
+                currWeaponObject.transform.localPosition = new Vector3(startingPos.x + Mathf.Sin(Time.time * currentCharge * 2f) * 0.05f, startingPos.y, startingPos.z);
+                float clampX = currWeaponObject.transform.localPosition.x;
+                clampX = Mathf.Clamp(transform.position.x, -2.0f, 2.0f); // clamp dont seem to work for now
+
+                if (Input.GetMouseButtonUp(1) && currentCharge >= p_WeaponChargeCap && p_TotalAmmo > 0)
+                {
+                    Shoot();
+                    p_TotalAmmo--;
+                    s_PlayerUI.UpdateWeaponUI();
+                    currentCharge = 0;
+                }
+            }
+        }
+
+        else if (Input.GetMouseButtonDown(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0) // semi auto weapon
+        {
+            if (playerFist.isGrabbing == false)
             {
                 nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
                 Shoot();
                 p_TotalAmmo--;
                 s_PlayerUI.UpdateWeaponUI();
             }
-        }
-
-        else if (isCharge)
-        {
-            if (Input.GetMouseButton(1) && p_TotalAmmo > 0) // charging weapon
-            {
-                if (p_GunShotAudio != null)
-                {
-                    GetComponent<AudioSource>().PlayOneShot(p_GunActionAudio);
-                }
-                currentCharge += Time.deltaTime * p_WeaponChargeRate;
-                if (currentCharge >= p_WeaponChargeCap)
-                {
-                    currentCharge = p_WeaponChargeCap + 0.1f; // +0.1 so weapon can shoot before losing charge
-                }
-            }
-            else
-            {
-                currentCharge -= Time.deltaTime * p_WeaponChargeRate; // weapon loses charge
-                if (currentCharge <= 0)
-                {
-                    currentCharge = 0;
-                }
-            }
-
-            currWeaponObject.transform.localPosition = new Vector3(startingPos.x + Mathf.Sin(Time.time * currentCharge * 2f) * 0.05f, startingPos.y, startingPos.z);
-            float clampX = currWeaponObject.transform.localPosition.x;
-            clampX = Mathf.Clamp(transform.position.x, -2.0f, 2.0f); // clamp dont seem to work for now
-
-            if (Input.GetMouseButtonUp(1) && currentCharge >= p_WeaponChargeCap && p_TotalAmmo > 0)
-            {
-                Shoot();
-                p_TotalAmmo--;
-                s_PlayerUI.UpdateWeaponUI();
-                currentCharge = 0;
-            }
-        }
-
-        else if (Input.GetMouseButtonDown(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0) // semi auto weapon
-        {
-            nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
-            Shoot();
-            p_TotalAmmo--;
-            s_PlayerUI.UpdateWeaponUI();
         }
     }
 

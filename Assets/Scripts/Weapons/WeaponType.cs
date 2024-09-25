@@ -31,7 +31,7 @@ public class WeaponType : ScriptableObject
     //    Shock,
     //    Freeze
     //};
-    [Header("ProjectileElement")]
+    [Header("ProjectileElement - 'Stun', 'Burn', 'Shock', 'Freeze'")]
     //public Element projectileElement;
     public string p_ProjectileElement;
     public float p_ElementStackOnHit;

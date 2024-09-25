@@ -140,6 +140,7 @@ public class PlayerFist : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out propGrab))
             {
+                isGrabbing = true;
                 propGrab.Grab(objectGrabPoint);
             }
 
@@ -147,6 +148,7 @@ public class PlayerFist : MonoBehaviour
             {
                 if (enemyGrab.canGrab == true)
                 {
+                    isGrabbing = true;
                     enemyGrab.Grab(objectGrabPoint);
                 }
             }
@@ -161,11 +163,13 @@ public class PlayerFist : MonoBehaviour
         {
             propGrab.Throw(throwForce);
             propGrab = null;
+            isGrabbing = false;
         }
         if (enemyGrab != null)
         {
             enemyGrab.Throw(throwForce);
             enemyGrab = null;
+            isGrabbing = false;
         }
     }
 
