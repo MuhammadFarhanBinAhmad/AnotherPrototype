@@ -109,8 +109,10 @@ public class EnemyHealth : MonoBehaviour
         }
         if (GetComponent<EnemyMeleeAttackBehaviour>() != null)
         {
+            Debug.Log("1");
             if (WeaponPrefab != null)
             {
+                Debug.Log("2");
                 GameObject weapondrop = Instantiate(WeaponPrefab, transform.position, transform.rotation);
                 WeaponPrefab = null;
                 weapondrop.GetComponent<Weapon>().SetWeapon(GetComponent<EnemyMeleeAttackBehaviour>().e_weaponType);

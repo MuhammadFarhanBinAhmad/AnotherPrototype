@@ -71,7 +71,7 @@ public class EnemyForceDetector : MonoBehaviour
             if (isFrozen == true && canIceTrail == true)
             {
                 canIceTrail = false;
-                InvokeRepeating("SpawnIce", 0.25f, 0.25f);
+                InvokeRepeating("SpawnIce", 0.25f, 1f);
             }
         }
 
