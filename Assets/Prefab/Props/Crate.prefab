@@ -132,7 +132,7 @@ MonoBehaviour:
   impactForceThreshold: 10
   knockbackForce: 5
   damage: 30
-  hitShotEffect: {fileID: 0}
+  hitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
 --- !u!114 &4564636365864584399
 MonoBehaviour:
   m_ObjectHideFlags: 0
