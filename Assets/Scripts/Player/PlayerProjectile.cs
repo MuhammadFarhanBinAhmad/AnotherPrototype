@@ -50,6 +50,12 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (other.GetComponent<EnemyStatus>() != null)
+        {
+            other.GetComponent<EnemyStatus>().TakeStacks(p_ElementStack);
+            other.GetComponent<EnemyStatus>().CheckElement(p_ElementType);
+        }
+
         if (other.GetComponent<EnemyHealth>() != null)
         {
             Instantiate(HitShotEffect, transform.position, transform.rotation);
@@ -58,12 +64,6 @@ public class PlayerProjectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
-
-        if (other.GetComponent<EnemyStatus>() != null)
-        {
-            other.GetComponent<EnemyStatus>().TakeStacks(p_ElementStack);
-            other.GetComponent<EnemyStatus>().CheckElement(p_ElementType);
         }
 
         if (other.GetComponent<PropObjects>() != null)
