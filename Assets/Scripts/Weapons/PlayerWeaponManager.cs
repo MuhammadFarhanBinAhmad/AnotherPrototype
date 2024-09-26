@@ -318,16 +318,16 @@ public class PlayerWeaponManager : MonoBehaviour
                 p_Spawnpos.Rotate(new Vector3(Random.Range(-12, 12), Random.Range(-12, 12), Random.Range(-12, 12)));
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
-                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
+                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
             }
             else // 1 bullet, dead center
             {
                 p_Spawnpos.transform.localRotation = Quaternion.identity;
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
-                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
+                p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
             }
         }
 

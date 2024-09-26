@@ -21,12 +21,12 @@ MonoBehaviour:
   p_BulletCount: 1
   p_ProjectileType: {fileID: 584065255677097293, guid: ca3ad3c93c23dc64187cd331fff8942f, type: 3}
   p_BulletSpeed: 25
-  p_BulletMaxDamage: 20
-  p_BulletMinDamage: 16
+  p_BulletMaxDamage: 18
+  p_BulletMinDamage: 14
   p_TimeBeforeSelfDestruct: 5
   p_isPiercing: 0
   p_ProjectileElement: Freeze
-  p_ElementStackOnHit: 15
+  p_ElementStackOnHit: 25
   p_GunShotAudio: {fileID: 8300000, guid: 49c89821b8d82554bbb63850e01f46e2, type: 3}
   p_GunPickupAudio: {fileID: 0}
   p_GunActionAudio: {fileID: 0}

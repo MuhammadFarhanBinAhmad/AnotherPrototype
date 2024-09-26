@@ -29,8 +29,8 @@ public class PlayerFist : MonoBehaviour
     [SerializeField]
     private Transform objectGrabPoint;
     public float grabDistance;
-    private PropGrab propGrab;
-    private EnemyGrab enemyGrab;
+    public PropGrab propGrab;
+    public EnemyGrab enemyGrab;
     public float throwForce;
 
     public Animator anim;
@@ -179,5 +179,11 @@ public class PlayerFist : MonoBehaviour
 
         bigFistCollider.canBigFist = true;
         canBigFist = false;
+    }
+
+    public void GrabDeath()
+    {
+        isGrabbing = false;
+        anim.SetTrigger("Throw");
     }
 }

@@ -26,10 +26,14 @@ public class EnemyHealth : MonoBehaviour
     public GameObject burnTickEffect;
     public GameObject shockTickEffect;
 
+    public PlayerFist playerFist; // to reset grab status if enemy burn to death while held
+
 
     private void Start()
     {
         health = maxHealth;
+
+        playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
     }
     public void TakeDamage(int dmg)
     {
@@ -82,6 +86,8 @@ public class EnemyHealth : MonoBehaviour
     public void Die()
     {
         Instantiate(DeathSoundObject);
+        playerFist.GrabDeath();
+
         for (int i = 0; i < AmountOfExpDrop; i++)
         {
             /*GameObject exp = Instantiate(ExpDrop,transform.position,transform.rotation);
