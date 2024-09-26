@@ -790,7 +790,7 @@ MonoBehaviour:
   maxStacks: 100
   startingDecay: 5
   currentDecay: 0
-  recoveryTime: 5
+  currentElementType: 
   isStunned: 0
   isBurnt: 0
   isShocked: 0
@@ -837,9 +837,7 @@ MonoBehaviour:
   isFrozen: 0
   hasCollided: 0
   stunMine: {fileID: 2659316126047622788, guid: 2af228648b439264989cbd307c926f70, type: 3}
-  minesSpawned: 0
   explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
-  canExplode: 0
   shockAura: {fileID: 858098902127867651, guid: 318361c0ee926d6418343c73c570f260, type: 3}
   iceTrail: {fileID: 3365131733346913176, guid: f7bc8a88a20fde94f95c282a9d0c288e, type: 3}
   maxIce: 6
@@ -1043,6 +1041,6 @@ MonoBehaviour:
   e_StatusUI: {fileID: 7322780706822615960}
   stunColour: {r: 175, g: 255, b: 0, a: 255}
   burnColour: {r: 1, g: 0.5882353, b: 0, a: 255}
-  shockColour: {r: 200, g: 0, b: 255, a: 255}
+  shockColour: {r: 0.5853008, g: 0, b: 0.78431374, a: 255}
   freezeColour: {r: 0, g: 255, b: 255, a: 255}
   cam: {fileID: 0}
