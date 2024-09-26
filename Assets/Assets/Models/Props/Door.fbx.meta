@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b2278288b679fbd4cb595d043515ec92
+guid: af2f0cd189e22dd4f9e4fa506ce8eff5
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,18 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_crate
-    second: {fileID: 2100000, guid: cca63bb96522a4041a2fe64095f72e22, type: 2}
+      name: mat_door
+    second: {fileID: 2100000, guid: 9cc538d4ee2a43842b97f22e4b4a986e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_crate_highlights
-    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+      name: mat_door_gap
+    second: {fileID: 2100000, guid: 23934de85be315b46832482d05d759bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_door_glass
+    second: {fileID: 2100000, guid: c26bb1bb205ab83409cf8742be10adfa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_glow1
-    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+    second: {fileID: 2100000, guid: 6478fc4542e1aae43b4dc42735ba7b49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_glow2
+    second: {fileID: 2100000, guid: 6478fc4542e1aae43b4dc42735ba7b49, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

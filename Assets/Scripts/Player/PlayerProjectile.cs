@@ -53,7 +53,7 @@ public class PlayerProjectile : MonoBehaviour
         if (other.GetComponent<EnemyStatus>() != null)
         {
             other.GetComponent<EnemyStatus>().TakeStacks(p_ElementStack);
-            other.GetComponent<EnemyStatus>().CheckElement(p_ElementType);
+            other.GetComponent<EnemyStatus>().AssignElement(p_ElementType);
         }
 
         if (other.GetComponent<EnemyHealth>() != null)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b2278288b679fbd4cb595d043515ec92
+guid: 8f0d2652a7f2f7a498fca3d0a45d9cf0
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,18 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_crate
-    second: {fileID: 2100000, guid: cca63bb96522a4041a2fe64095f72e22, type: 2}
+      name: mat_barrel_red
+    second: {fileID: 2100000, guid: 39407effe299184428d2675aabee997f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_crate_highlights
-    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+      name: mat_barrel_white
+    second: {fileID: 2100000, guid: fe1c3cc49fe107a428d317f9ffc53a28, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_glow1
-    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+    second: {fileID: 2100000, guid: c58f17692fdff204e80e9eab10ee6418, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_glow2
+    second: {fileID: 2100000, guid: 835a2868792059242a96babfed91a9f2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
