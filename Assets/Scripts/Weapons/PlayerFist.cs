@@ -62,7 +62,7 @@ public class PlayerFist : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && punchCooldownCurrent >= punchCooldownMax)
         {
-            if (canBigFist == true)
+            if (canBigFist)
             {
                 BigFist();
             }

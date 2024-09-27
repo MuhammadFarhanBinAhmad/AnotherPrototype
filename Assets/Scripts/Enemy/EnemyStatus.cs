@@ -28,6 +28,7 @@ public class EnemyStatus : MonoBehaviour
     public float burnRecovery;
     public float shockRecovery;
     public float freezeRecovery;
+    private bool firstBullet = true;
 
     [Header("Effects")]
     private bool canSpawnEffect = true;
@@ -96,10 +97,17 @@ public class EnemyStatus : MonoBehaviour
         e_EnemyUI.UpdateEnemyStatus(currentElementType);
     }
 
-
-    public void CheckElement(string elementType)
+    public void AssignElement(string elementType)
     {
+        currentElementType = elementType;
+        StartCoroutine(CheckElement(elementType));
+    }
+
+    public IEnumerator CheckElement(string elementType)
+    {
+        yield return new WaitForSeconds(0.5f);
         newElementType = elementType;
+
         if (newElementType != currentElementType) // if new element is different
         {
             ResetStacks();
@@ -237,6 +245,7 @@ public class EnemyStatus : MonoBehaviour
         enemyGrab.canGrab = false;
 
         currentDecay = startingDecay;
+        firstBullet = true;
         ResetStacks();
     }
 }

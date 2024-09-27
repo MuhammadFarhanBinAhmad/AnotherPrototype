@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9949ac3c9f66e664f8a9a1d6b51d45ef
+guid: b2278288b679fbd4cb595d043515ec92
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -13,6 +13,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_crate_highlights
+    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_glow1
     second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
   materials:
     materialImportMode: 2
