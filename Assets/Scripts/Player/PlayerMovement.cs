@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
 
     public GameObject PlayerWeapon;
+
+    public bool canFly = false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,12 +39,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Movement();
-        if (isGrounded && velocity.y < 0)
+        if (canFly == false)
         {
-            velocity.y = -2f; // Small downward force to keep grounded
+            // Check if the player is grounded
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            Movement();
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f; // Small downward force to keep grounded
+            }
+        }
+        else
+        {
+            Flying();
         }
     }
 
@@ -63,6 +74,26 @@ public class PlayerMovement : MonoBehaviour
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
         rb.MovePosition(rb.position + velocity * Time.deltaTime);
+    }
+
+    void Flying()
+    {
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+
+        // Move the player
+        rb.MovePosition(rb.position + move * speed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
+        }
     }
 
     void OnDrawGizmosSelected()
