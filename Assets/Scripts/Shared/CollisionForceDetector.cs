@@ -22,7 +22,7 @@ public class CollisionForceDetector : MonoBehaviour
             // Force = mass * acceleration (here, velocity change)
             float impactForce = rb.mass * relativeVelocity.magnitude;
 
-            Debug.Log($"Impact Force: {impactForce}");
+            //Debug.Log($"Impact Force: {impactForce}");
 
             // Optional: Check if the impact exceeds a certain threshold
             if (impactForce > impactForceThreshold)

@@ -5,10 +5,18 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject mainMenu;
+    public GameObject controlsPanel;
+    public GameObject creditsPanel;
+
+    public Animator animator;
+    public FadeAlpha fadeAlpha;
+
     private static GameManager _instance;
 
     public static GameManager Instance
@@ -34,6 +42,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        if (controlsPanel != null)
+        {
+            controlsPanel.SetActive(false);
+        }
+        if (creditsPanel != null)
+        {
+            creditsPanel.SetActive(false);
+        }
+        animator = gameObject.GetComponent<Animator>();
+
+
+        Scene activeScene = SceneManager.GetActiveScene();
+        
+        if (activeScene.name == "Level 1")
+        {
+            fadeAlpha.FadeOut();
+        }
     }
 
     // Update is called once per frame
@@ -69,15 +94,24 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (pauseMenu.activeSelf == false) // pause game
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        if (activeScene.name != "Main Menu")
         {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            pauseMenu.SetActive(false); // resume game
-            Time.timeScale = 1.0f;
+            if (pauseMenu.activeSelf == false) // pause game
+            {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                pauseMenu.SetActive(false); // resume game
+                Time.timeScale = 1.0f;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
     }
 
@@ -91,17 +125,75 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void LoadMainMenu()
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        if (activeScene.name == "Main Menu")
+        {
+            if (controlsPanel != null)
+            {
+                controlsPanel.SetActive(false);
+            }
+            if (creditsPanel != null)
+            {
+                creditsPanel.SetActive(false);
+            }
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    public void DisplayControls()
+    {
+        if (controlsPanel.activeSelf == false)
+        {
+            controlsPanel.SetActive(true);
+        }
+        else
+        {
+            controlsPanel.SetActive(false);
+        }
+        creditsPanel.SetActive(false);
+    }
+
+    public void DisplayCredits()
+    {
+        if (creditsPanel.activeSelf == false)
+        {
+            creditsPanel.SetActive(true);
+        }
+        else
+        {
+            creditsPanel.SetActive(false);
+        }
+        controlsPanel.SetActive(false);
+    }
+
+    public void LoadLevel1()
+    {
+        fadeAlpha.FadeIn();
+        StartCoroutine(Level1Delay());
+    }
+    public IEnumerator Level1Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Level 1");
+    }
+
     public void LoadArtGym()
     {
         Scene activeScene = SceneManager.GetActiveScene();
 
-        if (activeScene.name == "ArtGym")
+        if (activeScene.name == "Art Gym")
         {
             SceneManager.LoadScene("Level 1");
         }
         else
         {
-            SceneManager.LoadScene("ArtGym");
+            SceneManager.LoadScene("Art Gym");
         }
     }
 
