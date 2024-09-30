@@ -4,14 +4,14 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
-    second: Idle
+      74: -4736914757116921126
+    second: Bones|Attack_Melee
   - first:
-      74: 3651350446308603674
-    second: Damage
+      74: -661833187523472681
+    second: Bones|Attack_Ranged_Enter
   - first:
-      74: 5522812681064789136
-    second: Run
+      74: 8863731621053985547
+    second: Bones|Attack_Ranged_Exit
   - first:
       74: -2551144018060976301
     second: Bones|Damage
@@ -60,8 +60,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
