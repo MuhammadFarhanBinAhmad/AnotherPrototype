@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashCooldownTime;
 
     private Vector3 velocity;
-    private bool isGrounded;
+    public bool isGrounded;
 
     private Rigidbody rb;
     public Transform groundCheck;

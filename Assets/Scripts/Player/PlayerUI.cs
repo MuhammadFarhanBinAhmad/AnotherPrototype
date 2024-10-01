@@ -16,9 +16,11 @@ public class PlayerUI : MonoBehaviour
     public Image i_Healthbar;
 
     [Header("WeaponUI")]
-    public TextMeshProUGUI t_CurrAmmoLeft;
     public TextMeshProUGUI t_WeaponName;
+    public TextMeshProUGUI t_CurrAmmoLeft;
+    public TextMeshProUGUI t_WeaponElement;
     public TextMeshProUGUI t_CurrGrenadeRemaining;
+
     [Header("EXPUI")]
     public Image i_EXP;
     public TextMeshProUGUI t_EXP;
@@ -31,6 +33,11 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI t_KickDoor;
 
     public TextMeshProUGUI t_PickUpWeapon;
+
+    public Color stunColour;
+    public Color burnColour;
+    public Color shockColour;
+    public Color freezeColour;
 
     private void Awake()
     {
@@ -53,8 +60,40 @@ public class PlayerUI : MonoBehaviour
     public void UpdateWeaponUI()
     {
         t_WeaponName.text = s_PlayerWeaponManager.p_WeaponName;
-        t_CurrAmmoLeft.text = "Ammo:" + s_PlayerWeaponManager.p_TotalAmmo; 
+        t_CurrAmmoLeft.text = "Ammo: " + s_PlayerWeaponManager.p_TotalAmmo; 
+        t_WeaponElement.text = s_PlayerWeaponManager.p_ProjectileElement;
+        UpdateTextColour();
     }
+
+    public void Update()
+    {
+        UpdateWeaponUI();
+    }
+
+    public void UpdateTextColour()
+    {
+        if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Stun"))
+        {
+            t_WeaponElement.color = stunColour;
+            Debug.Log(t_WeaponElement.color);
+        }
+        if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Shock"))
+        {
+            t_WeaponElement.color = shockColour;
+            Debug.Log(t_WeaponElement.color);
+        }
+        if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Freeze"))
+        {
+            t_WeaponElement.color = freezeColour;
+            Debug.Log(t_WeaponElement.color);
+        }
+        if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Burn"))
+        {
+            t_WeaponElement.color = burnColour;
+            Debug.Log(t_WeaponElement.color);
+        }
+    }
+
     //public void SlowDownUI()
     //{
     //    i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
