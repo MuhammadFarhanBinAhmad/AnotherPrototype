@@ -35,6 +35,6 @@ public class PlayerCamera : MonoBehaviour
 
     public void AdjustSensitivity(float newSens)
     {
-        mouseSensitivity = newSens * 10;
+        mouseSensitivity = newSens;
     }
 }

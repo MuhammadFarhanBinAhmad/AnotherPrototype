@@ -234,7 +234,6 @@ public class EnemyStatus : MonoBehaviour
     public IEnumerator ResetState()
     {
         yield return new WaitForSeconds(recoveryTime);
-        Debug.Log(recoveryTime);
 
         isStunned = false;
         isBurnt = false;
