@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("MovementStats")]
     public float s_MovementSpeed;
+    public Animator animator;
 
     [Header("DetectionZone")]
     public Transform coneTip;  // The position of the tip of the cone (vertex)
@@ -45,6 +46,11 @@ public class EnemyMovement : MonoBehaviour
 
         m_Agent.speed = s_MovementSpeed;
         m_CenterPoint = gameObject.transform.parent;
+
+        animator = GetComponent<Animator>();
+        if (animator == null) {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
     private void Update()
     {
@@ -88,7 +94,7 @@ public class EnemyMovement : MonoBehaviour
         {
             CountFreezeTimer();
         }
-
+        animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
     }
     public void StunEnemy()
     {

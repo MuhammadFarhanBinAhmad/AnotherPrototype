@@ -14,8 +14,8 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     public GameObject Explosion;
 
     [Header("MeleeEnemy")]
-    Animator animator;
-    bool Attacking;
+    [SerializeField] Animator animator;
+    [SerializeField] bool Attacking;
 
     public bool isShocked;
     public float e_ShockTime;
@@ -27,6 +27,10 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     {
         if (!ExplosiveEnemy)
             animator = GetComponent<Animator>();
+
+        if (animator == null) {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
     public void AttackPlayer()
     {
@@ -41,8 +45,8 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
             {
                 if (Time.time >= nexttime_ToFire)
                 {
-                    nexttime_ToFire = Time.time + 1f / e_RateOfAttack;
                     animator.SetTrigger("Attacking");
+                    nexttime_ToFire = Time.time + 1f / e_RateOfAttack;
                 }
             }
         }
