@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.056155123, g: 0.050619833, b: 0.029046178, a: 1}
+  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061982, b: 0.029046053, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -45009,6 +45009,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -45048,6 +45050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 133731432}
   coneAngle: 130
   coneLength: 10
@@ -56606,8 +56609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  minRotation: -2.5
-  maxRotation: 2.5
+  minRotation: -2
+  maxRotation: 2
 --- !u!1 &1746026791
 GameObject:
   m_ObjectHideFlags: 0
@@ -56907,6 +56910,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -56946,6 +56951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 1560227158}
   coneAngle: 130
   coneLength: 10
@@ -65387,6 +65393,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -65426,6 +65434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 762931207}
   coneAngle: 130
   coneLength: 10
@@ -79205,6 +79214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634734480497}
   coneAngle: 130
   coneLength: 10
@@ -79255,6 +79265,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -79492,6 +79504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634799155928}
   coneAngle: 130
   coneLength: 10
@@ -79548,6 +79561,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -80108,6 +80123,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -80147,6 +80164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634853111586}
   coneAngle: 130
   coneLength: 10
@@ -80327,6 +80345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634900438033}
   coneAngle: 130
   coneLength: 10
@@ -80377,6 +80396,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -80964,6 +80985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634476301941}
   coneAngle: 130
   coneLength: 10
@@ -81014,6 +81036,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -81264,6 +81288,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -81309,6 +81335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062635197040787}
   coneAngle: 130
   coneLength: 10
@@ -81898,6 +81925,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -81943,6 +81972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062635239840875}
   coneAngle: 130
   coneLength: 10
@@ -82404,6 +82434,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -82443,6 +82475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062635315348818}
   coneAngle: 130
   coneLength: 10
@@ -83034,6 +83067,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -83073,6 +83108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062635080539226}
   coneAngle: 130
   coneLength: 10
@@ -83711,6 +83747,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -83756,6 +83794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633597289835}
   coneAngle: 130
   coneLength: 10
@@ -84242,6 +84281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633813612041}
   coneAngle: 130
   coneLength: 10
@@ -84292,6 +84332,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -84727,6 +84769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633309076005}
   coneAngle: 130
   coneLength: 10
@@ -84777,6 +84820,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -85079,6 +85124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633328344209}
   coneAngle: 130
   coneLength: 10
@@ -85129,6 +85175,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -85639,6 +85687,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -85678,6 +85728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633350387182}
   coneAngle: 130
   coneLength: 10
@@ -85852,6 +85903,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -85891,6 +85944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633360605270}
   coneAngle: 130
   coneLength: 10
@@ -86568,6 +86622,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -86607,6 +86663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633431654702}
   coneAngle: 130
   coneLength: 10
@@ -87595,6 +87652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634172207933}
   coneAngle: 130
   coneLength: 10
@@ -87645,6 +87703,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -88166,6 +88226,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -88211,6 +88273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634265665983}
   coneAngle: 130
   coneLength: 10
@@ -88624,6 +88687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634283196640}
   coneAngle: 130
   coneLength: 10
@@ -88680,6 +88744,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -88787,6 +88853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633841646992}
   coneAngle: 130
   coneLength: 10
@@ -88843,6 +88910,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -89330,6 +89399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633842704880}
   coneAngle: 130
   coneLength: 10
@@ -89386,6 +89456,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -89565,6 +89637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633919345096}
   coneAngle: 130
   coneLength: 10
@@ -89621,6 +89694,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -90102,6 +90177,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -90147,6 +90224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633943456123}
   coneAngle: 130
   coneLength: 10
@@ -90213,6 +90291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633954183300}
   coneAngle: 130
   coneLength: 10
@@ -90269,6 +90348,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -90624,6 +90705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062633975897032}
   coneAngle: 130
   coneLength: 10
@@ -90680,6 +90762,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -91473,6 +91557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634021108708}
   coneAngle: 130
   coneLength: 10
@@ -91529,6 +91614,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -91959,6 +92046,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -92004,6 +92093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634061792699}
   coneAngle: 130
   coneLength: 10
@@ -92193,6 +92283,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
@@ -92232,6 +92324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 0
+  animator: {fileID: 0}
   coneTip: {fileID: 6067062634102540430}
   coneAngle: 130
   coneLength: 10

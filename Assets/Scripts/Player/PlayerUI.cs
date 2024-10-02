@@ -65,11 +65,6 @@ public class PlayerUI : MonoBehaviour
         UpdateTextColour();
     }
 
-    public void Update()
-    {
-        UpdateWeaponUI();
-    }
-
     public void UpdateTextColour()
     {
         if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Stun"))
