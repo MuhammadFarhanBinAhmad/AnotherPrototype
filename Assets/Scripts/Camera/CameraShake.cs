@@ -14,6 +14,9 @@ public class CameraShake : MonoBehaviour
     private float elapsed = 0.0f;
     private System.Random random;
 
+    public float maxShakeCD;
+    public float currentShakeCD;
+
     void Start()
     {
         originalPosition = transform.localPosition;
@@ -25,14 +28,26 @@ public class CameraShake : MonoBehaviour
 
     public void Shake(float shakeDuration, float shakeMagnitude, float shakeFrequency)
     {
-        magnitude = shakeMagnitude;
-        duration = shakeDuration;
-        frequency = shakeFrequency;
-        elapsed = 0.0f;
-        originalPosition = transform.localPosition;
+        if (currentShakeCD !<= 0)
+        {
+            magnitude = shakeMagnitude;
+            duration = shakeDuration;
+            frequency = shakeFrequency;
+            elapsed = 0.0f;
+            originalPosition = transform.localPosition;
+            currentShakeCD = maxShakeCD;
+        }
     }
     void Update()
     {
+        currentShakeCD -= Time.deltaTime;
+        {
+            if (currentShakeCD < 0.0f)
+            {
+                currentShakeCD = 0.0f;
+            }
+        }
+
         if (elapsed < duration)
         {
             elapsed += Time.deltaTime;

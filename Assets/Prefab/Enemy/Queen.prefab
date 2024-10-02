@@ -397,6 +397,7 @@ MonoBehaviour:
   shockDamage: 1
   burnTickEffect: {fileID: 0}
   shockTickEffect: {fileID: 0}
+  playerFist: {fileID: 0}
 --- !u!114 &9060116034025686763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,10 +921,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_HealthUI: {fileID: 9187163005726588355}
   e_StatusUI: {fileID: 5731304952886770778}
-  stunColour: {r: 175, g: 255, b: 0, a: 255}
+  stunColour: {r: 0.6862745, g: 1, b: 0, a: 255}
   burnColour: {r: 1, g: 0.5882353, b: 0, a: 255}
   shockColour: {r: 0.5882353, g: 0, b: 0.78431374, a: 255}
-  freezeColour: {r: 0, g: 255, b: 255, a: 255}
+  freezeColour: {r: 0, g: 1, b: 1, a: 255}
   cam: {fileID: 0}
 --- !u!1 &9187163005726588353
 GameObject:

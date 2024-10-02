@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -47,7 +48,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Die()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
+        SceneManager.LoadScene("Level 1");
     }
 
     public void Update()

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -90,7 +89,6 @@ public class PlayerWeaponManager : MonoBehaviour
         if (WeaponEquipped)
         {
             GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
-            Debug.Log("spawn");
             Weapon weapon = w.GetComponent<Weapon>();
             weapon.p_WeaponName = p_WeaponName;
             weapon.p_WeaponFireRate = p_WeaponFireRate;

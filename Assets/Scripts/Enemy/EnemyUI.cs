@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Rendering.FilterWindow;
+
 public class EnemyUI : MonoBehaviour
 {
     public Image e_HealthUI;
@@ -13,7 +13,7 @@ public class EnemyUI : MonoBehaviour
 
     public Color stunColour = new Color(175f, 255f, 0f, 255f);
     public Color burnColour = new Color(255f, 150f, 0f, 255f);
-    public Color shockColour = new Color(200f, 0f, 255f, 255f);
+    public Color shockColour = new Color(150f, 0f, 200f, 255f);
     public Color freezeColour = new Color (0f, 255f, 255f, 255f);
 
     public Transform cam;

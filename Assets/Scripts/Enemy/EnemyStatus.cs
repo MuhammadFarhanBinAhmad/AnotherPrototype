@@ -2,9 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.VersionControl;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -236,7 +234,6 @@ public class EnemyStatus : MonoBehaviour
     public IEnumerator ResetState()
     {
         yield return new WaitForSeconds(recoveryTime);
-        Debug.Log(recoveryTime);
 
         isStunned = false;
         isBurnt = false;
