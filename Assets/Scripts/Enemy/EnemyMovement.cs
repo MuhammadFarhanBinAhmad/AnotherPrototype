@@ -94,7 +94,10 @@ public class EnemyMovement : MonoBehaviour
         {
             CountFreezeTimer();
         }
-        animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
+        if (animator != null) 
+        {
+            animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
+        }
     }
     public void StunEnemy()
     {
