@@ -27,7 +27,7 @@ MonoBehaviour:
   p_isPiercing: 1
   p_ProjectileElement: Shock
   p_ElementStackOnHit: 100
-  p_GunShotAudio: {fileID: 8300000, guid: fe1d69c704021aa459471224b758e9da, type: 3}
+  p_GunShotAudio: {fileID: 8300000, guid: 93c4b622d9bbb3643bb11ea96a216f35, type: 3}
   p_GunPickupAudio: {fileID: 0}
   p_GunActionAudio: {fileID: 0}
   isAuto: 0
