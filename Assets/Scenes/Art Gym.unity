@@ -33511,11 +33511,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6349165881486031884, guid: 107cb2dd1c8f9814da2919467910c213, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6349165881486031885, guid: 107cb2dd1c8f9814da2919467910c213, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349165881486031886, guid: 107cb2dd1c8f9814da2919467910c213, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349165881486031891, guid: 107cb2dd1c8f9814da2919467910c213, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
