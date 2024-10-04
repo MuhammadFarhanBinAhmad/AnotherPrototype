@@ -164,3 +164,5 @@ MonoBehaviour:
   fistAnimator: {fileID: 0}
   playerSkills: {fileID: 0}
   bypassDoor: 0
+  kickForce: 7.5
+  kickDamage: 30

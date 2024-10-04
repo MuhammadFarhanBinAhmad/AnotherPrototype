@@ -378,17 +378,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873928805575611138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6972e5a13cbaf324e825e895dbc33882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 873928804773384074}
   coneAngle: 130
   coneLength: 10
-  m_Range: 15
+  m_PatrolRadius: 10
   m_CenterPoint: {fileID: 0}
   m_Target: {fileID: 0}
   isStunned: 0
@@ -404,7 +405,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873928805575611138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
@@ -435,6 +436,8 @@ MonoBehaviour:
   e_RateOfAttack: 1
   ExplosiveEnemy: 0
   Explosion: {fileID: 5513153464002220483, guid: 7502e7c9fc7bc184ea3335fc6650f6b0, type: 3}
+  animator: {fileID: 0}
+  Attacking: 0
   isShocked: 0
   e_ShockTime: 4
   e_ShockTimeLeft: 0
