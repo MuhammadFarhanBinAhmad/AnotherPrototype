@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.056155123, g: 0.050619833, b: 0.029046178, a: 1}
+  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061982, b: 0.029046053, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29584,7 +29584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Heath:'
+  m_text: 'Health:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc59089618b5546448d9f268318fa6a8, type: 2}
   m_sharedMaterial: {fileID: 8332489377109070935, guid: fc59089618b5546448d9f268318fa6a8, type: 2}
