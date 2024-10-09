@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform coneTip;  // The position of the tip of the cone (vertex)
     public float coneAngle;  // The angle at the tip of the cone (in degrees)
     public float coneLength;  // The length of the cone
-    public float m_Range;
+    public float m_PatrolRadius;
     public Transform m_CenterPoint;
 
     public Transform m_Target;
@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
         meleeAttackBehaviour = GetComponent<EnemyMeleeAttackBehaviour>();
 
         m_Agent.speed = s_MovementSpeed;
-        m_CenterPoint = gameObject.transform.parent;
+        //m_CenterPoint = gameObject.transform.parent; // there might be multiple centerpoints in 1 room
 
         animator = GetComponent<Animator>();
         if (animator == null) {
@@ -59,10 +59,10 @@ public class EnemyMovement : MonoBehaviour
         {
             case MODE.PATROL:
                 {
-                    if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
+                    if (m_Agent.remainingDistance <= m_Agent.stoppingDistance && s_MovementSpeed != 0)
                     {
                         Vector3 point;
-                        if (RandomPoint(m_CenterPoint.position, m_Range, out point))
+                        if (RandomPoint(m_CenterPoint.position, m_PatrolRadius, out point))
                         {
                             m_Agent.SetDestination(point);
                         }

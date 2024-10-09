@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RoomManager : MonoBehaviour
     public List<GameObject> roomDoors = new List<GameObject>();
 
     public int doorCount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +46,14 @@ public class RoomManager : MonoBehaviour
     public void RemoveDoor(GameObject door)
     {
         roomDoors.Remove(door);
+    }
+
+    public void UnlockEnemyAI()
+    {
+        foreach (GameObject enemy in roomEnemies)
+        {
+            enemy.GetComponent<EnemyMovement>().enabled = true;
+            enemy.GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 }

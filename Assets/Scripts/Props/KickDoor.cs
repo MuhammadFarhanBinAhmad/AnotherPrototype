@@ -12,6 +12,10 @@ public class KickDoor : MonoBehaviour
 
     public bool bypassDoor = false;
 
+    public float kickForce;
+    public int kickDamage;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -88,5 +92,16 @@ public class KickDoor : MonoBehaviour
         Time.timeScale = .3f;
         yield return new WaitForSeconds(.25f);
         Time.timeScale = 1f;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<EnemyHealth>() != null && isKick == true)
+        {
+            other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, gameObject.transform.position, -kickForce);
+            other.gameObject.GetComponent<EnemyMovement>().StunEnemy();
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(kickDamage);
+            isKick = false;
+        }
     }
 }

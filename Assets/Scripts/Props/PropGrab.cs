@@ -64,34 +64,4 @@ public class PropGrab : MonoBehaviour
         //gameObject.GetComponent<Collider>().isTrigger = true;
         isFlying = true;
     }
-
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.GetComponent<EnemyMovement>() != null && isFlying == true) // if prop hits enemy in mid air
-    //    {
-    //        if (gameObject.GetComponent<ExplosivePropObjects>() != null) // this prop goes boom
-    //        {
-    //            gameObject.GetComponent<ExplosivePropObjects>().Explode();
-    //            Debug.Log("Splode");
-    //            isFlying = false;
-    //            gameObject.GetComponent<Collider>().isTrigger = false;
-    //        }
-    //        else // this prop goes bonk
-    //        {
-    //            other.GetComponent<EnemyMovement>().StunEnemy();
-    //            Debug.Log("Stun");
-    //            isFlying = false;
-    //            gameObject.GetComponent<Collider>().isTrigger = false;
-    //        }
-    //    }
-
-    //    gameObject.GetComponent<Collider>().isTrigger = false;
-
-    //    if (other.tag == ("Wall"))
-    //    {
-    //        gameObject.GetComponent<Collider>().isTrigger = false;
-    //        isFlying = false;
-    //        gameObject.GetComponent<Collider>().isTrigger = false;
-    //    }
-    //}
 }

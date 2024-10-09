@@ -27,7 +27,7 @@ public class CollisionForceDetector : MonoBehaviour
             // Optional: Check if the impact exceeds a certain threshold
             if (impactForce > impactForceThreshold)
             {
-                Debug.Log("Strong collision detected!");
+                //Debug.Log("Strong collision detected!");
                 if (collision.transform.GetComponent<EnemyMovement>() != null)
                 {
                     collision.transform.GetComponent<EnemyMovement>().StunEnemy(); // everything stuns

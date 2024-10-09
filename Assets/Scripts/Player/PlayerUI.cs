@@ -62,7 +62,11 @@ public class PlayerUI : MonoBehaviour
         t_WeaponName.text = s_PlayerWeaponManager.p_WeaponName;
         t_CurrAmmoLeft.text = "Ammo: " + s_PlayerWeaponManager.p_TotalAmmo; 
         t_WeaponElement.text = s_PlayerWeaponManager.p_ProjectileElement;
-        UpdateTextColour();
+
+        if (s_PlayerWeaponManager.WeaponEquipped == true)
+        {
+            UpdateTextColour();
+        }
     }
 
     public void UpdateTextColour()
@@ -70,22 +74,18 @@ public class PlayerUI : MonoBehaviour
         if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Stun"))
         {
             t_WeaponElement.color = stunColour;
-            Debug.Log(t_WeaponElement.color);
         }
         if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Shock"))
         {
             t_WeaponElement.color = shockColour;
-            Debug.Log(t_WeaponElement.color);
         }
         if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Freeze"))
         {
             t_WeaponElement.color = freezeColour;
-            Debug.Log(t_WeaponElement.color);
         }
         if (s_PlayerWeaponManager.p_ProjectileElement.Contains("Burn"))
         {
             t_WeaponElement.color = burnColour;
-            Debug.Log(t_WeaponElement.color);
         }
     }
 

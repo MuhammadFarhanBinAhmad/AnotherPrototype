@@ -405,17 +405,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9060116034025686761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6972e5a13cbaf324e825e895dbc33882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   p_Mode: 0
   s_MovementSpeed: 3
+  animator: {fileID: 0}
   coneTip: {fileID: 9060116033302092980}
   coneAngle: 130
   coneLength: 10
-  m_Range: 15
+  m_PatrolRadius: 10
   m_CenterPoint: {fileID: 0}
   m_Target: {fileID: 0}
   isStunned: 0
@@ -431,7 +432,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9060116034025686761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
