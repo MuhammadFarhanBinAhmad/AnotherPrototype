@@ -46,8 +46,14 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            Instantiate(HitShotEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            if (other.GetComponent<KickDoor>() != null)
+            {
+                if (other.GetComponent<KickDoor>().isKick != true) // if door has NOT been kicked down
+                {
+                    Instantiate(HitShotEffect, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
+            }
         }
 
         if (other.GetComponent<EnemyStatus>() != null)

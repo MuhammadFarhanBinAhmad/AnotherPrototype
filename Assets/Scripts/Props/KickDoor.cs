@@ -14,6 +14,7 @@ public class KickDoor : MonoBehaviour
 
     public float kickForce;
     public int kickDamage;
+    public TimeSlow timeSlow;
 
 
     private void Start()
@@ -21,6 +22,7 @@ public class KickDoor : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         fistAnimator = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<Animator>();
         playerSkills = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkills>();
+        timeSlow = GameObject.Find("GameManager").GetComponent<TimeSlow>();
     }
     private void Update()
     {
@@ -28,39 +30,40 @@ public class KickDoor : MonoBehaviour
         {
             if (bypassDoor == true)
             {
-                if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && !isKick)
-                {
-                    rb.isKinematic = false;
-                    rb.useGravity = true;
-                    rb.velocity = transform.forward * 30f;
-                    isKick = true;
-                    if (fistAnimator != null)
-                    {
-                        fistAnimator.SetTrigger("Punch");
-                    }
-                    StartCoroutine("SlowDownTime");
-                }
+                KickDoorDown();
             }
 
-            else if (playerSkills.keyCount > 0)
+            else if (playerSkills.keyCount >= 1)
             {
-                if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && !isKick)
-                {
-                    rb.isKinematic = false;
-                    rb.useGravity = true;
-                    rb.velocity = transform.forward * 30f;
-                    isKick = true;
-                    if (fistAnimator != null)
-                    {
-                        fistAnimator.SetTrigger("Punch");
-                    }
-                    playerSkills.RemoveKey(1);
-                    StartCoroutine("SlowDownTime");
-                }
+                KickDoorDown();
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void KickDoorDown()
+    {
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && !isKick)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.velocity = transform.forward * 80f;
+
+            isKick = true;
+
+            if (bypassDoor != true)
+            {
+                playerSkills.RemoveKey(1);
+            }
+
+            if (fistAnimator != null)
+            {
+                fistAnimator.SetTrigger("Punch");
+            }
+            timeSlow.DoSlowMotion(0.1f, 2f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) // player kick range
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
@@ -79,7 +82,7 @@ public class KickDoor : MonoBehaviour
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) // player kick range
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
@@ -87,21 +90,21 @@ public class KickDoor : MonoBehaviour
             FindObjectOfType<PlayerUI>().KickDoorUI("");
         }
     }
-    IEnumerator SlowDownTime()
-    {
-        Time.timeScale = .3f;
-        yield return new WaitForSeconds(.25f);
-        Time.timeScale = 1f;
-    }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other) // door flying to hit enemy
     {
         if (other.gameObject.GetComponent<EnemyHealth>() != null && isKick == true)
         {
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, gameObject.transform.position, -kickForce);
             other.gameObject.GetComponent<EnemyMovement>().StunEnemy();
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage(kickDamage);
-            isKick = false;
         }
+    }
+
+    IEnumerator SlowDownTime()
+    {
+        Time.timeScale = .3f;
+        yield return new WaitForSeconds(.25f);
+        Time.timeScale = 1f;
     }
 }

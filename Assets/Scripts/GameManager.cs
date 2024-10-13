@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public bool gamePaused = false;
     public GameObject mainMenu;
     public GameObject controlsPanel;
     public GameObject creditsPanel;
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                gamePaused = true;
             }
             else
             {
@@ -110,6 +112,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                gamePaused = false;
             }
         }
     }

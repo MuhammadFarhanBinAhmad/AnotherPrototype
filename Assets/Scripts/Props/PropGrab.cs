@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PropGrab : MonoBehaviour
@@ -14,6 +15,8 @@ public class PropGrab : MonoBehaviour
 
     private bool isFlying = false;
 
+    public List<Material> propMaterials;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,12 @@ public class PropGrab : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
+
+        propMaterials = GetComponent<MeshRenderer>().materials.ToList();
+        if (gameObject.GetComponentInChildren<SkinnedMeshRenderer>() != null)
+        {
+            propMaterials = GetComponentInChildren<SkinnedMeshRenderer>().materials.ToList();
+        }
     }
 
     public void Grab(Transform objectGrabPoint)
@@ -43,13 +52,25 @@ public class PropGrab : MonoBehaviour
             //rb.MovePosition(newPosition);
             rb.MovePosition(objectGrabPoint.position);
             transform.forward = player.transform.forward;
-        }
 
-        //if (rb.velocity.magnitude <= 0.5f && isFlying == true)
-        //{
-        //    gameObject.GetComponent<Collider>().isTrigger = false;
-        //    isFlying = false;
-        //}
+            foreach (Material material in propMaterials) // if prop is opaque, make translucent
+            {
+                Color propColour = material.color;
+                propColour.a = Mathf.Clamp(propColour.a, 0.5f, 1f);
+                propColour.a -= Time.deltaTime;
+                material.color = propColour;
+            }
+        }
+        else
+        {
+            foreach (Material material in propMaterials)  // if prop is translucent, make opaque
+            {
+                Color propColour = material.color;
+                propColour.a = Mathf.Clamp(propColour.a, 0.5f, 1f);
+                propColour.a += Time.deltaTime;
+                material.color = propColour;
+            }
+        }
     }
 
     public void Throw(float throwForce)
