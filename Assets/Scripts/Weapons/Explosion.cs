@@ -12,6 +12,7 @@ public class Explosion : MonoBehaviour
     {
         GetComponent<SphereCollider>().radius = p_BlastRadius;
         Invoke("DestroySelf",p_TimeBeforSelfDestruct);
+        GameObject.Find("GameManager").GetComponent<TimeSlow>().DoSlowMotion(0.1f, 1f);
     }
 
     void DestroySelf()

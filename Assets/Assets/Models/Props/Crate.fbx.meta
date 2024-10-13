@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mat_glow1
-    second: {fileID: 2100000, guid: 2f2647bcb42afc346a3206bd6bf013c7, type: 2}
+    second: {fileID: 2100000, guid: 6478fc4542e1aae43b4dc42735ba7b49, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

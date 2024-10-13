@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,6 +21,8 @@ public class EnemyGrab : MonoBehaviour
     public bool canGrab = false;
     public EnemyForceDetector enemyForceDetector;
 
+    public List<Material> enemyMaterials;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,12 @@ public class EnemyGrab : MonoBehaviour
 
         enemyYeeter = GameObject.FindGameObjectWithTag("EnemyYeeter");
         enemyForceDetector = gameObject.GetComponent<EnemyForceDetector>();
+
+        enemyMaterials = GetComponent<MeshRenderer>().materials.ToList();
+        if (gameObject.GetComponentInChildren<SkinnedMeshRenderer>() != null )
+        {
+            enemyMaterials = GetComponentInChildren<SkinnedMeshRenderer>().materials.ToList();
+        }
     }
 
     public void ToggleAI()
@@ -103,6 +112,24 @@ public class EnemyGrab : MonoBehaviour
             transform.forward = player.transform.forward;
             enemyYeeter.GetComponent<Rigidbody>().MovePosition(objectGrabPoint.position);
             enemyYeeter.transform.forward = player.transform.forward;
+
+            foreach (Material material in enemyMaterials) // if enemy is opaque, make translucent
+            {
+                Color enemyColour = material.color;
+                enemyColour.a = Mathf.Clamp(enemyColour.a, 0.5f, 1f);
+                enemyColour.a -= Time.deltaTime;
+                material.color = enemyColour;
+            }
+        }
+        else
+        {
+            foreach (Material material in enemyMaterials) // if enemy is translucent, make opaque
+            {
+                Color enemyColour = material.color;
+                enemyColour.a = Mathf.Clamp(enemyColour.a, 0.5f, 1f);
+                enemyColour.a += Time.deltaTime;
+                material.color = enemyColour;
+            }
         }
 
         if (isThrow == true)
@@ -110,34 +137,4 @@ public class EnemyGrab : MonoBehaviour
             rb.MovePosition(enemyYeeter.transform.position);
         }
     }
-
-        //public void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.GetComponent<EnemyMovement>() != null && isFlying == true) // if prop hits enemy in mid air
-        //    {
-        //        if (gameObject.GetComponent<ExplosivePropObjects>() != null) // this prop goes boom
-        //        {
-        //            gameObject.GetComponent<ExplosivePropObjects>().Explode();
-        //            Debug.Log("Splode");
-        //            isFlying = false;
-        //            gameObject.GetComponent<Collider>().isTrigger = false;
-        //        }
-        //        else // this prop goes bonk
-        //        {
-        //            other.GetComponent<EnemyMovement>().StunEnemy();
-        //            Debug.Log("Stun");
-        //            isFlying = false;
-        //            gameObject.GetComponent<Collider>().isTrigger = false;
-        //        }
-        //    }
-
-        //    gameObject.GetComponent<Collider>().isTrigger = false;
-
-        //    if (other.tag == ("Wall"))
-        //    {
-        //        gameObject.GetComponent<Collider>().isTrigger = false;
-        //        isFlying = false;
-        //        gameObject.GetComponent<Collider>().isTrigger = false;
-        //    }
-        //}
 }
