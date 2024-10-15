@@ -9,6 +9,8 @@ public class EnemyLister : MonoBehaviour
     public bool dropKey = false;
     public GameObject roomKey;
 
+    public EnemyMeleeAttackBehaviour attackBehaviour;
+
     // Start is called before the first frame update
     void Start()
     {

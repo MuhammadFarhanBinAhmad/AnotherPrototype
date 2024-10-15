@@ -14,6 +14,8 @@ public class KickDoor : MonoBehaviour
 
     public float kickForce;
     public int kickDamage;
+    public bool damageDealt = false;
+    public GameObject HitShotEffect;
     public TimeSlow timeSlow;
 
 
@@ -95,9 +97,14 @@ public class KickDoor : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyHealth>() != null && isKick == true)
         {
-            other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, gameObject.transform.position, -kickForce);
-            other.gameObject.GetComponent<EnemyMovement>().StunEnemy();
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(kickDamage);
+            if (damageDealt == false)
+            {
+                other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, gameObject.transform.position, -kickForce);
+                other.gameObject.GetComponent<EnemyMovement>().StunEnemy();
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage(kickDamage);
+                Instantiate(HitShotEffect, transform.position, transform.rotation);
+                damageDealt = true;
+            }
         }
     }
 

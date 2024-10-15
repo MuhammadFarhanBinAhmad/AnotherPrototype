@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject shockTickEffect;
 
     public PlayerFist playerFist; // to reset grab status if enemy burn to death while held
+    public RoomManager roomManager; // to reset leader status on death
 
 
     private void Start()
@@ -34,11 +35,23 @@ public class EnemyHealth : MonoBehaviour
         health = maxHealth;
 
         playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
+        roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
     }
     public void TakeDamage(int dmg)
     {
         health -= dmg;
         e_EnemyUI.UpdateEnemyHealth();
+
+        if (GetComponent<EnemyMeleeAttackBehaviour>() != null) // start aggro on player when hit
+        {
+            GetComponent<EnemyMeleeAttackBehaviour>().isAttacking = true;
+            GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
+        }
+        if (GetComponent<EnemyRangeAttackBehaviour>() != null)
+        {
+            GetComponent<EnemyRangeAttackBehaviour>().isAttacking = true;
+        }
+
         if (health <= 0)
         {
             Die();
@@ -126,6 +139,11 @@ public class EnemyHealth : MonoBehaviour
                 {
                     weapondrop_rb.AddForce(AmmoDirection * .5f, ForceMode.Impulse);
                 }
+            }
+
+            if (GetComponent<EnemyMeleeAttackBehaviour>().isLeader == true)
+            {
+                roomManager.leaderCount -= 1;
             }
         }
 

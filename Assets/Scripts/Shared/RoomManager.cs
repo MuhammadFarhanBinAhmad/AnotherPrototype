@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,11 +12,15 @@ public class RoomManager : MonoBehaviour
 
     public int doorCount;
 
+    public int leaderCount = 0;
+    public float flankRadius;
+    public Transform player;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -27,13 +32,32 @@ public class RoomManager : MonoBehaviour
         {
             roomEnemies.ForEach(item => item.GetComponent<EnemyLister>().DropKey());
         }
+
+        foreach (GameObject enemy in roomEnemies)
+        {
+            if (enemy.gameObject.GetComponent<EnemyMeleeAttackBehaviour>() != null)
+            {
+                if (leaderCount == 0)
+                {
+                    enemy.GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
+                    foreach (GameObject enemyy in roomEnemies)
+                    {
+                        if (enemyy.GetComponent<EnemyMeleeAttackBehaviour>() != null)
+                        {
+                            enemyy.GetComponent<EnemyMeleeAttackBehaviour>().roomLeader = enemy; // tell all enemies who is the leader
+                        }
+                    }
+                    leaderCount += 1;
+                }
+            }
+        }
     }
 
     public void AddEnemy(GameObject enemy)
     {
         roomEnemies.Add(enemy);
     }
-    public void RemoveEnemy(GameObject enemy)
+    public void RemoveEnemy(GameObject enemy) //NOT USED
     {
         roomEnemies.Remove(enemy);
     }

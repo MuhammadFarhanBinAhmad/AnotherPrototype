@@ -166,4 +166,6 @@ MonoBehaviour:
   bypassDoor: 0
   kickForce: 7.5
   kickDamage: 30
+  damageDealt: 0
+  HitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
   timeSlow: {fileID: 0}
