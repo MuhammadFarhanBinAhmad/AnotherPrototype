@@ -67,20 +67,29 @@ public class EnemyMovement : MonoBehaviour
                             m_Agent.SetDestination(point);
                         }
                     }
+
+                    if (meleeAttackBehaviour != null)
+                    {
+                        meleeAttackBehaviour.isAttacking = false;
+                    }
+                    else if (rangeAttackBehaviour != null)
+                    {
+                        rangeAttackBehaviour.isAttacking = false;
+                    }
                     break;
                 }
                 case MODE.ATTACKING:
                 {
                     if (!isStunned)
                     {
-                        m_Agent.SetDestination(m_Target.position);
-                        if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
+                        //m_Agent.ResetPath();
+                        if (meleeAttackBehaviour != null)
                         {
-                            if (rangeAttackBehaviour != null)
-                                rangeAttackBehaviour.AttackPlayer();
-
-                            if (meleeAttackBehaviour != null)
-                                meleeAttackBehaviour.AttackPlayer();
+                            meleeAttackBehaviour.isAttacking = true;
+                        }
+                        else if (rangeAttackBehaviour != null)
+                        {
+                            rangeAttackBehaviour.isAttacking = true;
                         }
                     }
                     break;
@@ -170,9 +179,20 @@ public class EnemyMovement : MonoBehaviour
                         m_Target = collider.transform ;
                     }
                 }
+                else
+                {
+                    StartCoroutine(MustHaveBeenTheWind(collider));
+                }
             }
         }
     }
+
+    IEnumerator MustHaveBeenTheWind(Collider collider)
+    {
+        yield return new WaitForSeconds(2);
+        p_Mode = MODE.PATROL;
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
