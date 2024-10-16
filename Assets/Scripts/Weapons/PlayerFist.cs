@@ -32,6 +32,7 @@ public class PlayerFist : MonoBehaviour
     public PropGrab propGrab;
     public EnemyGrab enemyGrab;
     public float throwForce;
+    public bool canThrow = true;
 
     public Animator anim;
 
@@ -159,13 +160,13 @@ public class PlayerFist : MonoBehaviour
     {
         anim.SetTrigger("Throw");
 
-        if (propGrab != null)
+        if (propGrab != null && canThrow == true)
         {
             propGrab.Throw(throwForce);
             propGrab = null;
             isGrabbing = false;
         }
-        if (enemyGrab != null)
+        if (enemyGrab != null && canThrow == true)
         {
             enemyGrab.Throw(throwForce);
             enemyGrab = null;

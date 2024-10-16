@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject creditsPanel;
 
     public Animator animator;
-    public FadeAlpha fadeAlpha;
+    public FadeAlpha fadeBlackAlpha;
+    public float fadeBlackSpeed;
 
     private static GameManager _instance;
 
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
         
         if (activeScene.name == "Level 1")
         {
-            fadeAlpha.FadeOut();
+            fadeBlackAlpha.FadeOut(fadeBlackSpeed);
         }
     }
 
@@ -176,7 +177,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel1()
     {
-        fadeAlpha.FadeIn();
+        fadeBlackAlpha.FadeIn(fadeBlackSpeed);
         StartCoroutine(Level1Delay());
     }
     public IEnumerator Level1Delay()
