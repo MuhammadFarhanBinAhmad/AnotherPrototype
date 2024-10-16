@@ -86,7 +86,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                     break;
                 }
         }
-        if (isAttacking == true)
+        if (isAttacking == true && isLobotomised == false)
         {
             if (roomLeader == null)
             {

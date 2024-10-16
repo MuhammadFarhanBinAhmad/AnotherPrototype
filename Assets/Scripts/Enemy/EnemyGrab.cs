@@ -137,4 +137,19 @@ public class EnemyGrab : MonoBehaviour
             rb.MovePosition(enemyYeeter.transform.position);
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == ("Wall"))
+        {
+            playerFist.canThrow = false;
+        }
+    }
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == ("Wall"))
+        {
+            playerFist.canThrow = true;
+        }
+    }
 }

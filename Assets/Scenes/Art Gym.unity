@@ -17993,7 +17993,8 @@ MonoBehaviour:
   controlsPanel: {fileID: 0}
   creditsPanel: {fileID: 0}
   animator: {fileID: 0}
-  fadeAlpha: {fileID: 0}
+  fadeBlackAlpha: {fileID: 1146326522}
+  fadeBlackSpeed: 1
 --- !u!4 &815793099
 Transform:
   m_ObjectHideFlags: 0
@@ -24865,6 +24866,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_Health: 0
   p_MaxHealth: 100
+  hurtFadeAlpha: {fileID: 0}
+  hurtFlashSpeed: 0
+  hurtFlashDuration: 0
+  cameraAnimator: {fileID: 0}
+  deathFadeAlpha: {fileID: 0}
+  deathFlashSpeed: 0
+  blackFadeAlpha: {fileID: 0}
+  blackFlashSpeed: 0
+  playerArms: {fileID: 0}
 --- !u!114 &977527937
 MonoBehaviour:
   m_ObjectHideFlags: 0

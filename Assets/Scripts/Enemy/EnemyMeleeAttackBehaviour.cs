@@ -49,6 +49,8 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     public float e_ShockTimeLeft;
     private float e_ShockMultiplier = 1f;
 
+    public bool isLobotomised = false;
+
 
     private void Start()
     {
@@ -100,7 +102,7 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
                 }
         }
 
-        if (isAttacking == true)
+        if (isAttacking == true && isLobotomised == false)
         {
             if (roomManager.roomEnemies.Count == 1)
             {

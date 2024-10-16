@@ -9,6 +9,8 @@ public class FadeAlpha : MonoBehaviour
     [SerializeField] private bool fadeIn = false;
     [SerializeField] private bool fadeOut = false;
 
+    private float fadeSpeed = 1;
+
     public void Start()
     {
         Scene activeScene = SceneManager.GetActiveScene();
@@ -16,16 +18,18 @@ public class FadeAlpha : MonoBehaviour
         if (activeScene.name != "Main Menu")
         {
             myUIGroup.alpha = 1;
-            FadeOut();
+            FadeOut(1);
         }
     }
 
-    public void FadeIn()
+    public void FadeIn(float fadeInSpeed)
     {
+        fadeSpeed = fadeInSpeed;
         fadeIn = true;
     }
-    public void FadeOut()
+    public void FadeOut(float fadeOutSpeed)
     {
+        fadeSpeed = fadeOutSpeed;
         fadeOut = true;
     }
 
@@ -35,7 +39,7 @@ public class FadeAlpha : MonoBehaviour
         {
             if (myUIGroup.alpha < 1)
             {
-                myUIGroup.alpha += Time.deltaTime;
+                myUIGroup.alpha += Time.deltaTime * fadeSpeed;
                 if (myUIGroup.alpha >= 1)
                 {
                     fadeIn = false;
@@ -47,7 +51,7 @@ public class FadeAlpha : MonoBehaviour
         {
             if (myUIGroup.alpha >= 0)
             {
-                myUIGroup.alpha -= Time.deltaTime;
+                myUIGroup.alpha -= Time.deltaTime * fadeSpeed;
                 if (myUIGroup.alpha == 0)
                 {
                     fadeOut = false;

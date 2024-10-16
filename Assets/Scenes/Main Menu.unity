@@ -2425,8 +2425,9 @@ MonoBehaviour:
   mainMenu: {fileID: 1690773011}
   controlsPanel: {fileID: 2065239697}
   creditsPanel: {fileID: 846324348}
-  animator: {fileID: 844328249}
-  fadeAlpha: {fileID: 599423338}
+  animator: {fileID: 0}
+  fadeBlackAlpha: {fileID: 599423338}
+  fadeBlackSpeed: 1
 --- !u!4 &844328248
 Transform:
   m_ObjectHideFlags: 0
@@ -2454,7 +2455,7 @@ Animator:
   m_GameObject: {fileID: 844328246}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a48480e67cf18784d837c2c8e15bb9fa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 02880d6ac19e9d245b1a990cae43225e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
