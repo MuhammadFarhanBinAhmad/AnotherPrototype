@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -17,7 +18,9 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public NavMeshAgent m_Agent;
     public MODE p_Mode;
     public Transform player;
+    public Transform retreatPoint;
     public bool isAttacking = false;
+    public GameObject roomLeader;
     private float movementSpeed;
 
 
@@ -27,6 +30,11 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public Transform e_SpawnPos;
     public float e_RateOfAttack;
     float nexttime_ToFire;
+
+    public float shootDurationMax; // time enemy shoots for
+    private float shootDurationCurrent;
+    public float breakDuration; // time of each break
+    private bool canBreak = true;
 
     public bool e_GrenadeEnemy;
     public GameObject e_Grenade;
@@ -47,9 +55,12 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     private void Start()
     {
         m_Agent = GetComponent<NavMeshAgent>();
+        movementSpeed = m_Agent.speed;
         roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        movementSpeed = m_Agent.speed;
+        retreatPoint = player.transform.Find("EnemyRetreatPoint").transform;
+
+        shootDurationCurrent = shootDurationMax;
     }
 
     public void Update()
@@ -63,33 +74,36 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                 }
             case MODE.ENGAGE:
                 {
-                    m_Agent.speed = movementSpeed * 2.5f;
-                    //m_Agent.SetDestination(player.position);
+                    m_Agent.speed = movementSpeed;
+                    m_Agent.SetDestination(player.position);
                     AttackPlayer();
                     break;
                 }
-                //case MODE.DISENGAGE:
-                //    {
-                //m_Agent.speed = m_Agent.speed / 2;
-                //        if (!isStunned)
-                //        {
-                //            m_Agent.SetDestination(m_Target.position);
-                //            if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
-                //            {
-                //                if (rangeAttackBehaviour != null)
-                //                    rangeAttackBehaviour.AttackPlayer();
-
-                //                if (meleeAttackBehaviour != null)
-                //                    meleeAttackBehaviour.AttackPlayer();
-                //            }
-                //        }
-                //        break;
-                //    }
+            case MODE.DISENGAGE:
+                {
+                    m_Agent.speed = movementSpeed * 1.5f;
+                    m_Agent.SetDestination(retreatPoint.position);
+                    break;
+                }
         }
         if (isAttacking == true)
         {
-            AttackPlayer();
+            if (roomLeader == null)
+            {
+                p_Mode = MODE.DISENGAGE;
+                StartCoroutine(DisengageTimer());
+            }
+            else
+            {
+                p_Mode = MODE.ENGAGE;
+            }
         }
+        if (shootDurationCurrent <= 0 && canBreak == true)
+        {
+            canBreak = false;
+            StartCoroutine(ShootBreak());
+        }
+
 
         if (isShocked)
         {
@@ -110,10 +124,12 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
     public void AttackPlayer()
     {
+        shootDurationCurrent -= Time.deltaTime;
+
         m_Agent.SetDestination(player.position);
         if (isShocked == false && isLobotomised == false)
         {
-            if (Time.time >= nexttime_ToFire)
+            if (Time.time >= nexttime_ToFire && shootDurationCurrent >= 0)
             {
                 nexttime_ToFire = Time.time + 1f / e_weaponType.p_WeaponFireRate * e_ShockMultiplier;
                 if (e_GrenadeEnemy)
@@ -131,6 +147,19 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator ShootBreak()
+    {
+        yield return new WaitForSeconds(breakDuration);
+        shootDurationCurrent = shootDurationMax;
+        canBreak = true;
+    }
+
+    public IEnumerator DisengageTimer()
+    {
+        yield return new WaitForSeconds(1);
+        p_Mode = MODE.ENGAGE;
     }
 
     public void ShockEnemy()

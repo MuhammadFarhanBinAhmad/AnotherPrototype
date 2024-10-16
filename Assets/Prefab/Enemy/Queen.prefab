@@ -398,6 +398,7 @@ MonoBehaviour:
   burnTickEffect: {fileID: 0}
   shockTickEffect: {fileID: 0}
   playerFist: {fileID: 0}
+  roomManager: {fileID: 0}
 --- !u!114 &9060116034025686763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,10 +460,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e68151fa8f723645ae612034c620109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomManager: {fileID: 0}
+  m_Agent: {fileID: 0}
+  p_Mode: 0
+  player: {fileID: 0}
+  retreatPoint: {fileID: 0}
+  isAttacking: 0
+  roomLeader: {fileID: 0}
   e_weaponType: {fileID: 11400000, guid: 8025d6b8158a4e745945e768c4c97cb6, type: 2}
   e_Projectile: {fileID: 584065255677097293, guid: 5e8767b9300708f4895a5eeb53bdbc55, type: 3}
   e_SpawnPos: {fileID: 9060116034688404314}
   e_RateOfAttack: 2
+  shootDurationMax: 2
+  breakDuration: 4
   e_GrenadeEnemy: 0
   e_Grenade: {fileID: 0}
   e_ThrowForce: 0
@@ -601,6 +611,7 @@ MonoBehaviour:
   roomManager: {fileID: 0}
   dropKey: 0
   roomKey: {fileID: 2879703620406202734, guid: 6b819966f9729004089373af519ef60d, type: 3}
+  attackBehaviour: {fileID: 0}
 --- !u!114 &9060116034025686741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +630,7 @@ MonoBehaviour:
   isThrow: 0
   canGrab: 0
   enemyForceDetector: {fileID: 0}
+  enemyMaterials: []
 --- !u!114 &9060116034025686735
 MonoBehaviour:
   m_ObjectHideFlags: 0

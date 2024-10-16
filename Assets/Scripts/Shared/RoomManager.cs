@@ -39,12 +39,16 @@ public class RoomManager : MonoBehaviour
             {
                 if (leaderCount == 0)
                 {
-                    enemy.GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
+                    enemy.GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true; // assign a new leader
                     foreach (GameObject enemyy in roomEnemies)
                     {
-                        if (enemyy.GetComponent<EnemyMeleeAttackBehaviour>() != null)
+                        if (enemyy.GetComponent<EnemyMeleeAttackBehaviour>() != null) // tell all enemies who is the leader
                         {
-                            enemyy.GetComponent<EnemyMeleeAttackBehaviour>().roomLeader = enemy; // tell all enemies who is the leader
+                            enemyy.GetComponent<EnemyMeleeAttackBehaviour>().roomLeader = enemy;
+                        }
+                        if (enemyy.GetComponent<EnemyRangeAttackBehaviour>() != null) // tell all enemies who is the leader
+                        {
+                            enemyy.GetComponent<EnemyRangeAttackBehaviour>().roomLeader = enemy;
                         }
                     }
                     leaderCount += 1;

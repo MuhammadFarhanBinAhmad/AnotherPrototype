@@ -22,6 +22,7 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
     public NavMeshAgent m_Agent;
     public MODE p_Mode;
     public Transform player;
+    public Transform retreatPoint;
     public bool isAttacking = false;
     public bool isLeader = false;
     public GameObject roomLeader;
@@ -59,9 +60,10 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
         }
 
         m_Agent = GetComponent<NavMeshAgent>();
+        movementSpeed = m_Agent.speed;
         roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        movementSpeed = m_Agent.speed;
+        retreatPoint = player.transform.Find("EnemyRetreatPoint").transform;
     }
     
     public void Update()
@@ -90,28 +92,22 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
                     AttackPlayer();
                     break;
                 }
-                //case MODE.DISENGAGE:
-                //    {
-                //m_Agent.speed = m_Agent.speed / 2;
-                //        if (!isStunned)
-                //        {
-                //            m_Agent.SetDestination(m_Target.position);
-                //            if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
-                //            {
-                //                if (rangeAttackBehaviour != null)
-                //                    rangeAttackBehaviour.AttackPlayer();
-
-                //                if (meleeAttackBehaviour != null)
-                //                    meleeAttackBehaviour.AttackPlayer();
-                //            }
-                //        }
-                //        break;
-                //    }
+            case MODE.DISENGAGE:
+                {
+                    m_Agent.speed = movementSpeed * 1.5f;
+                    m_Agent.SetDestination(retreatPoint.position);
+                    break;
+                }
         }
 
         if (isAttacking == true)
         {
-            if (isLeader == true)
+            if (roomManager.roomEnemies.Count == 1)
+            {
+                p_Mode = MODE.DISENGAGE;
+                StartCoroutine(DisengageTimer());
+            }
+            else if (isLeader == true)
             {
                 p_Mode = MODE.ENGAGE;
             }
@@ -148,6 +144,12 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator DisengageTimer()
+    {
+        yield return new WaitForSeconds(2);
+        p_Mode = MODE.ENGAGE;
     }
 
     public void ShockEnemy()
