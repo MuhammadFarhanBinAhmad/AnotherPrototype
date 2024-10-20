@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     public float hurtFlashSpeed;
     public float hurtFlashDuration;
 
+    private bool hurtFlashBlocker = true;
+
     public Animator cameraAnimator;
     public FadeAlpha deathFadeAlpha;
     public float deathFlashSpeed;

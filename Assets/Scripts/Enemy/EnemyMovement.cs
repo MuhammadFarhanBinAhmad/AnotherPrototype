@@ -46,9 +46,14 @@ public class EnemyMovement : MonoBehaviour
 
         m_Agent.speed = s_MovementSpeed;
         //m_CenterPoint = gameObject.transform.parent; // there might be multiple centerpoints in 1 room
+        if (m_CenterPoint == null)
+        {
+            m_CenterPoint = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
         animator = GetComponent<Animator>();
-        if (animator == null) {
+        if (animator == null)
+        {
             animator = GetComponentInChildren<Animator>();
         }
     }
@@ -97,22 +102,25 @@ public class EnemyMovement : MonoBehaviour
         }
         if (isStunned)
         {
+            m_Agent.speed = 0;
             CountStunTimer();
         }
         if (isFrozen)
         {
+            m_Agent.speed = s_MovementSpeed / 2;
             CountFreezeTimer();
         }
-        if (animator != null) 
+        if (animator != null)
         {
             animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
+            animator.SetFloat("Speed", m_Agent.speed);
         }
     }
     public void StunEnemy()
     {
         isStunned = true;
         e_StunTimeLeft = e_StunTime;
-        m_Agent.speed = 0;
+        //m_Agent.speed = 0;
     }
     void CountStunTimer()
     {
@@ -130,7 +138,7 @@ public class EnemyMovement : MonoBehaviour
     {
         isFrozen = true;
         e_FreezeTimeLeft = e_FreezeTime;
-        m_Agent.speed = s_MovementSpeed / 2;
+        //m_Agent.speed = s_MovementSpeed / 2;
     }
     void CountFreezeTimer()
     {
@@ -189,7 +197,7 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator MustHaveBeenTheWind(Collider collider)
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(10);
         p_Mode = MODE.PATROL;
     }
 

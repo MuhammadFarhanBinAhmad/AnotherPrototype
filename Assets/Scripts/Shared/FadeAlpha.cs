@@ -15,7 +15,7 @@ public class FadeAlpha : MonoBehaviour
     {
         Scene activeScene = SceneManager.GetActiveScene();
 
-        if (activeScene.name != "Main Menu")
+        if (activeScene.name != "Main Menu" && myUIGroup.name == "BlackPanel")
         {
             myUIGroup.alpha = 1;
             FadeOut(1);

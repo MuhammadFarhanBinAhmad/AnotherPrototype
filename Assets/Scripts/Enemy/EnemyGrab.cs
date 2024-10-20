@@ -23,6 +23,8 @@ public class EnemyGrab : MonoBehaviour
 
     public List<Material> enemyMaterials;
 
+    public Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,12 @@ public class EnemyGrab : MonoBehaviour
         if (gameObject.GetComponentInChildren<SkinnedMeshRenderer>() != null )
         {
             enemyMaterials = GetComponentInChildren<SkinnedMeshRenderer>().materials.ToList();
+        }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
         }
     }
 
@@ -78,6 +86,8 @@ public class EnemyGrab : MonoBehaviour
     public void Grab(Transform objectGrabPoint)
     {
         ToggleAI();
+        animator.SetFloat("Remaining Distance", 0);
+        animator.SetFloat("Speed", 0);
         enemyForceDetector.CheckElement();
         this.objectGrabPoint = objectGrabPoint;
         rb.useGravity = false;
