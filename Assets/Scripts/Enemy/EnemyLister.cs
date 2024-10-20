@@ -14,7 +14,10 @@ public class EnemyLister : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        if (gameObject.transform.parent != null)
+        {
+            roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        }
         enemyHealth = GetComponent<EnemyHealth>();
 
         if (roomManager != null)

@@ -21,7 +21,8 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public Transform retreatPoint;
     public bool isAttacking = false;
     public GameObject roomLeader;
-    private float movementSpeed;
+    private float defaultSpeed;
+    private EnemyMovement EnemyMovement;
 
 
     public WeaponType e_weaponType;
@@ -55,37 +56,48 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     private void Start()
     {
         m_Agent = GetComponent<NavMeshAgent>();
-        movementSpeed = m_Agent.speed;
-        roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        EnemyMovement = GetComponent<EnemyMovement>();
+        defaultSpeed = m_Agent.speed;
+        if (gameObject.transform.parent != null)
+        {
+            roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        }
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        retreatPoint = player.transform.Find("EnemyRetreatPoint").transform;
+
+        retreatPoint = player.transform.Find("EnemyWaypoints/EnemyRetreatPoint");
 
         shootDurationCurrent = shootDurationMax;
     }
 
     public void Update()
     {
-        switch (p_Mode)
+        if (EnemyMovement.enabled == true)
         {
-            case MODE.PASSIVE:
-                {
-                    m_Agent.speed = movementSpeed;
-                    break;
-                }
-            case MODE.ENGAGE:
-                {
-                    m_Agent.speed = movementSpeed;
-                    m_Agent.SetDestination(player.position);
-                    AttackPlayer();
-                    break;
-                }
-            case MODE.DISENGAGE:
-                {
-                    m_Agent.speed = movementSpeed * 1.5f;
-                    m_Agent.SetDestination(retreatPoint.position);
-                    break;
-                }
+            switch (p_Mode)
+            {
+                case MODE.PASSIVE:
+                    {
+                        m_Agent.speed = defaultSpeed;
+                        break;
+                    }
+                case MODE.ENGAGE:
+                    {
+                        transform.LookAt(player.position);
+                        m_Agent.speed = defaultSpeed;
+                        m_Agent.SetDestination(player.position);
+                        AttackPlayer();
+                        break;
+                    }
+                case MODE.DISENGAGE:
+                    {
+                        transform.LookAt(player.position);
+                        m_Agent.speed = defaultSpeed * 1.5f;
+                        m_Agent.SetDestination(retreatPoint.position);
+                        break;
+                    }
+            }
         }
+
         if (isAttacking == true && isLobotomised == false)
         {
             if (roomLeader == null)
@@ -98,6 +110,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                 p_Mode = MODE.ENGAGE;
             }
         }
+
         if (shootDurationCurrent <= 0 && canBreak == true)
         {
             canBreak = false;

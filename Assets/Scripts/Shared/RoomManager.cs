@@ -13,7 +13,6 @@ public class RoomManager : MonoBehaviour
     public int doorCount;
 
     public int leaderCount = 0;
-    public float flankRadius;
     public Transform player;
 
 

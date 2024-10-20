@@ -35,7 +35,10 @@ public class EnemyHealth : MonoBehaviour
         health = maxHealth;
 
         playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
-        roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        if (gameObject.transform.parent != null)
+        {
+            roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
+        }
     }
     public void TakeDamage(int dmg)
     {
