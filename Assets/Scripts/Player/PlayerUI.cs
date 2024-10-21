@@ -14,6 +14,8 @@ public class PlayerUI : MonoBehaviour
 
     [Header("HealthUI")]
     public Image i_Healthbar;
+    public Image i_WhiteHealthbar;
+    private float lerpSpeed = 0.05f;
 
     [Header("WeaponUI")]
     public TextMeshProUGUI t_WeaponName;
@@ -89,15 +91,25 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    //public void SlowDownUI()
-    //{
-    //    i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
-    //}
 
     public void KickDoorUI(string text)
     {
         t_KickDoor.text = text;
     }
+
+    private void LateUpdate()
+    {
+        if (i_Healthbar.fillAmount != i_WhiteHealthbar.fillAmount)
+        {
+            i_WhiteHealthbar.fillAmount = Mathf.Lerp(i_WhiteHealthbar.fillAmount, i_Healthbar.fillAmount, lerpSpeed);
+        }
+    }
+
+    //public void SlowDownUI()
+    //{
+    //    i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
+    //}
+
     public void UpdateGrenadeUI()
     {
 /*        t_CurrGrenadeRemaining.text = "x" + s_PlayerWeaponManager.p_GrenadeRemaining;

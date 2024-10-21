@@ -150,7 +150,7 @@ public class PlayerFist : MonoBehaviour
                 if (enemyGrab.canGrab == true)
                 {
                     isGrabbing = true;
-                    enemyGrab.Grab(objectGrabPoint);
+                    enemyGrab.Grab(objectGrabPoint); // queen model/prefab not in yet, anim parameter dont exist
                 }
             }
         }

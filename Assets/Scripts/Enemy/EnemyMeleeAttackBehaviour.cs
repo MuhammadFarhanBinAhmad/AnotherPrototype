@@ -247,6 +247,12 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
         }
 
         canSetFlank = false;
+        StartCoroutine(ResetFlank());
+    }
+    public IEnumerator ResetFlank()
+    {
+        yield return new WaitForSeconds(8);
+        canSetFlank = true;
     }
 
     void OnDrawGizmos()

@@ -86,12 +86,12 @@ public class EnemyGrab : MonoBehaviour
     public void Grab(Transform objectGrabPoint)
     {
         ToggleAI();
-        animator.SetFloat("Remaining Distance", 0);
-        animator.SetFloat("Speed", 0);
+        //animator.SetFloat("Remaining Distance", 0);
         enemyForceDetector.CheckElement();
         this.objectGrabPoint = objectGrabPoint;
         rb.useGravity = false;
         playerFist.anim.SetTrigger("Grab");
+        animator.SetFloat("Speed", 0);
     }
 
     public void Throw(float throwForce)

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public FadeAlpha fadeBlackAlpha;
     public float fadeBlackSpeed;
 
+    public Animator menuAnimator;
+
     private static GameManager _instance;
 
     public static GameManager Instance
@@ -182,6 +184,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator Level1Delay()
     {
+        menuAnimator.SetTrigger("Play");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Level 1");
     }
