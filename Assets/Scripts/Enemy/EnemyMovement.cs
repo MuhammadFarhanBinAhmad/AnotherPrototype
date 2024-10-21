@@ -197,7 +197,7 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator MustHaveBeenTheWind(Collider collider)
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(6);
         p_Mode = MODE.PATROL;
     }
 

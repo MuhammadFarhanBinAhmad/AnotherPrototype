@@ -10,11 +10,14 @@ public class EnemyStatus : MonoBehaviour
     public float stacks;
     public float maxStacks;
 
-    public float startingDecay;
-    public float currentDecay;
+    private float startingDecay = 4f; // how long it takes for element to decay
+    private float currentDecay;
+    private bool dropStacks = false; // element hard drop after bar is filled
 
     private string newElementType;
     private string currentElementType;
+
+    private bool canFlashBar = true;
 
     [Header("Checks")]
     public bool isStunned = false;
@@ -26,6 +29,7 @@ public class EnemyStatus : MonoBehaviour
     public float burnRecovery;
     public float shockRecovery;
     public float freezeRecovery;
+    private bool canResetState = true;
     private bool firstBullet = true;
 
     [Header("Effects")]
@@ -52,11 +56,13 @@ public class EnemyStatus : MonoBehaviour
     public EnemyMeleeAttackBehaviour enemyMeleeAttackBehaviour;
     public EnemyRangeAttackBehaviour enemyRangeAttackBehaviour;
 
+    public Animator statusAnimator;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        ResetStacks();
+        //ResetStacks();
         enemyGrab = gameObject.GetComponent<EnemyGrab>();
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         enemyMovement = gameObject.GetComponent<EnemyMovement>();
@@ -92,11 +98,21 @@ public class EnemyStatus : MonoBehaviour
                 stacks = Mathf.Lerp(stacks, 0, Time.deltaTime * 1f);
             }
         }
+        if (dropStacks == true)
+        {
+            stacks -= Time.deltaTime * 200;
+            if (stacks < 0)
+            {
+                stacks = 0;
+                dropStacks = false;
+            }
+        }
         e_EnemyUI.UpdateEnemyStatus(currentElementType);
     }
 
     public void AssignElement(string elementType)
     {
+        currentDecay = startingDecay;
         currentElementType = elementType;
         StartCoroutine(CheckElement(elementType));
     }
@@ -108,8 +124,8 @@ public class EnemyStatus : MonoBehaviour
 
         if (newElementType != currentElementType) // if new element is different
         {
-            ResetStacks();
             currentElementType = newElementType;
+            ResetStacks();
         }
     }
 
@@ -119,7 +135,10 @@ public class EnemyStatus : MonoBehaviour
         isBurnt = false;
         isShocked = false;
         isFrozen = false;
-        stacks = 0;
+        //stacks = 0;
+        dropStacks = true;
+        canFlashBar = true;
+
         currentDecay = startingDecay;
     }
 
@@ -143,6 +162,7 @@ public class EnemyStatus : MonoBehaviour
         }
     }
 
+    #region Element Status Stuff
     public void Stunned()
     {
         isStunned = true;
@@ -159,9 +179,14 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
+        statusAnimator.SetTrigger("Pulse");
 
         recoveryTime = stunRecovery;
-        StartCoroutine(ResetState());
+        if (canResetState == true)
+        {
+            canResetState = false;
+            StartCoroutine(ResetState());
+        }
     }
     public void Burnt()
     {
@@ -179,9 +204,14 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
+        statusAnimator.SetTrigger("Pulse");
 
         recoveryTime = burnRecovery;
-        StartCoroutine(ResetState());
+        if (canResetState == true)
+        {
+            canResetState = false;
+            StartCoroutine(ResetState());
+        }
     }
     public void Shocked()
     {
@@ -206,9 +236,14 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
+        statusAnimator.SetTrigger("Pulse");
 
         recoveryTime = shockRecovery;
-        StartCoroutine(ResetState());
+        if (canResetState == true)
+        {
+            canResetState = false;
+            StartCoroutine(ResetState());
+        }
     }
     public void Frozen()
     {
@@ -226,13 +261,26 @@ public class EnemyStatus : MonoBehaviour
             effect.transform.parent = gameObject.transform;
             canSpawnEffect = false;
         }
+        statusAnimator.SetTrigger("Pulse");
 
         recoveryTime = freezeRecovery;
-        StartCoroutine(ResetState());
+        if (canResetState == true)
+        {
+            canResetState = false;
+            StartCoroutine(ResetState());
+        }
     }
+    #endregion
 
     public IEnumerator ResetState()
     {
+        //yield return new WaitForSeconds(recoveryTime - 2.25f);
+        //if (canFlashBar == true)
+        //{
+        //    canFlashBar = false;    
+        //    StartCoroutine(e_EnemyUI.FlashStatusBar());
+        //}
+        //yield return new WaitForSeconds(2.25f);
         yield return new WaitForSeconds(recoveryTime);
 
         isStunned = false;
@@ -241,6 +289,7 @@ public class EnemyStatus : MonoBehaviour
         isFrozen = false;
         enemyGrab.canGrab = false;
 
+        canResetState = true;
         currentDecay = startingDecay;
         firstBullet = true;
         ResetStacks();

@@ -21,7 +21,32 @@ ModelImporter:
   - first:
       74: -4022676994518985712
     second: Bones|Run
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arm_type
+    second: {fileID: 2100000, guid: 609bdd5e63258754f8fb412d28ac0296, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arm_type_joint
+    second: {fileID: 2100000, guid: ccee57231f0d0584f837b715318afc5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: default
+    second: {fileID: 2100000, guid: c7028834c10809a42bb8339c235892f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye
+    second: {fileID: 2100000, guid: 5287d84337d53d341a6e3c55045e0ba9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: joints
+    second: {fileID: 2100000, guid: b018d999b7af90b4f970521d0878a60e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

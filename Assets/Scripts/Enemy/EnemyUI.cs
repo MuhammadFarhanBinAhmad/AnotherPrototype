@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class EnemyUI : MonoBehaviour
 {
     public Image e_HealthUI;
+    public Image e_WhiteHealthUI;
     EnemyHealth e_Health;
+    private float lerpSpeed = 0.05f;
 
     public Image e_StatusUI;
     EnemyStatus e_Status;
@@ -58,9 +60,25 @@ public class EnemyUI : MonoBehaviour
             e_StatusUI.color = freezeColour;
         }
     }
+    public IEnumerator FlashStatusBar()
+    {
+        Color currentColour = e_StatusUI.color;
+        e_StatusUI.color = Color.white;
+        yield return new WaitForSeconds(0.75f);
+        e_StatusUI.color = currentColour;
+        yield return new WaitForSeconds(0.75f);
+        e_StatusUI.color = Color.white;
+        yield return new WaitForSeconds(0.75f);
+        e_StatusUI.color = currentColour;
+    }
 
     private void LateUpdate()
     {
+        if (e_HealthUI.fillAmount != e_WhiteHealthUI.fillAmount)
+        {
+            e_WhiteHealthUI.fillAmount = Mathf.Lerp(e_WhiteHealthUI.fillAmount, e_HealthUI.fillAmount, lerpSpeed);
+        }
+
         transform.LookAt(transform.position + cam.forward);
     }
 }

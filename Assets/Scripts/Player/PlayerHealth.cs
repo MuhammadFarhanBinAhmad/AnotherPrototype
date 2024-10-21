@@ -81,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerCamera.enabled = false;
         playerArms.SetActive(false);
+        cameraAnimator.enabled = true;
         cameraAnimator.SetTrigger("Dead");
         deathFadeAlpha.FadeIn(deathFlashSpeed);
         yield return new WaitForSeconds(3);
