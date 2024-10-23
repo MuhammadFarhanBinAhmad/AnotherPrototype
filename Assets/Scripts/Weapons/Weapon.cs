@@ -45,7 +45,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         Vector3 spawnOffset = new Vector3(-0.5f, -0.25f, 0f);
-        GameObject m = Instantiate(p_WeaponModel, transform.position + spawnOffset, transform.rotation); // generate weapon model
+        GameObject m = Instantiate(p_WeaponModel, transform.position, transform.rotation); // generate weapon model
         m.transform.parent = gameObject.transform;
 
         if (p_WeaponType != null)
