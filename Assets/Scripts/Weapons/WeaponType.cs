@@ -8,6 +8,7 @@ public class WeaponType : ScriptableObject
     [Header("General")]
     public string p_WeaponName;
     public GameObject p_WeaponModel;
+    public Material p_WeaponMaterial;
 
     [Header("ShootProperties")]
     public int p_TotalAmmo;

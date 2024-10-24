@@ -12,6 +12,12 @@ public class Weapon : MonoBehaviour
     [Header("General")]
     public string p_WeaponName;
     public GameObject p_WeaponModel;
+    public Material p_WeaponMaterial;
+
+    public Color stunColour = new Color(175f, 255f, 0f, 255f);
+    public Color burnColour = new Color(255f, 150f, 0f, 255f);
+    public Color shockColour = new Color(150f, 0f, 200f, 255f);
+    public Color freezeColour = new Color(0f, 255f, 255f, 255f);
 
     [Header("ShootProperties")]
     public int p_TotalAmmo;
@@ -46,6 +52,8 @@ public class Weapon : MonoBehaviour
     {
         Vector3 spawnOffset = new Vector3(-0.5f, -0.25f, 0f);
         GameObject m = Instantiate(p_WeaponModel, transform.position, transform.rotation); // generate weapon model
+        //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+        p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
         m.transform.parent = gameObject.transform;
 
         if (p_WeaponType != null)
@@ -65,6 +73,7 @@ public class Weapon : MonoBehaviour
             p_ProjectileElement = p_WeaponType.p_ProjectileElement;
             p_ElementStackOnHit = p_WeaponType.p_ElementStackOnHit;
             p_WeaponModel = p_WeaponType.p_WeaponModel;
+            p_WeaponMaterial = p_WeaponType.p_WeaponMaterial;
             p_GunShotAudio = p_WeaponType.p_GunShotAudio;
             p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
             p_GunActionAudio = p_WeaponType.p_GunActionAudio;
@@ -89,6 +98,7 @@ public class Weapon : MonoBehaviour
         p_ProjectileElement = p_WeaponType.p_ProjectileElement;
         p_ElementStackOnHit = p_WeaponType.p_ElementStackOnHit;
         p_WeaponModel = p_WeaponType.p_WeaponModel;
+        p_WeaponMaterial = p_WeaponType.p_WeaponMaterial;
         p_GunShotAudio = p_WeaponType.p_GunShotAudio;
         p_GunPickupAudio = p_WeaponType.p_GunPickupAudio;
         p_GunActionAudio = p_WeaponType.p_GunActionAudio;
@@ -112,6 +122,7 @@ public class Weapon : MonoBehaviour
         p_ProjectileElement = wt.p_ProjectileElement;
         p_ElementStackOnHit = wt.p_ElementStackOnHit;
         p_WeaponModel = wt.p_WeaponModel;
+        p_WeaponMaterial = wt.p_WeaponMaterial;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;
         p_GunActionAudio = wt.p_GunActionAudio;
@@ -124,7 +135,10 @@ public class Weapon : MonoBehaviour
         {
             //other.GetComponent<PlayerMovement>().PlayerWeapon.SetActive(true);
             FindObjectOfType<PlayerWeaponManager>().pickupWeapon = this;
-            FindObjectOfType<PlayerUI>().PickUpWeaponUI(p_WeaponName);
+            if (p_WeaponName != null)
+            {
+                FindObjectOfType<PlayerUI>().PickUpWeaponUI(p_WeaponName);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -133,6 +147,30 @@ public class Weapon : MonoBehaviour
         {
             FindObjectOfType<PlayerWeaponManager>().pickupWeapon = null;
             FindObjectOfType<PlayerUI>().PickUpWeaponUI(null);
+        }
+    }
+
+    public void AssignModelColour(Material weaponMaterial, string element)
+    {
+        if (element == null)
+        {
+            return;
+        }
+        if (element.Contains("Stun"))
+        {
+            weaponMaterial.color = stunColour;
+        }
+        else if (element.Contains("Burn"))
+        {
+            weaponMaterial.color = burnColour;
+        }
+        else if (element.Contains("Shock"))
+        {
+            weaponMaterial.color = shockColour;
+        }
+        else if (element.Contains("Freeze"))
+        {
+            weaponMaterial.color = freezeColour;
         }
     }
 }

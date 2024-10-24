@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerWeaponManager : MonoBehaviour
@@ -9,7 +10,13 @@ public class PlayerWeaponManager : MonoBehaviour
     [Header("General")]
     public string p_WeaponName;
     public GameObject p_WeaponModel;
+    public Material p_WeaponMaterial;
     public Transform p_Spawnpos; // spawnpoint for both weapons and projectiles
+
+    public Color stunColour = new Color(175f, 255f, 0f, 255f);
+    public Color burnColour = new Color(255f, 150f, 0f, 255f);
+    public Color shockColour = new Color(150f, 0f, 200f, 255f);
+    public Color freezeColour = new Color(0f, 255f, 255f, 255f);
 
     [Header("ShootProperties")]
     public int p_TotalAmmo;
@@ -89,6 +96,8 @@ public class PlayerWeaponManager : MonoBehaviour
         if (WeaponEquipped)
         {
             GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
+            //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+            p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
             Weapon weapon = w.GetComponent<Weapon>();
             weapon.p_WeaponName = p_WeaponName;
             weapon.p_WeaponFireRate = p_WeaponFireRate;
@@ -105,6 +114,7 @@ public class PlayerWeaponManager : MonoBehaviour
             weapon.p_ProjectileElement = p_ProjectileElement;
             weapon.p_ElementStackOnHit = p_ElementStackOnHit;
             weapon.p_WeaponModel = p_WeaponModel;
+            weapon.p_WeaponMaterial = p_WeaponMaterial;
             weapon.p_GunShotAudio = p_GunShotAudio;
             weapon.p_GunPickupAudio = p_GunPickupAudio;
             weapon.p_GunActionAudio = p_GunActionAudio;
@@ -127,6 +137,7 @@ public class PlayerWeaponManager : MonoBehaviour
         p_ProjectileElement = wt.p_ProjectileElement;
         p_ElementStackOnHit = wt.p_ElementStackOnHit;
         p_WeaponModel = wt.p_WeaponModel;
+        p_WeaponMaterial = wt.p_WeaponMaterial;
         p_GunShotAudio = wt.p_GunShotAudio;
         p_GunPickupAudio = wt.p_GunPickupAudio;
         p_GunActionAudio = wt.p_GunActionAudio;
@@ -138,6 +149,8 @@ public class PlayerWeaponManager : MonoBehaviour
         //knifeObject.SetActive(false);
         currWeaponObject.SetActive(true);
         GameObject m = Instantiate(p_WeaponModel, currWeaponObject.transform.position, currWeaponObject.transform.rotation); // generate weapon model
+        p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
+        //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
         m.transform.parent = currWeaponObject.transform;
         initialWeapon = m;
         s_PlayerUI.PickUpWeaponUI(null);
@@ -163,6 +176,7 @@ public class PlayerWeaponManager : MonoBehaviour
         p_ProjectileElement = null;
         p_ElementStackOnHit = 0;
         p_WeaponModel = null;
+        p_WeaponMaterial = null;
         p_GunShotAudio = null;
         p_GunPickupAudio = null;
         p_GunActionAudio = null;
@@ -337,8 +351,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void ThrowWeapon()
     {
-        GameObject w = Instantiate(WeaponObject,p_Spawnpos.position, p_Spawnpos.rotation);
-        Weapon weapon =  w.GetComponent<Weapon>();
+        GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
+        //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+        p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
+        Weapon weapon = w.GetComponent<Weapon>();
         weapon.p_WeaponName = p_WeaponName;
         weapon.p_WeaponFireRate = p_WeaponFireRate;
         weapon.p_WeaponChargeRate = p_WeaponChargeRate;
@@ -354,6 +370,7 @@ public class PlayerWeaponManager : MonoBehaviour
         weapon.p_ProjectileElement = p_ProjectileElement;
         weapon.p_ElementStackOnHit = p_ElementStackOnHit;
         weapon.p_WeaponModel = p_WeaponModel;
+        weapon.p_WeaponMaterial = p_WeaponMaterial;
         weapon.p_GunShotAudio = p_GunShotAudio;
         weapon.p_GunPickupAudio = p_GunPickupAudio;
         weapon.p_GunActionAudio = p_GunActionAudio;
@@ -367,10 +384,34 @@ public class PlayerWeaponManager : MonoBehaviour
         if (initialWeapon != null)
         {
             Destroy(initialWeapon);
-        }    
+        }
 
         //knifeObject.SetActive(true);
         currWeaponObject.SetActive(false);
+    }
+
+    public void AssignModelColour(Material weaponMaterial, string element)
+    {
+        if (element == null)
+        {
+            return;
+        }
+        if (element.Contains("Stun"))
+        {
+            weaponMaterial.color = stunColour;
+        }
+        else if (element.Contains("Burn"))
+        {
+            weaponMaterial.color = burnColour;
+        }
+        else if (element.Contains("Shock"))
+        {
+            weaponMaterial.color = shockColour;
+        }
+        else if (element.Contains("Freeze"))
+        {
+            weaponMaterial.color = freezeColour;
+        }
     }
 
     public void GodMode()
