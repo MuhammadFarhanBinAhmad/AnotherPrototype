@@ -113,7 +113,10 @@ public class PlayerUI : MonoBehaviour
 
     public void Update()
     {
-        transform.position = Vector3.MoveTowards(anchor.transform.position, anchor.position, 0.1f);
+        if (anchor != null)
+        {
+            transform.position = Vector3.MoveTowards(anchor.transform.position, anchor.position, 0.1f);
+        }
         //transform.position = Vector3.Lerp(startPos, endPos, lerpSpeed);
         gameObject.transform.LookAt(transform.position + cam.forward);
     }

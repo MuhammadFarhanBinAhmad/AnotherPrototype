@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public bool gamePaused = false;
     public GameObject mainMenu;
-    public GameObject controlsPanel;
+    public GameObject optionsPanel;
+    public GameObject keybindsPanel;
     public GameObject creditsPanel;
 
     public Animator animator;
@@ -45,9 +46,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
-        if (controlsPanel != null)
+        if (optionsPanel != null)
         {
-            controlsPanel.SetActive(false);
+            optionsPanel.SetActive(false);
+        }
+        if (keybindsPanel != null)
+        {
+            keybindsPanel.SetActive(false);
         }
         if (creditsPanel != null)
         {
@@ -101,6 +106,10 @@ public class GameManager : MonoBehaviour
 
         if (activeScene.name != "Main Menu")
         {
+            optionsPanel.SetActive(false);
+            keybindsPanel.SetActive(false);
+            creditsPanel.SetActive(false);
+
             if (pauseMenu.activeSelf == false) // pause game
             {
                 pauseMenu.SetActive(true);
@@ -136,9 +145,13 @@ public class GameManager : MonoBehaviour
 
         if (activeScene.name == "Main Menu")
         {
-            if (controlsPanel != null)
+            if (optionsPanel != null)
             {
-                controlsPanel.SetActive(false);
+                optionsPanel.SetActive(false);
+            }
+            if (keybindsPanel != null)
+            {
+                keybindsPanel.SetActive(false);
             }
             if (creditsPanel != null)
             {
@@ -151,19 +164,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DisplayControls()
+    #region Display Panels
+    public void DisplayOptions()
     {
-        if (controlsPanel.activeSelf == false)
+        if (optionsPanel.activeSelf == false)
         {
-            controlsPanel.SetActive(true);
+            optionsPanel.SetActive(true);
         }
         else
         {
-            controlsPanel.SetActive(false);
+            optionsPanel.SetActive(false);
         }
+        keybindsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
-
+    public void DisplayKeybinds()
+    {
+        if (keybindsPanel.activeSelf == false)
+        {
+            keybindsPanel.SetActive(true);
+        }
+        else
+        {
+            keybindsPanel.SetActive(false);
+        }
+        optionsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+    }
     public void DisplayCredits()
     {
         if (creditsPanel.activeSelf == false)
@@ -174,12 +201,26 @@ public class GameManager : MonoBehaviour
         {
             creditsPanel.SetActive(false);
         }
-        controlsPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        keybindsPanel.SetActive(false);
     }
+    #endregion
 
     public void LoadLevel1()
     {
         fadeBlackAlpha.FadeIn(fadeBlackSpeed);
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(false);
+        }
+        if (keybindsPanel != null)
+        {
+            keybindsPanel.SetActive(false);
+        }
+        if (creditsPanel != null)
+        {
+            creditsPanel.SetActive(false);
+        }
         StartCoroutine(Level1Delay());
     }
     public IEnumerator Level1Delay()
