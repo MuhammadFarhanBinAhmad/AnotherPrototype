@@ -270,6 +270,7 @@ public class PlayerWeaponManager : MonoBehaviour
             {
                 if (Input.GetMouseButton(1) && p_TotalAmmo > 0) // charging weapon
                 {
+                    transform.position = Vector3.MoveTowards(transform.position, recoilEndPos.position, 0.5f);
                     if (p_GunShotAudio != null)
                     {
                         GetComponent<AudioSource>().PlayOneShot(p_GunActionAudio);
