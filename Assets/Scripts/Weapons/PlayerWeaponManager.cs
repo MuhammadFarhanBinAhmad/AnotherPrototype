@@ -12,6 +12,8 @@ public class PlayerWeaponManager : MonoBehaviour
     public GameObject p_WeaponModel;
     public Material p_WeaponMaterial;
     public Transform p_Spawnpos; // spawnpoint for both weapons and projectiles
+    public Transform recoilEndPos; // pos manager moves towards when shooting
+    public Transform recoilStartPos;
 
     public Color stunColour = new Color(175f, 255f, 0f, 255f);
     public Color burnColour = new Color(255f, 150f, 0f, 255f);
@@ -89,7 +91,6 @@ public class PlayerWeaponManager : MonoBehaviour
         startingRotation.z = p_Spawnpos.transform.rotation.z;
 
         o_TotalAmmo = p_TotalAmmo;
-        //currSlowDownTime = maxSlowDownTime;
     }
     public void ChangeWeapon(Weapon wt)
     {
@@ -200,6 +201,7 @@ public class PlayerWeaponManager : MonoBehaviour
             {
                 ChangeWeapon(pickupWeapon);
                 playerFist.anim.SetTrigger("Swap");
+                s_PlayerUI.blankAmmo = false;
 
                 if (pickupWeapon.p_GunPickupAudio != null)
                 {
@@ -207,6 +209,15 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
             }
         }
+
+        transform.position = Vector3.MoveTowards(transform.position, recoilStartPos.position, 0.05f);
+
+        //if (Input.GetMouseButton(1))
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, recoilEndPos.position, 0.1f);
+        //}
+
+        #region CheatKeys
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -233,21 +244,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             GodMode();
         }
-
-
-
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    if (!isSlowDown && currSlowDownTime > 0)
-        //        StartSlowDownTime();
-        //    else
-        //        StopSlowDownTime();
-        //}
-
-        //if (isSlowDown)
-        //{
-        //    ActivateSlowDownEffect();
-        //}
+        #endregion
     }
 
     public void CheckFireMode()
@@ -258,6 +255,7 @@ public class PlayerWeaponManager : MonoBehaviour
             {
                 if (Input.GetMouseButton(1) && Time.time >= nexttime_ToFire && p_TotalAmmo > 0) // automated weapon
                 {
+                    transform.position = Vector3.MoveTowards(transform.position, recoilEndPos.position, 0.5f);
                     nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
                     Shoot();
                     p_TotalAmmo--;
@@ -312,6 +310,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             if (playerFist.isGrabbing == false)
             {
+                transform.position = Vector3.MoveTowards(transform.position, recoilEndPos.position, 0.5f);
                 nexttime_ToFire = Time.time + 1f / p_WeaponFireRate;
                 Shoot();
                 p_TotalAmmo--;
@@ -322,6 +321,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void Shoot()
     {
+        //transform.position = Vector3.MoveTowards(transform.position, recoilEndPos.position, 0.1f);
+
         for (int bulletCount = p_BulletCount; bulletCount > 0; bulletCount--)
         {
             if (p_BulletCount > 1) // more than 1 bullet, randomise spread
@@ -389,6 +390,7 @@ public class PlayerWeaponManager : MonoBehaviour
         //knifeObject.SetActive(true);
         currWeaponObject.SetActive(false);
     }
+
 
     public void AssignModelColour(Material weaponMaterial, string element)
     {

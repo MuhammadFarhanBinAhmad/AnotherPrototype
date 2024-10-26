@@ -31,6 +31,7 @@ public class PlayerFist : MonoBehaviour
     public float grabDistance;
     public PropGrab propGrab;
     public EnemyGrab enemyGrab;
+    public GameObject grabCrosshair;
     public float throwForce;
     public bool canThrow = true;
 

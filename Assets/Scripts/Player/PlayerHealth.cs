@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     public float blackFlashSpeed;
     public PlayerCamera playerCamera;
     public GameObject playerArms;
+    public PlayerMovement playerMovement;
 
 
     private void Start()
@@ -79,9 +80,12 @@ public class PlayerHealth : MonoBehaviour
     }
     public IEnumerator Die()
     {
+        playerMovement.enabled = false;
         playerCamera.enabled = false;
         playerArms.SetActive(false);
         cameraAnimator.enabled = true;
+        s_PlayerUI.blankAmmo = true;
+
         cameraAnimator.SetTrigger("Dead");
         deathFadeAlpha.FadeIn(deathFlashSpeed);
         yield return new WaitForSeconds(3);

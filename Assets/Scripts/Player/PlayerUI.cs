@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerUI : MonoBehaviour
 {
-
     PlayerHealth s_PlayerHealth;
     PlayerWeaponManager s_PlayerWeaponManager;
     PlayerSkills s_PlayerSkills;
@@ -22,20 +23,22 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI t_CurrAmmoLeft;
     public TextMeshProUGUI t_WeaponElement;
     public TextMeshProUGUI t_CurrGrenadeRemaining;
+    public bool blankAmmo = true;
 
-    [Header("EXPUI")]
-    public Image i_EXP;
-    public TextMeshProUGUI t_EXP;
-    public TextMeshProUGUI t_CurrentLevel;
-
-    [Header("SlowDownUI")]
+    [Header("UIText")]
     public Image i_SlowDownImage;
-
-    [Header("KickDoorUI")]
     public TextMeshProUGUI t_KickDoor;
-
     public TextMeshProUGUI t_PickUpWeapon;
 
+    [Header("FollowBehaviour")]
+    public GameObject HUDCanvas;
+    public Transform cam;
+    //public Vector3 startPos;
+    //public Vector3 endPos;
+    public Transform anchor;
+
+
+    [Header("Colours")]
     public Color stunColour;
     public Color burnColour;
     public Color shockColour;
@@ -46,6 +49,9 @@ public class PlayerUI : MonoBehaviour
         s_PlayerHealth = FindObjectOfType<PlayerHealth>();
         s_PlayerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
         s_PlayerSkills = FindObjectOfType<PlayerSkills>();
+        cam = Camera.main.transform;
+        //startPos = transform.position;
+        //endPos = anchor.position;
     }
     public void UpdateHealthUI()
     {
@@ -62,7 +68,15 @@ public class PlayerUI : MonoBehaviour
     public void UpdateWeaponUI()
     {
         t_WeaponName.text = s_PlayerWeaponManager.p_WeaponName;
-        t_CurrAmmoLeft.text = "Ammo: " + s_PlayerWeaponManager.p_TotalAmmo; 
+        if (blankAmmo == true)
+        {
+            t_CurrAmmoLeft.text = "";
+        }
+        else
+        {
+            t_CurrAmmoLeft.text = "" + s_PlayerWeaponManager.p_TotalAmmo;
+        }
+
         t_WeaponElement.text = s_PlayerWeaponManager.p_ProjectileElement;
 
         if (s_PlayerWeaponManager.WeaponEquipped == true)
@@ -97,6 +111,13 @@ public class PlayerUI : MonoBehaviour
         t_KickDoor.text = text;
     }
 
+    public void Update()
+    {
+        transform.position = Vector3.MoveTowards(anchor.transform.position, anchor.position, 0.1f);
+        //transform.position = Vector3.Lerp(startPos, endPos, lerpSpeed);
+        gameObject.transform.LookAt(transform.position + cam.forward);
+    }
+
     private void LateUpdate()
     {
         if (i_Healthbar.fillAmount != i_WhiteHealthbar.fillAmount)
@@ -104,21 +125,4 @@ public class PlayerUI : MonoBehaviour
             i_WhiteHealthbar.fillAmount = Mathf.Lerp(i_WhiteHealthbar.fillAmount, i_Healthbar.fillAmount, lerpSpeed);
         }
     }
-
-    //public void SlowDownUI()
-    //{
-    //    i_SlowDownImage.fillAmount = s_PlayerWeaponManager.currSlowDownTime / s_PlayerWeaponManager.maxSlowDownTime;
-    //}
-
-    public void UpdateGrenadeUI()
-    {
-/*        t_CurrGrenadeRemaining.text = "x" + s_PlayerWeaponManager.p_GrenadeRemaining;
-*/    }
-    //public void UpdateEXP()
-    //{
-    //    t_EXP.text = s_PlayerSkills.totalExpPoint.ToString() + '/' + s_PlayerSkills.nextPointToLevelUp.ToString();
-    //    i_EXP.fillAmount = (float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp;
-    //    print((float)s_PlayerSkills.totalExpPoint / (float)s_PlayerSkills.nextPointToLevelUp);
-    //    t_CurrentLevel.text = "Level: " + s_PlayerSkills.currentLevel.ToString();
-    //}
 }
