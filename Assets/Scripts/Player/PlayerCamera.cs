@@ -28,7 +28,7 @@ public class PlayerCamera : MonoBehaviour
 
         // Rotate the camera on the X-axis
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Clamp the rotation to avoid flipping
+        xRotation = Mathf.Clamp(xRotation, -89f, 89f); // Clamp the rotation to avoid flipping
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }

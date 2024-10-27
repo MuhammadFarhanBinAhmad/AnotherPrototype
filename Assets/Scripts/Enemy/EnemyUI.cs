@@ -18,6 +18,11 @@ public class EnemyUI : MonoBehaviour
     public Color shockColour = new Color(150f, 0f, 200f, 255f);
     public Color freezeColour = new Color (0f, 255f, 255f, 255f);
 
+    public Sprite stunBar;
+    public Sprite burnBar;
+    public Sprite shockBar;
+    public Sprite freezeBar;
+
     public Transform cam;
 
     private void Start()
@@ -29,7 +34,7 @@ public class EnemyUI : MonoBehaviour
         e_Status.e_EnemyUI = this;
 
         cam = Camera.main.transform;
-    }
+}
     public void UpdateEnemyHealth()
     {
         e_HealthUI.fillAmount = (float)((float)e_Health.health / (float)e_Health.maxHealth);
@@ -45,19 +50,23 @@ public class EnemyUI : MonoBehaviour
         }
         else if (currentElementType.Contains("Stun"))
         {
-            e_StatusUI.color = stunColour;
+            e_StatusUI.GetComponent<Image>().sprite = stunBar;
+            //e_StatusUI.color = stunColour;
         }
         else if (currentElementType.Contains("Burn"))
         {
-            e_StatusUI.color = burnColour;
+            e_StatusUI.GetComponent<Image>().sprite = burnBar;
+            //e_StatusUI.color = burnColour;
         }
         else if (currentElementType.Contains("Shock"))
         {
-            e_StatusUI.color = shockColour;
+            e_StatusUI.GetComponent<Image>().sprite = shockBar;
+            //e_StatusUI.color = shockColour;
         }
         else if (currentElementType.Contains("Freeze"))
         {
-            e_StatusUI.color = freezeColour;
+            e_StatusUI.GetComponent<Image>().sprite = freezeBar;
+            //e_StatusUI.color = freezeColour;
         }
     }
     public IEnumerator FlashStatusBar()
