@@ -2387,7 +2387,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh616788
+  m_Name: pb_Mesh28766
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8728,7 +8728,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh616888
+  m_Name: pb_Mesh28866
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11642,7 +11642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655853, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655854, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: isLobotomised
@@ -16276,7 +16276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655853, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655854, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: isLobotomised
@@ -36168,7 +36168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655853, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655854, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: isLobotomised
@@ -46953,7 +46953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c492c9adfc550ee43bda33c8ccff4fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabCrosshair: {fileID: 1773206879}
+  grabCrosshair: {fileID: 386802120}
 --- !u!1 &1216327229
 GameObject:
   m_ObjectHideFlags: 0
@@ -65661,7 +65661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655853, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655854, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: isLobotomised
@@ -70166,7 +70166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655853, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: maxHealth
-      value: 150
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7641295544526655854, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
       propertyPath: isLobotomised
