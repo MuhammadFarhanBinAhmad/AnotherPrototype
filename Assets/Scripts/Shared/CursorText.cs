@@ -9,7 +9,7 @@ public class CursorText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public TextMeshProUGUI text;
 
-    public Color defaultColour = new Color(0f, 0f, 0f, 255f); // black
+    public Color defaultColour = new Color(255f, 255f, 255f, 255f); // white
     public Color highlightColour = new Color(153f, 255f, 255f, 255f);
     public Color pressedColour = new Color(120f, 200f, 200f, 255f);
 

@@ -1162,8 +1162,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2368,9 +2368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 787717558}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  pressedColour: {r: 0.23529412, g: 0.5764706, b: 0.5764706, a: 255}
   enlargeScale: 1.1
 --- !u!1 &489158924
 GameObject:
@@ -2607,8 +2607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
 --- !u!1 &544164228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,8 +3156,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3827,8 +3825,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4043,9 +4041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1709933571}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  pressedColour: {r: 0.23529412, g: 0.5764706, b: 0.5764706, a: 255}
   enlargeScale: 1.1
 --- !u!1 &844328246
 GameObject:
@@ -4634,9 +4632,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 269829616}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
-  highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
+  highlightColour: {r: 1, g: 0, b: 0, a: 255}
+  pressedColour: {r: 0.8627451, g: 0, b: 0, a: 255}
   enlargeScale: 1.1
 --- !u!1 &1088703765
 GameObject:
@@ -7528,7 +7526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1690773012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7769,9 +7767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1702022790}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  pressedColour: {r: 0.23529412, g: 0.5764706, b: 0.5764706, a: 255}
   enlargeScale: 1.1
 --- !u!1 &1702022788
 GameObject:
@@ -7840,8 +7838,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7975,8 +7973,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10140,9 +10138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 645413143}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  pressedColour: {r: 0.23529412, g: 0.5764706, b: 0.5764706, a: 255}
   enlargeScale: 1.1
 --- !u!1 &2138441792
 GameObject:

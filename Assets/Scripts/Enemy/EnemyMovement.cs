@@ -29,7 +29,11 @@ public class EnemyMovement : MonoBehaviour
     public Transform m_CenterPoint;
 
     public Transform m_Target;
+    private AudioSource audioSource;
+    public bool canDetect = true;
+    public AudioClip detectedPlayer;
 
+    [Header("Effects")]
     public bool isStunned;
     public float e_StunTime;
     public float e_StunTimeLeft;
@@ -56,6 +60,7 @@ public class EnemyMovement : MonoBehaviour
         {
             animator = GetComponentInChildren<Animator>();
         }
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -185,6 +190,11 @@ public class EnemyMovement : MonoBehaviour
                         transform.LookAt(collider.transform);
                         p_Mode = MODE.ATTACKING;
                         m_Target = collider.transform ;
+                        if (canDetect == true && detectedPlayer != null)
+                        {
+                            canDetect = false;
+                            audioSource.PlayOneShot(detectedPlayer);
+                        }
                     }
                 }
                 else

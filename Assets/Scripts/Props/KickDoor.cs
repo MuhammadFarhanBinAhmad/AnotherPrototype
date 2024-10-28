@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public class KickDoor : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class KickDoor : MonoBehaviour
     public GameObject HitShotEffect;
     public TimeSlow timeSlow;
 
+    public bool canDestroy = false;
+
+    private AudioSource audioSource;
+    public AudioClip doorBreach;
 
     private void Start()
     {
@@ -25,6 +30,7 @@ public class KickDoor : MonoBehaviour
         fistAnimator = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<Animator>();
         playerSkills = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkills>();
         timeSlow = GameObject.Find("GameManager").GetComponent<TimeSlow>();
+        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -40,6 +46,12 @@ public class KickDoor : MonoBehaviour
                 KickDoorDown();
             }
         }
+
+        if (canDestroy == true)
+        {
+            gameObject.transform.localScale -= new Vector3(.1f, .1f, .1f) * Time.deltaTime;
+            StartCoroutine(DestroyDoor());
+        }
     }
 
     public void KickDoorDown()
@@ -49,6 +61,10 @@ public class KickDoor : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
             rb.velocity = transform.forward * 80f;
+            float originalVol = audioSource.volume;
+            audioSource.volume = 1;
+            audioSource.PlayOneShot(doorBreach);
+            audioSource.volume = originalVol;
 
             isKick = true;
 
@@ -62,6 +78,8 @@ public class KickDoor : MonoBehaviour
                 fistAnimator.SetTrigger("Punch");
             }
             timeSlow.DoSlowMotion(0.1f, 2f);
+
+            //StartCoroutine(ShrinkDoor());
         }
     }
 
@@ -75,11 +93,11 @@ public class KickDoor : MonoBehaviour
             {
                 if (playerSkills.keyCount >= 1 || bypassDoor == true)
                 {
-                    FindObjectOfType<PlayerUI>().KickDoorUI("Press 'E' to breach door");
+                    FindObjectOfType<PlayerUI>().KickDoorUI("(E) Breach Door");
                 }
                 else
                 {
-                    FindObjectOfType<PlayerUI>().KickDoorUI("Clear enemies for entry!");
+                    FindObjectOfType<PlayerUI>().KickDoorUI("Clear Enemies!");
                 }
             }
         }
@@ -113,5 +131,17 @@ public class KickDoor : MonoBehaviour
         Time.timeScale = .3f;
         yield return new WaitForSeconds(.25f);
         Time.timeScale = 1f;
+    }
+
+    public IEnumerator ShrinkDoor()
+    {
+        yield return new WaitForSeconds(3);
+        canDestroy = true;
+    }
+
+    public IEnumerator DestroyDoor()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

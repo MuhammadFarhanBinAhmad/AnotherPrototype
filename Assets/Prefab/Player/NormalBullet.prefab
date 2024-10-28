@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 584065255677097295}
   - component: {fileID: 584065255677097292}
   - component: {fileID: 2208641420192816192}
+  - component: {fileID: 7355595503267847082}
   m_Layer: 0
   m_Name: NormalBullet
   m_TagString: Projectile
@@ -269,9 +270,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4c6510601b1854eb3be299dd71ec63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_Speed: 100
-  p_Damage: 100
-  p_TimeBeforeSelfDestruct: 6
+  p_Speed: 25
+  p_Damage: 16
+  p_IsPiercing: 0
+  p_ElementType: Freeze
+  p_ElementStack: 25
+  p_TimeBeforeSelfDestruct: 5
   HitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
 --- !u!82 &2208641420192816192
 AudioSource:
@@ -280,12 +284,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584065255677097293}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 49c89821b8d82554bbb63850e01f46e2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -369,3 +373,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7355595503267847082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584065255677097293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eec5842ed54a2a41b5ba6d9fc4a923d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTerrainSounds:
+  - {fileID: 8300000, guid: 729c2e601b79e0646b3d76ac6aafb73b, type: 3}
+  - {fileID: 8300000, guid: 7c44747e9295c1048bdf425e1ef88b16, type: 3}
+  - {fileID: 8300000, guid: 7994aba9af703e141bb915e87281c486, type: 3}
+  hitEnemySounds:
+  - {fileID: 8300000, guid: 9467b4b2027bed24a970f39a114a018d, type: 3}
+  - {fileID: 8300000, guid: c5517b0ee3007624e89095176a6595d7, type: 3}
+  - {fileID: 8300000, guid: fb421448c9194c4468df7dce8f43504e, type: 3}
+  - {fileID: 8300000, guid: ce25f4a7daf5aa843b06c668cbd178a9, type: 3}
+  - {fileID: 8300000, guid: 1e2aa8ecb823f404ca29a03fd2df990b, type: 3}

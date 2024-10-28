@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7072960546009288584}
   - component: {fileID: 4159586451230731594}
   - component: {fileID: 5669641347424463156}
+  - component: {fileID: -5746361290395307745}
   m_Layer: 0
   m_Name: HitShot
   m_TagString: Untagged
@@ -4882,7 +4883,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a9113ef806bdbd7458d3839a147020cd, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4981,3 +4982,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeBeforeDestroy: 10
+--- !u!114 &-5746361290395307745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770853687598135274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eec5842ed54a2a41b5ba6d9fc4a923d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTerrainSounds:
+  - {fileID: 8300000, guid: 729c2e601b79e0646b3d76ac6aafb73b, type: 3}
+  - {fileID: 8300000, guid: 7c44747e9295c1048bdf425e1ef88b16, type: 3}
+  - {fileID: 8300000, guid: 7994aba9af703e141bb915e87281c486, type: 3}
+  hitEnemySounds:
+  - {fileID: 8300000, guid: 9467b4b2027bed24a970f39a114a018d, type: 3}
+  - {fileID: 8300000, guid: c5517b0ee3007624e89095176a6595d7, type: 3}
+  - {fileID: 8300000, guid: fb421448c9194c4468df7dce8f43504e, type: 3}
+  - {fileID: 8300000, guid: ce25f4a7daf5aa843b06c668cbd178a9, type: 3}
+  - {fileID: 8300000, guid: 1e2aa8ecb823f404ca29a03fd2df990b, type: 3}

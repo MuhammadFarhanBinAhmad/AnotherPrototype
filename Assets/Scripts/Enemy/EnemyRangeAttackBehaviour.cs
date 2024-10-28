@@ -36,10 +36,12 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     private float shootDurationCurrent;
     public float breakDuration; // time of each break
     private bool canBreak = true;
+    private AudioSource audioSource;
+    public AudioClip shoot;
 
-    public bool e_GrenadeEnemy;
-    public GameObject e_Grenade;
-    public float e_ThrowForce;
+    //public bool e_GrenadeEnemy;
+    //public GameObject e_Grenade;
+    //public float e_ThrowForce;
 
     public float e_ProjectileSpeed;
     public int e_ProjectileDamage;
@@ -67,6 +69,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
         retreatPoint = player.transform.Find("EnemyWaypoints/EnemyRetreatPoint");
 
         shootDurationCurrent = shootDurationMax;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -110,6 +113,10 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                 p_Mode = MODE.ENGAGE;
             }
         }
+        else
+        {
+            p_Mode = MODE.PASSIVE;
+        }
 
         if (shootDurationCurrent <= 0 && canBreak == true)
         {
@@ -145,19 +152,10 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
             if (Time.time >= nexttime_ToFire && shootDurationCurrent >= 0)
             {
                 nexttime_ToFire = Time.time + 1f / e_weaponType.p_WeaponFireRate * e_ShockMultiplier;
-                if (e_GrenadeEnemy)
-                {
-                    GameObject grenade = Instantiate(e_Grenade, e_SpawnPos.position, e_SpawnPos.rotation);
 
-                    // Add force to the grenade
-                    Rigidbody rb = grenade.GetComponent<Rigidbody>();
-                    rb.AddForce((transform.forward * e_ThrowForce), ForceMode.VelocityChange);
-                }
-                else
-                {
-                    GameObject p = Instantiate(e_Projectile, e_SpawnPos.position, e_SpawnPos.rotation);
-                    e_Projectile.GetComponent<EnemyProjectile>().SetProjectileStats(e_ProjectileSpeed, e_ProjectileDamage);
-                }
+                GameObject p = Instantiate(e_Projectile, e_SpawnPos.position, e_SpawnPos.rotation);
+                e_Projectile.GetComponent<EnemyProjectile>().SetProjectileStats(e_ProjectileSpeed, e_ProjectileDamage);
+                audioSource.PlayOneShot(shoot);
             }
         }
     }

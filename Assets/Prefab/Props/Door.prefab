@@ -169,3 +169,4 @@ MonoBehaviour:
   damageDealt: 0
   HitShotEffect: {fileID: 4770853687598135274, guid: 3f213ceed0eb1e246a0592ca45916908, type: 3}
   timeSlow: {fileID: 0}
+  doorBreach: {fileID: 8300000, guid: 80c71f5e72e4b444c85d6339c6668805, type: 3}

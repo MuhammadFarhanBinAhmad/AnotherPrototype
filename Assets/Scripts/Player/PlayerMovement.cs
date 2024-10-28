@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject PlayerWeapon;
 
     private AudioSource audioSource;
-    public AudioClip[] myAudioClips;
+    public AudioClip[] walkSounds;
     private float walkAudioCooldown = 0.4f;
     private float walkAudioCurrent;
 
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayWalkSound()
     {
-        AudioClip walkSound = myAudioClips[Random.Range(0, myAudioClips.Length)];
+        AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
         audioSource.pitch = (Random.Range(0.6f, 1f));
         audioSource.PlayOneShot(walkSound);
     }
