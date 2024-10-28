@@ -32,6 +32,11 @@ public class PlayerHealth : MonoBehaviour
     public GameObject playerArms;
     public PlayerMovement playerMovement;
 
+    private AudioSource audioSource;
+    public AudioClip playerHurt;
+    public AudioClip playerDead;
+    public bool canPlayDead = true;
+
 
     private void Start()
     {
@@ -40,6 +45,8 @@ public class PlayerHealth : MonoBehaviour
 
         o_Health = p_Health;
         hurtFlashCurrent = hurtFlashDelay;
+
+        audioSource = GetComponent<AudioSource>();
     }
     public void TakeDamage(int dmg)
     {
@@ -74,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public IEnumerator HurtFlash()
     {
+        audioSource.PlayOneShot(playerHurt);
         hurtFadeAlpha.FadeIn(hurtFlashSpeed);
         yield return new WaitForSeconds(hurtFlashDuration);
         hurtFadeAlpha.FadeOut(hurtFlashSpeed);
@@ -86,6 +94,11 @@ public class PlayerHealth : MonoBehaviour
         cameraAnimator.enabled = true;
         s_PlayerUI.blankAmmo = true;
 
+        if (canPlayDead == true)
+        {
+            canPlayDead = false;
+            audioSource.PlayOneShot(playerDead);
+        }
         cameraAnimator.SetTrigger("Dead");
         deathFadeAlpha.FadeIn(deathFlashSpeed);
         yield return new WaitForSeconds(3);

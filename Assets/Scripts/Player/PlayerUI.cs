@@ -22,11 +22,11 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI t_WeaponName;
     public TextMeshProUGUI t_CurrAmmoLeft;
     public TextMeshProUGUI t_WeaponElement;
-    public TextMeshProUGUI t_CurrGrenadeRemaining;
+    //public TextMeshProUGUI t_CurrGrenadeRemaining;
     public bool blankAmmo = true;
 
     [Header("UIText")]
-    public Image i_SlowDownImage;
+    //public Image i_SlowDownImage;
     public TextMeshProUGUI t_KickDoor;
     public TextMeshProUGUI t_PickUpWeapon;
 
@@ -60,7 +60,7 @@ public class PlayerUI : MonoBehaviour
     public void PickUpWeaponUI(string name)
     {
         if (name != null)
-        t_PickUpWeapon.text = "Press 'E' to pick up " + name + '?';
+        t_PickUpWeapon.text = "(E) Equip " + name + '?';
         else
         t_PickUpWeapon.text = null;
 

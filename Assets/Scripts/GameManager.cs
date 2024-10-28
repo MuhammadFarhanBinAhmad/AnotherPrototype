@@ -21,25 +21,18 @@ public class GameManager : MonoBehaviour
 
     public Animator menuAnimator;
 
-    private static GameManager _instance;
+    public static GameManager instance { get; private set; }
 
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                GameObject go = new GameObject("GameManager");
-                go.AddComponent<GameManager>();
-            }
-
-            return _instance;
-        }
-    }
 
     private void Awake()
     {
-        _instance = this;
+        if (instance != null)
+        {
+            Debug.LogError("Found more than 1 Game Manager in scene!");
+        }
+        instance = this;
+
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update

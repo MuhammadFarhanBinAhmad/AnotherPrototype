@@ -19,7 +19,6 @@ public class PlayerProjectile : MonoBehaviour
     private void Start()
     {
         m_RigidBody = GetComponent<Rigidbody>();
-        //GetComponent<AudioSource>().Play();
         Invoke("DestroySelf", p_TimeBeforeSelfDestruct);
     }
 
@@ -46,13 +45,20 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            if (other.GetComponent<KickDoor>() != null)
+            if (other.GetComponent<KickDoor>() != null) // if hit door
             {
                 if (other.GetComponent<KickDoor>().isKick != true) // if door has NOT been kicked down
                 {
-                    Instantiate(HitShotEffect, transform.position, transform.rotation);
+                    GameObject hitShot = Instantiate(HitShotEffect, transform.position, transform.rotation);
+                    hitShot.gameObject.GetComponent<HitAudio>().PlayHitTerrainSound();
                     Destroy(gameObject);
                 }
+            }
+            else
+            {
+                GameObject hitShot2 = Instantiate(HitShotEffect, transform.position, transform.rotation);
+                hitShot2.gameObject.GetComponent<HitAudio>().PlayHitTerrainSound();
+                Destroy(gameObject);
             }
         }
 
@@ -64,8 +70,9 @@ public class PlayerProjectile : MonoBehaviour
 
         if (other.GetComponent<EnemyHealth>() != null)
         {
-            Instantiate(HitShotEffect, transform.position, transform.rotation);
+            GameObject hitShot = Instantiate(HitShotEffect, transform.position, transform.rotation);
             other.GetComponent<EnemyHealth>().TakeDamage(p_Damage);
+            hitShot.gameObject.GetComponent<HitAudio>().PlayHitEnemySound();
             if (p_IsPiercing == false)
             {
                 Destroy(gameObject);
@@ -74,11 +81,14 @@ public class PlayerProjectile : MonoBehaviour
 
         if (other.GetComponent<PropObjects>() != null)
         {
-            Instantiate(HitShotEffect, transform.position, transform.rotation);
+            GameObject hitShot = Instantiate(HitShotEffect, transform.position, transform.rotation);
             other.GetComponent<PropObjects>().TakeDamage(p_Damage);
+            hitShot.gameObject.GetComponent<HitAudio>().PlayHitTerrainSound();
             Destroy(gameObject);
         }
     }
+
+
     void DestroySelf()
     {
         Destroy(gameObject);

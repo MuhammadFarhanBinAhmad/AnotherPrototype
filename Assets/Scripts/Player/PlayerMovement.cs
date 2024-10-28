@@ -26,15 +26,22 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject PlayerWeapon;
 
-    public bool canFly = false;
+    private AudioSource audioSource;
+    public AudioClip[] walkSounds;
+    private float walkAudioCooldown = 0.4f;
+    private float walkAudioCurrent;
 
+    public bool canFly = false;
+    public bool isMoving = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevent rotation from physics
-
         // Create a ground check position
+
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -53,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Flying();
         }
+
+        walkAudioCurrent += Time.deltaTime;
+        if (walkAudioCurrent >= walkAudioCooldown)
+        {
+            walkAudioCurrent = walkAudioCooldown;
+        }
     }
 
     void Movement()
@@ -64,6 +77,15 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the player
         rb.MovePosition(rb.position + move * speed * Time.deltaTime);
+
+        if (isGrounded == true && walkAudioCurrent == walkAudioCooldown)
+        {
+            if (move.x > 0 || move.z > 0)
+            {
+                walkAudioCurrent = 0;
+                PlayWalkSound();
+            }
+        }    
 
         // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -94,6 +116,13 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.down * speed * Time.deltaTime);
         }
+    }
+
+    void PlayWalkSound()
+    {
+        AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
+        audioSource.pitch = (Random.Range(0.6f, 1f));
+        audioSource.PlayOneShot(walkSound);
     }
 
     void OnDrawGizmosSelected()

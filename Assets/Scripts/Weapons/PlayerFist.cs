@@ -19,6 +19,10 @@ public class PlayerFist : MonoBehaviour
     public GameObject player;
     public float knockbackForce;
     public GameObject HitShotEffect;
+    private AudioSource audioSource;
+    public AudioClip fistPunch;
+    public AudioClip fistGrab;
+    public AudioClip fistThrow;
 
     [Header("Grab and Throw Properties")]
     public bool isGrabbing = false; // prop is being grabbed in hand
@@ -46,6 +50,7 @@ public class PlayerFist : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         punchCooldownCurrent = punchCooldownMax;
 
         cameraTransform = Camera.main.transform;
@@ -114,7 +119,8 @@ public class PlayerFist : MonoBehaviour
                 other.GetComponent<EnemyHealth>().TakeDamage(damage); // default punch
                 punchCooldownMax = punchCooldownMaxO;
             }
-            Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
+            GameObject hitShot = Instantiate(HitShotEffect, other.transform.position, other.transform.rotation);
+            hitShot.gameObject.GetComponent<HitAudio>().PlayHitEnemySound();
             other.gameObject.transform.position = Vector3.MoveTowards(other.transform.position, player.transform.position, -knockbackForce);
         }
     }
@@ -133,11 +139,14 @@ public class PlayerFist : MonoBehaviour
         else // punch (nothing grabbed in hand)
         {
             anim.SetTrigger("Punch");
+            audioSource.PlayOneShot(fistPunch);
         }
     }
 
     public void Grab()
     {
+        audioSource.PlayOneShot(fistGrab);
+
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, grabDistance, pickUpLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out propGrab))
@@ -160,6 +169,7 @@ public class PlayerFist : MonoBehaviour
     public void Throw(float throwForce)
     {
         anim.SetTrigger("Throw");
+        audioSource.PlayOneShot(fistThrow);
 
         if (propGrab != null && canThrow == true)
         {
@@ -187,5 +197,6 @@ public class PlayerFist : MonoBehaviour
     {
         isGrabbing = false;
         anim.SetTrigger("Throw");
+        audioSource.PlayOneShot(fistThrow);
     }
 }

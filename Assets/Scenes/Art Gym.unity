@@ -6449,9 +6449,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1777131618}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
-  highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
-  pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
+  highlightColour: {r: 1, g: 0, b: 0, a: 255}
+  pressedColour: {r: 0.8627451, g: 0, b: 0, a: 255}
   enlargeScale: 1.1
 --- !u!1 &383563531
 GameObject:
@@ -15882,7 +15882,7 @@ GameObject:
   - component: {fileID: 685166754}
   - component: {fileID: 685166753}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15897,7 +15897,7 @@ RectTransform:
   m_GameObject: {fileID: 685166751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 759301785}
@@ -15928,7 +15928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2abecb34435c5e640a9df1b0cb857602, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6677161a242272749b356f5d264c2b85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16657,7 +16657,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -25838,7 +25838,9 @@ MonoBehaviour:
   isGrounded: 0
   groundCheck: {fileID: 1837350417}
   PlayerWeapon: {fileID: 0}
+  myAudioClips: []
   canFly: 1
+  isMoving: 0
 --- !u!136 &977527930
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26709,7 +26711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1447666024}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
   pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
   enlargeScale: 1.1
@@ -34898,7 +34900,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35937,7 +35939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1709296487}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
   pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
   enlargeScale: 1.1
@@ -41452,7 +41454,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41907,7 +41909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 731818833}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
   pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
   enlargeScale: 1.1
@@ -42055,7 +42057,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -42656,7 +42658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1942084993}
-  defaultColour: {r: 0, g: 0, b: 0, a: 255}
+  defaultColour: {r: 1, g: 1, b: 1, a: 255}
   highlightColour: {r: 0.5294118, g: 0.9019608, b: 0.9019608, a: 255}
   pressedColour: {r: 0.47058824, g: 0.78431374, b: 0.78431374, a: 255}
   enlargeScale: 1.1
@@ -45738,7 +45740,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -46134,9 +46136,7 @@ MonoBehaviour:
   t_WeaponName: {fileID: 1277450143}
   t_CurrAmmoLeft: {fileID: 976207000}
   t_WeaponElement: {fileID: 0}
-  t_CurrGrenadeRemaining: {fileID: 0}
   blankAmmo: 1
-  i_SlowDownImage: {fileID: 1716087645}
   t_KickDoor: {fileID: 166262563}
   t_PickUpWeapon: {fileID: 1877214528}
   HUDCanvas: {fileID: 0}
