@@ -29,7 +29,7 @@ MonoBehaviour:
   p_ProjectileElement: Freeze
   p_ElementStackOnHit: 25
   p_GunShotAudio: {fileID: 8300000, guid: 5c9078512c159094fb1bb6b9dfd16928, type: 3}
-  p_GunPickupAudio: {fileID: 0}
+  p_GunPickupAudio: {fileID: 8300000, guid: 2fd752979a04d4f43af4b70cf56be7db, type: 3}
   p_GunActionAudio: {fileID: 0}
   isAuto: 0
   isCharge: 0

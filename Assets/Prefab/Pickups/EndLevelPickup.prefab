@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 0}
-  pickupAudio: {fileID: 0}
+  pickupAudio: {fileID: 7702504485168177382, guid: f666d672eda50e94d96921a23bd58bf0, type: 3}
 --- !u!1 &1024943215163869017
 GameObject:
   m_ObjectHideFlags: 0

@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 4145088066944936216, guid: 81fe9b9fa882e5a4098a5a0b12aab7c5, type: 3}
   e_weaponType: {fileID: 11400000, guid: 8025d6b8158a4e745945e768c4c97cb6, type: 2}
+  pickupAudio: {fileID: 7702504485168177382, guid: f666d672eda50e94d96921a23bd58bf0, type: 3}
 --- !u!1 &5645392828439761757
 GameObject:
   m_ObjectHideFlags: 0

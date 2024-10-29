@@ -139,7 +139,10 @@ public class PlayerFist : MonoBehaviour
         else // punch (nothing grabbed in hand)
         {
             anim.SetTrigger("Punch");
-            audioSource.PlayOneShot(fistPunch);
+            if (Time.timeScale != 0f)
+            {
+                audioSource.PlayOneShot(fistPunch);
+            }
         }
     }
 

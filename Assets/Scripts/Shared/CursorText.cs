@@ -16,14 +16,20 @@ public class CursorText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private Vector3 originalScale;
     public float enlargeScale;
 
+    private AudioSource audioSource;
+    public AudioClip buttonHover;
+    public AudioClip buttonClick;
+
     public void Start()
     {
         originalScale = text.rectTransform.localScale;
+        audioSource = GetComponent<AudioSource>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.color = highlightColour;
         text.rectTransform.localScale = originalScale * enlargeScale;
+        audioSource.PlayOneShot(buttonHover);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -35,6 +41,7 @@ public class CursorText : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerDown(PointerEventData eventData)
     {
         text.color = pressedColour;
+        audioSource.PlayOneShot(buttonClick);
     }
 
     public void OnPointerUp(PointerEventData eventData)
