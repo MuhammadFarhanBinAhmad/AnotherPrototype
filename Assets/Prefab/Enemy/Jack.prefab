@@ -588,7 +588,7 @@ MonoBehaviour:
   m_PatrolRadius: 10
   m_CenterPoint: {fileID: 0}
   m_Target: {fileID: 0}
-  audioSource: {fileID: 0}
+  canDetect: 1
   detectedPlayer: {fileID: 8300000, guid: e6e815acc2674d040bb172b51c926e32, type: 3}
   isStunned: 0
   e_StunTime: 3
@@ -676,10 +676,10 @@ MonoBehaviour:
   shockEffect: {fileID: 8615694090856521165, guid: 3e1d0abd02d7a23419f101cc77b35101, type: 3}
   freezeEffect: {fileID: 312854949644410756, guid: 197a09d45813a1b4c99b53771eb62236, type: 3}
   audioSource: {fileID: 0}
-  stunAudio: {fileID: 0}
-  burnAudio: {fileID: 0}
-  shockAudio: {fileID: 0}
-  freezeAudio: {fileID: 0}
+  stunAudio: {fileID: 8300000, guid: 0aa21368ae4999140a6d44b814793e45, type: 3}
+  burnAudio: {fileID: 8300000, guid: 13253813ff65dfc47bcd73ad48745f98, type: 3}
+  shockAudio: {fileID: 8300000, guid: 361197ff9843a0f488f009d3d566662e, type: 3}
+  freezeAudio: {fileID: 8300000, guid: 60c516279f70b264a9948c53db696aba, type: 3}
   e_EnemyUI: {fileID: 0}
   enemyGrab: {fileID: 3081680185158612163}
   enemyHealth: {fileID: 0}

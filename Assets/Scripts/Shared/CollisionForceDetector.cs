@@ -8,6 +8,7 @@ public class CollisionForceDetector : MonoBehaviour
     public float knockbackForce;
     public int damage;
     public GameObject hitShotEffect;
+    public GameObject crateBreakObject;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -40,9 +41,11 @@ public class CollisionForceDetector : MonoBehaviour
                     if (gameObject.GetComponent<PropGrab>() != null) // crate knocks back, deals damage and self destructs
                     {
                         collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-                        Instantiate(hitShotEffect, gameObject.transform.position, gameObject.transform.rotation);
+                        GameObject hitShot = Instantiate(hitShotEffect, gameObject.transform.position, gameObject.transform.rotation);
+                        //hitShot.gameObject.GetComponent<HitAudio>().PlayHitEnemySound();
 
                         collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, gameObject.transform.position, -knockbackForce);
+                        Instantiate(crateBreakObject, gameObject.transform.position, gameObject.transform.rotation);
                         Destroy(gameObject);
                     }
                 }

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float fadeBlackSpeed;
 
     public Animator menuAnimator;
+    public GameObject buttonChirp;
 
     public static GameManager instance { get; private set; }
 
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 gamePaused = true;
+                PlayButtonChirp();
             }
             else
             {
@@ -118,6 +120,7 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 gamePaused = false;
+                PlayButtonChirp();
             }
         }
     }
@@ -235,6 +238,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Art Gym");
         }
+    }
+
+    public void PlayButtonChirp()
+    {
+        Instantiate(buttonChirp, transform.position, transform.rotation);
     }
 
     public  void QuitGame()

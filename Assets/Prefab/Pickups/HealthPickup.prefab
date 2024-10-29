@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
   healValue: 30
+  pickupAudio: {fileID: 7702504485168177382, guid: f666d672eda50e94d96921a23bd58bf0, type: 3}
 --- !u!1 &8900048986995505089
 GameObject:
   m_ObjectHideFlags: 0

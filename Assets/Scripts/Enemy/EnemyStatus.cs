@@ -40,7 +40,8 @@ public class EnemyStatus : MonoBehaviour
     public GameObject freezeEffect;
 
     [Header("Audio")]
-    public AudioSource audioSource;
+    private AudioSource audioSource;
+    private bool canPlayAudio = true;
 
     public AudioClip stunAudio;
     public AudioClip burnAudio;
@@ -171,7 +172,12 @@ public class EnemyStatus : MonoBehaviour
 
         if (stunAudio != null && canSpawnEffect == true)
         {
-            audioSource.PlayOneShot(stunAudio);
+            if (canPlayAudio == true)
+            {
+                canPlayAudio = false;
+                Invoke("ResetAudioBool", 4f);
+                audioSource.PlayOneShot(stunAudio);
+            }
         }
         if (stunEffect != null && canSpawnEffect == true)
         {
@@ -196,7 +202,12 @@ public class EnemyStatus : MonoBehaviour
 
         if (burnAudio != null)
         {
-            audioSource.PlayOneShot(burnAudio);
+            if (canPlayAudio == true)
+            {
+                canPlayAudio = false;
+                Invoke("ResetAudioBool", 4f);
+                audioSource.PlayOneShot(burnAudio);
+            }
         }
         if (burnEffect != null && canSpawnEffect == true)
         {
@@ -228,7 +239,12 @@ public class EnemyStatus : MonoBehaviour
 
         if (shockAudio != null)
         {
-            audioSource.PlayOneShot(shockAudio);
+            if (canPlayAudio == true)
+            {
+                canPlayAudio = false;
+                Invoke("ResetAudioBool", 4f);
+                audioSource.PlayOneShot(shockAudio);
+            }
         }
         if (shockEffect != null && canSpawnEffect == true)
         {
@@ -253,7 +269,12 @@ public class EnemyStatus : MonoBehaviour
 
         if (freezeAudio != null)
         {
-            audioSource.PlayOneShot(freezeAudio);
+            if (canPlayAudio == true)
+            {
+                canPlayAudio = false;
+                Invoke("ResetAudioBool", 4f);
+                audioSource.PlayOneShot(freezeAudio);
+            }
         }
         if (freezeEffect != null && canSpawnEffect == true)
         {
@@ -293,5 +314,13 @@ public class EnemyStatus : MonoBehaviour
         currentDecay = startingDecay;
         firstBullet = true;
         ResetStacks();
+    }
+
+    public void ResetAudioBool()
+    {
+        if (canPlayAudio == false)
+        {
+            canPlayAudio = true;
+        }
     }
 }
