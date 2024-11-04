@@ -55,13 +55,10 @@ public class EnemyMovement : MonoBehaviour
             m_CenterPoint = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        animator = GetComponent<Animator>();
-        if (animator == null)
+        foreach(Animator i in GetComponentsInChildren<Animator>())
         {
-            foreach(Animator i in GetComponentsInChildren<Animator>()){
-                if(i.gameObject.tag == "Model") {
-                    animator = i;
-                }
+            if(i.gameObject.tag == "Model") {
+                animator = i;
             }
         }
         audioSource = GetComponent<AudioSource>();

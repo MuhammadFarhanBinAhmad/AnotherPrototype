@@ -4,38 +4,38 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 4781951162920444690
-    second: Armature|ArmatureAction
+      74: 5577329602525592075
+    second: Bones|ArmatureAction
   - first:
-      74: 2546250507922560701
-    second: Armature|Attack_End
+      74: -3105527464955451473
+    second: Bones|Attack_End
   - first:
-      74: -5138815291446424565
-    second: Armature|Attack_Hold
+      74: 5532162203385313682
+    second: Bones|Attack_Hold
   - first:
-      74: -4859094775841119198
-    second: Armature|Attack_Start
+      74: 2605459995293464906
+    second: Bones|Attack_Start
   - first:
-      74: -793770852201431254
-    second: Armature|Disabled
+      74: 5405369170814088055
+    second: Bones|Disabled
   - first:
-      74: 4573640781650486717
-    second: Armature|Disabled_End
+      74: 6730714221645675351
+    second: Bones|Disabled_End
   - first:
-      74: 6032467290958761544
-    second: Armature|Disabled_Start
+      74: -6205709837106721428
+    second: Bones|Disabled_Start
   - first:
-      74: -8945691123924629249
-    second: Armature|Idle
+      74: -344965211243076739
+    second: Bones|Idle
   - first:
-      74: -388705612308087257
-    second: Armature|Move_End
+      74: 2507516109838720212
+    second: Bones|Move_End
   - first:
-      74: -264203284432640852
-    second: Armature|Move_Start
+      74: 4758182116184628834
+    second: Bones|Move_Start
   - first:
-      74: 8469038361199828435
-    second: Armature|Moving
+      74: -6034101613144806108
+    second: Bones|Moving
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -84,7 +84,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
+    bakeAxisConversion: 1
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4

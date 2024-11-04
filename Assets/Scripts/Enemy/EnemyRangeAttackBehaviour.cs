@@ -22,7 +22,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public bool isAttacking = false;
     public GameObject roomLeader;
     private float defaultSpeed;
-    private EnemyMovement EnemyMovement;
+    [SerializeField] private EnemyMovement EnemyMovement;
 
 
     public WeaponType e_weaponType;
@@ -53,6 +53,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
     public bool isLobotomised = false;
     public GameObject shootTarget;
+    public Animator animator;
 
 
     private void Start()
@@ -70,6 +71,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
         shootDurationCurrent = shootDurationMax;
         audioSource = GetComponent<AudioSource>();
+        animator = EnemyMovement.animator;
     }
 
     public void Update()
@@ -85,6 +87,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                     }
                 case MODE.ENGAGE:
                     {
+                        animator.SetBool("Attacking", true);
                         transform.LookAt(player.position);
                         m_Agent.speed = defaultSpeed;
                         m_Agent.SetDestination(player.position);
@@ -93,6 +96,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                     }
                 case MODE.DISENGAGE:
                     {
+                        animator.SetBool("Attacking", false);
                         transform.LookAt(player.position);
                         m_Agent.speed = defaultSpeed * 1.5f;
                         m_Agent.SetDestination(retreatPoint.position);
@@ -145,7 +149,6 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public void AttackPlayer()
     {
         shootDurationCurrent -= Time.deltaTime;
-
         m_Agent.SetDestination(player.position);
         if (isShocked == false && isLobotomised == false)
         {
