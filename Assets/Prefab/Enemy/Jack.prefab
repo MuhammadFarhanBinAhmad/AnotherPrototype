@@ -574,7 +574,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7641295544526655848}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6972e5a13cbaf324e825e895dbc33882, type: 3}
   m_Name: 
@@ -603,7 +603,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7641295544526655848}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
@@ -675,7 +675,6 @@ MonoBehaviour:
   burnEffect: {fileID: 7776674768716563983, guid: 8cdc6956f5c38b64393105bbd19b1d79, type: 3}
   shockEffect: {fileID: 8615694090856521165, guid: 3e1d0abd02d7a23419f101cc77b35101, type: 3}
   freezeEffect: {fileID: 312854949644410756, guid: 197a09d45813a1b4c99b53771eb62236, type: 3}
-  audioSource: {fileID: 0}
   stunAudio: {fileID: 8300000, guid: 0aa21368ae4999140a6d44b814793e45, type: 3}
   burnAudio: {fileID: 8300000, guid: 13253813ff65dfc47bcd73ad48745f98, type: 3}
   shockAudio: {fileID: 8300000, guid: 361197ff9843a0f488f009d3d566662e, type: 3}
@@ -980,6 +979,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a93ed7e0d58d24447a4ce755e63fff81, type: 3}
       propertyPath: m_Name
       value: jack merged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a93ed7e0d58d24447a4ce755e63fff81, type: 3}
+      propertyPath: m_TagString
+      value: Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a93ed7e0d58d24447a4ce755e63fff81, type: 3}

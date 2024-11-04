@@ -58,7 +58,11 @@ public class EnemyMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         if (animator == null)
         {
-            animator = GetComponentInChildren<Animator>();
+            foreach(Animator i in GetComponentsInChildren<Animator>()){
+                if(i.gameObject.tag == "Model") {
+                    animator = i;
+                }
+            }
         }
         audioSource = GetComponent<AudioSource>();
     }

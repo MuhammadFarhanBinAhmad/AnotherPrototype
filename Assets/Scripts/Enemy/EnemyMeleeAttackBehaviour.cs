@@ -62,12 +62,6 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
 
     private void Start()
     {
-        if (!ExplosiveEnemy)
-            animator = GetComponent<Animator>();
-
-        if (animator == null) {
-            animator = GetComponentInChildren<Animator>();
-        }
 
         m_Agent = GetComponent<NavMeshAgent>();
         EnemyMovement = GetComponent<EnemyMovement>();
@@ -78,6 +72,8 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player").transform;
         AssignPoints();
+
+        animator = EnemyMovement.animator;
     }
 
     public void AssignPoints()
