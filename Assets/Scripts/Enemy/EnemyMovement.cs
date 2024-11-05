@@ -121,10 +121,16 @@ public class EnemyMovement : MonoBehaviour
             animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
             animator.SetFloat("Speed", m_Agent.speed);
         }
+        if(isStunned || isFrozen) {
+            animator.SetBool("Disabled", true);
+        } else {
+            animator.SetBool("Disabled", false);
+        }
     }
     public void StunEnemy()
     {
         isStunned = true;
+        animator.SetTrigger("DisableTrigger");
         e_StunTimeLeft = e_StunTime;
         //m_Agent.speed = 0;
     }
@@ -143,6 +149,7 @@ public class EnemyMovement : MonoBehaviour
     public void FreezeEnemy()
     {
         isFrozen = true;
+        animator.SetTrigger("DisableTrigger");
         e_FreezeTimeLeft = e_FreezeTime;
         //m_Agent.speed = s_MovementSpeed / 2;
     }
