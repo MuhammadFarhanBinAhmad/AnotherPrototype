@@ -45,7 +45,10 @@ public class CollisionForceDetector : MonoBehaviour
                         //hitShot.gameObject.GetComponent<HitAudio>().PlayHitEnemySound();
 
                         collision.gameObject.transform.position = Vector3.MoveTowards(collision.transform.position, gameObject.transform.position, -knockbackForce);
-                        Instantiate(crateBreakObject, gameObject.transform.position, gameObject.transform.rotation);
+                        if (crateBreakObject != null)
+                        {
+                            Instantiate(crateBreakObject, gameObject.transform.position, gameObject.transform.rotation);
+                        }
                         Destroy(gameObject);
                     }
                 }
