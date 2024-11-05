@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa44b67d519f844b8c44b2c28718177, type: 3}
+  m_Name: Freeze
+  m_EditorClassIdentifier: 
+  arm: {fileID: 2100000, guid: 8d981e0fbbbec8243a25ae6275cbb19d, type: 2}
+  armJoint: {fileID: 2100000, guid: 242e6f538057bfc46ac1e88de81ad106, type: 2}

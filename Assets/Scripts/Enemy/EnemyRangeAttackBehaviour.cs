@@ -58,6 +58,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
     private void Start()
     {
+        ReassignMesh();
         m_Agent = GetComponent<NavMeshAgent>();
         EnemyMovement = GetComponent<EnemyMovement>();
         defaultSpeed = m_Agent.speed;
@@ -192,6 +193,45 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
         {
             isShocked = false;
             e_ShockMultiplier = 1f;
+        }
+    }
+
+    void ReassignMesh() {
+        ArmMeshContainer amc = GameObject.FindObjectOfType<ArmMeshContainer>();
+        MaterialStore materialReassign = null;
+        switch(e_weaponType.p_ProjectileElement) {
+            case "Freeze":
+                Debug.Log("Freeze");
+                materialReassign = amc.freeze;
+                break;
+            case "Burn":
+            Debug.Log("Burn");
+                materialReassign = amc.burn;
+                break;
+            case "Stun":
+            Debug.Log("Stun");
+                materialReassign = amc.stun;
+                break;
+            case "Shock":
+            Debug.Log("Shock");
+                materialReassign = amc.shock;
+                break;
+            default:
+                break;
+        }
+        if (materialReassign) {
+            foreach(Transform i in transform) {
+                if(i.tag == "Model") {
+                    foreach(SkinnedMeshRenderer j in GetComponentsInChildren<SkinnedMeshRenderer>()) {
+                        if (j.material.name == "arm_type (Instance)") {
+                            j.material = materialReassign.arm;
+                        }
+                        if (j.material.name == "arm_type_joint (Instance)") {
+                            j.material = materialReassign.armJoint;
+                        }
+                    }
+                }
+            }
         }
     }
 }

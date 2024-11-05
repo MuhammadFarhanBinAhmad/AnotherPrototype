@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
         {
             case MODE.PATROL:
                 {
-                    if (m_Agent.remainingDistance <= m_Agent.stoppingDistance && s_MovementSpeed != 0)
+                    if (m_Agent.enabled && m_Agent.remainingDistance <= m_Agent.stoppingDistance && s_MovementSpeed != 0)
                     {
                         Vector3 point;
                         if (RandomPoint(m_CenterPoint.position, m_PatrolRadius, out point))
@@ -116,7 +116,7 @@ public class EnemyMovement : MonoBehaviour
             m_Agent.speed = s_MovementSpeed / 2;
             CountFreezeTimer();
         }
-        if (animator != null)
+        if (animator != null && m_Agent.enabled)
         {
             animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
             animator.SetFloat("Speed", m_Agent.speed);
