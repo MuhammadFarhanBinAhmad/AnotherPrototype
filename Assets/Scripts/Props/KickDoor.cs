@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UIElements;
 
 public class KickDoor : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class KickDoor : MonoBehaviour
     public bool damageDealt = false;
     public GameObject HitShotEffect;
     public TimeSlow timeSlow;
-
-    public bool canDestroy = false;
 
     private AudioSource audioSource;
     public AudioClip doorBreach;
@@ -45,12 +44,6 @@ public class KickDoor : MonoBehaviour
             {
                 KickDoorDown();
             }
-        }
-
-        if (canDestroy == true)
-        {
-            gameObject.transform.localScale -= new Vector3(.1f, .1f, .1f) * Time.deltaTime;
-            StartCoroutine(DestroyDoor());
         }
     }
 
@@ -79,13 +72,13 @@ public class KickDoor : MonoBehaviour
             }
             timeSlow.DoSlowMotion(0.1f, 2f);
 
-            //StartCoroutine(ShrinkDoor());
+            StartCoroutine(ScaleDelay());
         }
     }
 
     private void OnTriggerEnter(Collider other) // player kick range
     {
-        if(other.GetComponent<PlayerMovement>() != null)
+        if (other.GetComponent<PlayerMovement>() != null)
         {
             inrange = true;
 
@@ -133,15 +126,26 @@ public class KickDoor : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public IEnumerator ShrinkDoor()
+    private IEnumerator ScaleDelay()
     {
-        yield return new WaitForSeconds(3);
-        canDestroy = true;
+        yield return new WaitForSeconds(1);
+        StartCoroutine(ScaleOverTime(2f, 0.5f));
     }
 
-    public IEnumerator DestroyDoor()
+    private IEnumerator ScaleOverTime(float duration, float scale)
     {
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
+        var startScale = transform.localScale;
+        var endScale = Vector3.one * scale;
+        var elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            var t = elapsed / duration;
+            transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = endScale;
     }
 }
