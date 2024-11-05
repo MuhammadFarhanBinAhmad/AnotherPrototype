@@ -201,19 +201,15 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
         MaterialStore materialReassign = null;
         switch(e_weaponType.p_ProjectileElement) {
             case "Freeze":
-                Debug.Log("Freeze");
                 materialReassign = amc.freeze;
                 break;
             case "Burn":
-            Debug.Log("Burn");
                 materialReassign = amc.burn;
                 break;
             case "Stun":
-            Debug.Log("Stun");
                 materialReassign = amc.stun;
                 break;
             case "Shock":
-            Debug.Log("Shock");
                 materialReassign = amc.shock;
                 break;
             default:

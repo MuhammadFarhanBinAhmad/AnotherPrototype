@@ -106,14 +106,17 @@ public class EnemyHealth : MonoBehaviour
 
         if (GetComponent<EnemyRangeAttackBehaviour>() != null)
         {
-            GameObject weapondrop = Instantiate(WeaponPrefab, transform.position, transform.rotation);
-            WeaponPrefab = null;
-            weapondrop.GetComponent<Weapon>().SetWeapon(GetComponent<EnemyRangeAttackBehaviour>().e_weaponType);
-            Rigidbody weapondrop_rb = weapondrop.GetComponent<Rigidbody>();
-            Vector3 AmmoDirection = Random.insideUnitSphere.normalized;
-            if (weapondrop_rb != null)
+            if (WeaponPrefab != null)
             {
-                weapondrop_rb.AddForce(AmmoDirection * .5f, ForceMode.Impulse);
+                GameObject weapondrop = Instantiate(WeaponPrefab, transform.position, transform.rotation);
+                WeaponPrefab = null;
+                weapondrop.GetComponent<Weapon>().SetWeapon(GetComponent<EnemyRangeAttackBehaviour>().e_weaponType);
+                Rigidbody weapondrop_rb = weapondrop.GetComponent<Rigidbody>();
+                Vector3 AmmoDirection = Random.insideUnitSphere.normalized;
+                if (weapondrop_rb != null)
+                {
+                    weapondrop_rb.AddForce(AmmoDirection * .5f, ForceMode.Impulse);
+                }
             }
         }
         if (GetComponent<EnemyMeleeAttackBehaviour>() != null)

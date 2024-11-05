@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
- public float speed = 5f;
+    public float speed = 5f;
     public float jumpForce = 5f;
     public float gravity = -9.81f;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    private float startingDrag;
+    public float maxMagnitude;
 
     public int p_DashSpeed = 20; // Speed multiplier during a dash
     public float p_DashDuration = 0.2f; // How long the dash lasts
@@ -39,13 +41,22 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevent rotation from physics
         // Create a ground check position
+        startingDrag = rb.drag;
 
         audioSource = GetComponent<AudioSource>();
-
     }
 
     void Update()
     {
+        if (isGrounded == true)
+        {
+            rb.drag = startingDrag;
+        }
+        else
+        {
+            rb.drag = startingDrag / 2;
+        }
+
         if (canFly == false)
         {
             // Check if the player is grounded
@@ -68,6 +79,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (rb.velocity.magnitude > maxMagnitude)
+        {
+            rb.velocity *= 0.75f;
+        }
+    }
+
     void Movement()
     {
         float moveX = Input.GetAxis("Horizontal");
@@ -76,7 +95,23 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
 
         // Move the player
-        rb.MovePosition(rb.position + move * speed * Time.deltaTime);
+        // rb.MovePosition(rb.position + move * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.W))
+        {
+            rb.AddForce(transform.forward.normalized, ForceMode.Impulse);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(transform.right.normalized * -1f, ForceMode.Impulse);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(transform.forward.normalized * -1f, ForceMode.Impulse);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(transform.right.normalized, ForceMode.Impulse);
+        }
 
         if (isGrounded == true && walkAudioCurrent == walkAudioCooldown)
         {
@@ -90,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            rb.drag = startingDrag / 2;
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
 

@@ -93,13 +93,19 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
             {
                 case MODE.PASSIVE:
                     {
-                        m_Agent.speed = defaultSpeed;
+                        if (EnemyMovement.isStunned == false && EnemyMovement.isFrozen == false)
+                        {
+                            m_Agent.speed = defaultSpeed;
+                        }
                         break;
                     }
                 case MODE.ENGAGE:
                     {
                         transform.LookAt(player.position);
-                        m_Agent.speed = defaultSpeed * 2.5f;
+                        if (EnemyMovement.isStunned == false && EnemyMovement.isFrozen == false)
+                        {
+                            m_Agent.speed = defaultSpeed * 2.5f;
+                        }
                         m_Agent.SetDestination(player.position);
                         AttackPlayer();
                         break;
@@ -107,7 +113,10 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
                 case MODE.FLANK:
                     {
                         transform.LookAt(player.position);
-                        m_Agent.speed = defaultSpeed * 1.5f;
+                        if (EnemyMovement.isStunned == false && EnemyMovement.isFrozen == false)
+                        {
+                            m_Agent.speed = defaultSpeed * 1.5f;
+                        }
                         float distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
                         if (distance <= 4)
                         {
@@ -263,19 +272,15 @@ public class EnemyMeleeAttackBehaviour : MonoBehaviour
         MaterialStore materialReassign = null;
         switch(e_weaponType.p_ProjectileElement) {
             case "Freeze":
-                Debug.Log("Freeze");
                 materialReassign = amc.freeze;
                 break;
             case "Burn":
-            Debug.Log("Burn");
                 materialReassign = amc.burn;
                 break;
             case "Stun":
-            Debug.Log("Stun");
                 materialReassign = amc.stun;
                 break;
             case "Shock":
-            Debug.Log("Shock");
                 materialReassign = amc.shock;
                 break;
             default:
