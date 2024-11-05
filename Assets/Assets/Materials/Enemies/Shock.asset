@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa44b67d519f844b8c44b2c28718177, type: 3}
+  m_Name: Shock
+  m_EditorClassIdentifier: 
+  arm: {fileID: 2100000, guid: ba6eb97b9cd582640af08aa4e1921e84, type: 2}
+  armJoint: {fileID: 2100000, guid: 52bd7022ff5a0994ab37f03c0d1a58b9, type: 2}

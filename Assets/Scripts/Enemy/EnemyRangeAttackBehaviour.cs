@@ -22,7 +22,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public bool isAttacking = false;
     public GameObject roomLeader;
     private float defaultSpeed;
-    private EnemyMovement EnemyMovement;
+    [SerializeField] private EnemyMovement EnemyMovement;
 
 
     public WeaponType e_weaponType;
@@ -53,10 +53,12 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
     public bool isLobotomised = false;
     public GameObject shootTarget;
+    public Animator animator;
 
 
     private void Start()
     {
+        ReassignMesh();
         m_Agent = GetComponent<NavMeshAgent>();
         EnemyMovement = GetComponent<EnemyMovement>();
         defaultSpeed = m_Agent.speed;
@@ -70,6 +72,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
         shootDurationCurrent = shootDurationMax;
         audioSource = GetComponent<AudioSource>();
+        animator = EnemyMovement.animator;
     }
 
     public void Update()
@@ -85,6 +88,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                     }
                 case MODE.ENGAGE:
                     {
+                        animator.SetBool("Attacking", true);
                         transform.LookAt(player.position);
                         m_Agent.speed = defaultSpeed;
                         m_Agent.SetDestination(player.position);
@@ -93,6 +97,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                     }
                 case MODE.DISENGAGE:
                     {
+                        animator.SetBool("Attacking", false);
                         transform.LookAt(player.position);
                         m_Agent.speed = defaultSpeed * 1.5f;
                         m_Agent.SetDestination(retreatPoint.position);
@@ -145,7 +150,6 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public void AttackPlayer()
     {
         shootDurationCurrent -= Time.deltaTime;
-
         m_Agent.SetDestination(player.position);
         if (isShocked == false && isLobotomised == false)
         {
@@ -189,6 +193,45 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
         {
             isShocked = false;
             e_ShockMultiplier = 1f;
+        }
+    }
+
+    void ReassignMesh() {
+        ArmMeshContainer amc = GameObject.FindObjectOfType<ArmMeshContainer>();
+        MaterialStore materialReassign = null;
+        switch(e_weaponType.p_ProjectileElement) {
+            case "Freeze":
+                Debug.Log("Freeze");
+                materialReassign = amc.freeze;
+                break;
+            case "Burn":
+            Debug.Log("Burn");
+                materialReassign = amc.burn;
+                break;
+            case "Stun":
+            Debug.Log("Stun");
+                materialReassign = amc.stun;
+                break;
+            case "Shock":
+            Debug.Log("Shock");
+                materialReassign = amc.shock;
+                break;
+            default:
+                break;
+        }
+        if (materialReassign) {
+            foreach(Transform i in transform) {
+                if(i.tag == "Model") {
+                    foreach(SkinnedMeshRenderer j in GetComponentsInChildren<SkinnedMeshRenderer>()) {
+                        if (j.material.name == "arm_type (Instance)") {
+                            j.material = materialReassign.arm;
+                        }
+                        if (j.material.name == "arm_type_joint (Instance)") {
+                            j.material = materialReassign.armJoint;
+                        }
+                    }
+                }
+            }
         }
     }
 }

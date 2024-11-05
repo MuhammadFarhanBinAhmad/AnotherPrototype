@@ -91,7 +91,7 @@ public class EnemyGrab : MonoBehaviour
         this.objectGrabPoint = objectGrabPoint;
         rb.useGravity = false;
         playerFist.anim.SetTrigger("Grab");
-        animator.SetFloat("Speed", 0);
+        //animator.SetFloat("Speed", 0);
     }
 
     public void Throw(float throwForce)

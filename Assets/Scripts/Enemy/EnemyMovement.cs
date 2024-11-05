@@ -55,10 +55,11 @@ public class EnemyMovement : MonoBehaviour
             m_CenterPoint = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        animator = GetComponent<Animator>();
-        if (animator == null)
+        foreach(Animator i in GetComponentsInChildren<Animator>())
         {
-            animator = GetComponentInChildren<Animator>();
+            if(i.gameObject.tag == "Model") {
+                animator = i;
+            }
         }
         audioSource = GetComponent<AudioSource>();
     }
@@ -69,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
         {
             case MODE.PATROL:
                 {
-                    if (m_Agent.remainingDistance <= m_Agent.stoppingDistance && s_MovementSpeed != 0)
+                    if (m_Agent.enabled && m_Agent.remainingDistance <= m_Agent.stoppingDistance && s_MovementSpeed != 0)
                     {
                         Vector3 point;
                         if (RandomPoint(m_CenterPoint.position, m_PatrolRadius, out point))
@@ -115,15 +116,21 @@ public class EnemyMovement : MonoBehaviour
             m_Agent.speed = s_MovementSpeed / 2;
             CountFreezeTimer();
         }
-        if (animator != null)
+        if (animator != null && m_Agent.enabled)
         {
             animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
             animator.SetFloat("Speed", m_Agent.speed);
+        }
+        if(isStunned || isFrozen) {
+            animator.SetBool("Disabled", true);
+        } else {
+            animator.SetBool("Disabled", false);
         }
     }
     public void StunEnemy()
     {
         isStunned = true;
+        animator.SetTrigger("DisableTrigger");
         e_StunTimeLeft = e_StunTime;
         //m_Agent.speed = 0;
     }
@@ -142,6 +149,7 @@ public class EnemyMovement : MonoBehaviour
     public void FreezeEnemy()
     {
         isFrozen = true;
+        animator.SetTrigger("DisableTrigger");
         e_FreezeTimeLeft = e_FreezeTime;
         //m_Agent.speed = s_MovementSpeed / 2;
     }

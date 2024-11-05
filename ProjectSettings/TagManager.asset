@@ -9,6 +9,7 @@ TagManager:
   - LeftFist
   - EnemyYeeter
   - ShockAura
+  - Model
   layers:
   - Default
   - TransparentFX

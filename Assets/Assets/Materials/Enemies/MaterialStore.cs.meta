@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8aa44b67d519f844b8c44b2c28718177
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shock: {fileID: 2100000, guid: ba6eb97b9cd582640af08aa4e1921e84, type: 2}
+  - stun: {fileID: 2100000, guid: 9603dabb90e443f4099feec995df5b68, type: 2}
+  - freeze: {fileID: 2100000, guid: 8d981e0fbbbec8243a25ae6275cbb19d, type: 2}
+  - burn: {fileID: 2100000, guid: 25150c66fa3f33a41b7dec0feabfcf44, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: a93ed7e0d58d24447a4ce755e63fff81
+guid: b86f15ced861e2748a0888438640498b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -4736914757116921126
-    second: Bones|Attack_Melee
+      74: 5577329602525592075
+    second: Bones|ArmatureAction
   - first:
-      74: -661833187523472681
-    second: Bones|Attack_Ranged_Enter
+      74: -3105527464955451473
+    second: Bones|Attack_End
   - first:
-      74: 8863731621053985547
-    second: Bones|Attack_Ranged_Exit
+      74: 5532162203385313682
+    second: Bones|Attack_Hold
   - first:
-      74: -2551144018060976301
-    second: Bones|Damage
+      74: 2605459995293464906
+    second: Bones|Attack_Start
   - first:
       74: 5405369170814088055
     second: Bones|Disabled
@@ -28,14 +28,14 @@ ModelImporter:
       74: -344965211243076739
     second: Bones|Idle
   - first:
-      74: -4022676994518985712
-    second: Bones|Run
+      74: 2507516109838720212
+    second: Bones|Move_End
   - first:
-      74: -8366183999198779881
-    second: Bones|SideRun.L
+      74: 4758182116184628834
+    second: Bones|Move_Start
   - first:
-      74: 5148257368981343657
-    second: Bones|SideRun.R
+      74: -6034101613144806108
+    second: Bones|Moving
   externalObjects: {}
   materials:
     materialImportMode: 2
