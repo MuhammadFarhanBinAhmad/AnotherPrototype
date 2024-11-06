@@ -72,7 +72,10 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
 
         shootDurationCurrent = shootDurationMax;
         audioSource = GetComponent<AudioSource>();
-        animator = EnemyMovement.animator;
+        if(EnemyMovement.animator != null)
+        {
+            animator = EnemyMovement.animator;
+        }
     }
 
     public void Update()
