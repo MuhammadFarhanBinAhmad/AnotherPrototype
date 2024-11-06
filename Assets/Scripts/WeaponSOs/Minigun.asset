@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Minigun
   m_EditorClassIdentifier: 
   p_WeaponName: Minigun
-  p_WeaponModel: {fileID: 919132149155446097, guid: d5118093c516d6446aa3867b684a52ab, type: 3}
+  p_WeaponModel: {fileID: 919132149155446097, guid: f3ec9639f887a0046ad99452b3c76e55, type: 3}
   p_WeaponMaterial: {fileID: 2100000, guid: 182db438071950a49a9162ea5811822c, type: 2}
   p_TotalAmmo: 80
   p_WeaponFireRate: 10

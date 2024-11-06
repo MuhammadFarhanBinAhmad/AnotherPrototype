@@ -159,6 +159,8 @@ public class PlayerWeaponManager : MonoBehaviour
         WeaponEquipped = true;
 
         s_PlayerUI.UpdateWeaponUI();
+
+
     }
     public void ClearWeapon()
     {
@@ -209,7 +211,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
             }
         }
-
+        
         transform.position = Vector3.MoveTowards(transform.position, recoilStartPos.position, 0.05f);
 
         //if (Input.GetMouseButton(1))
@@ -395,6 +397,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void AssignModelColour(Material weaponMaterial, string element)
     {
+
         if (element == null)
         {
             return;

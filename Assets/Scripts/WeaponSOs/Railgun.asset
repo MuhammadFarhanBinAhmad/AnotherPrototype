@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Railgun
   m_EditorClassIdentifier: 
   p_WeaponName: Railgun
-  p_WeaponModel: {fileID: 919132149155446097, guid: 747d7801074c1b34fba5ae1384a21e54, type: 3}
+  p_WeaponModel: {fileID: 919132149155446097, guid: c69feb5a3eb5fce448e9a654f879c6b6, type: 3}
   p_WeaponMaterial: {fileID: 2100000, guid: 72293122d3cc9e947a6504e7b3e99e83, type: 2}
   p_TotalAmmo: 12
   p_WeaponFireRate: 0.5
