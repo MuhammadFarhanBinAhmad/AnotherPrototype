@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   p_WeaponName: Pistol
-  p_WeaponModel: {fileID: 919132149155446097, guid: c6534e8d74023254da5107258b694a61, type: 3}
+  p_WeaponModel: {fileID: 919132149155446097, guid: d6c6dd96071f4e944a968d76d5df2ffd, type: 3}
   p_WeaponMaterial: {fileID: 2100000, guid: 7a968acfd24a17b44a3db82ea38c923f, type: 2}
   p_TotalAmmo: 24
   p_WeaponFireRate: 4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   p_WeaponName: Shotgun
-  p_WeaponModel: {fileID: 919132149155446097, guid: 9640c88af2e85544baea13334333daa1, type: 3}
+  p_WeaponModel: {fileID: 919132149155446097, guid: 7f172822ff70fd647aa1140c2d1f6da7, type: 3}
   p_WeaponMaterial: {fileID: 2100000, guid: fd462c0caf279b442937d21db1568cf2, type: 2}
   p_TotalAmmo: 12
   p_WeaponFireRate: 1
