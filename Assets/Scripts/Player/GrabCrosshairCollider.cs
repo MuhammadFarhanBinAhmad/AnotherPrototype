@@ -18,7 +18,7 @@ public class GrabCrosshairCollider : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider collision)
+    public void OnTriggerStay(Collider collision)
     {
         if (collision.transform.GetComponent<PropGrab>() != null)
         {
@@ -29,6 +29,10 @@ public class GrabCrosshairCollider : MonoBehaviour
             if (collision.transform.GetComponent<EnemyGrab>().canGrab == true)
             {
                 grabCrosshair.SetActive(true);
+            }
+            else
+            {
+                grabCrosshair.SetActive(false);
             }
         }
     }
