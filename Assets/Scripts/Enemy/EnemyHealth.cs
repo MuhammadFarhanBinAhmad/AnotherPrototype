@@ -45,15 +45,16 @@ public class EnemyHealth : MonoBehaviour
         health -= dmg;
         e_EnemyUI.UpdateEnemyHealth();
 
-        if (GetComponent<EnemyMeleeAttackBehaviour>() != null) // start aggro on player when hit
-        {
-            GetComponent<EnemyMeleeAttackBehaviour>().isAttacking = true;
-            GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
-        }
-        if (GetComponent<EnemyRangeAttackBehaviour>() != null)
-        {
-            GetComponent<EnemyRangeAttackBehaviour>().isAttacking = true;
-        }
+        //if (GetComponent<EnemyMeleeAttackBehaviour>() != null) // start aggro on player when hit
+        //{
+        //    GetComponent<EnemyMeleeAttackBehaviour>().isAttacking = true;
+        //    GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
+        //}
+        //if (GetComponent<EnemyRangeAttackBehaviour>() != null)
+        //{
+        //    GetComponent<EnemyRangeAttackBehaviour>().isAttacking = true;
+        //}
+        transform.LookAt(playerFist.transform.position);
 
         if (health <= 0)
         {
