@@ -224,18 +224,26 @@ public class PlayerWeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             p_ProjectileElement = "Stun";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             p_ProjectileElement = "Burn";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             p_ProjectileElement = "Shock";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             p_ProjectileElement = "Freeze";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
