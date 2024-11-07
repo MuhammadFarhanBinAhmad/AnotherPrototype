@@ -198,6 +198,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!43 &15901754
@@ -1024,6 +1032,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304883383}
     m_Modifications:
+    - target: {fileID: -8762076904083785588, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_RootOrder
       value: 62
@@ -1087,6 +1099,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_Name
       value: Guncase (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154100999879791832, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
@@ -2424,7 +2448,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28896
+  m_Name: pb_Mesh28892
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8082,6 +8106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304883383}
     m_Modifications:
+    - target: {fileID: -8762076904083785588, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_RootOrder
       value: 64
@@ -8145,6 +8173,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_Name
       value: Guncase (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154100999879791832, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
@@ -15208,6 +15248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304883383}
     m_Modifications:
+    - target: {fileID: -8762076904083785588, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_RootOrder
       value: 61
@@ -15271,6 +15315,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_Name
       value: Guncase
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154100999879791832, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
@@ -18522,6 +18578,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
       propertyPath: m_Name
       value: Locker
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
@@ -23923,7 +23987,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29562
+  m_Name: pb_Mesh29618
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24400,6 +24464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304883383}
     m_Modifications:
+    - target: {fileID: -8762076904083785588, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_RootOrder
       value: 65
@@ -24463,6 +24531,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_Name
       value: Guncase (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154100999879791832, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7254591458796953529, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27047,7 +27127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29418
+  m_Name: pb_Mesh29472
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29809,6 +29889,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!4 &804863238 stripped
@@ -29947,6 +30035,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3b063701204e0df4da216376c3a43097, type: 3}
       propertyPath: m_Name
       value: BoardroomTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b063701204e0df4da216376c3a43097, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b063701204e0df4da216376c3a43097, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b063701204e0df4da216376c3a43097, type: 3}
@@ -30650,6 +30746,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
       propertyPath: m_Name
       value: Locker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
@@ -35966,7 +36070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &881889422
 Transform:
   m_ObjectHideFlags: 0
@@ -39863,7 +39967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977527928}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -16.46, y: 2.3, z: -9.93}
+  m_LocalPosition: {x: -18, y: 2.3, z: -11.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49261,7 +49365,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31542
+  m_Name: pb_Mesh31544
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -49576,6 +49680,10 @@ PrefabInstance:
     - target: {fileID: 9060116034025686766, guid: 089e2dabd8641054aba222c9b54ab6d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060116034025686769, guid: 089e2dabd8641054aba222c9b54ab6d1, type: 3}
+      propertyPath: shootDurationMax
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089e2dabd8641054aba222c9b54ab6d1, type: 3}
@@ -61321,6 +61429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!1001 &1525068518
@@ -61860,6 +61976,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!1 &1540163446
@@ -62277,7 +62401,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29084
+  m_Name: pb_Mesh29082
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -63409,6 +63533,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!1001 &1615281621
@@ -63824,6 +63956,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
       propertyPath: m_Name
       value: Locker (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
@@ -66230,7 +66370,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30244
+  m_Name: pb_Mesh30300
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -72023,6 +72163,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locker (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
 --- !u!1001 &1864572116
@@ -74056,7 +74204,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29584
+  m_Name: pb_Mesh29640
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -74326,6 +74474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304883383}
     m_Modifications:
+    - target: {fileID: -8762076904083785588, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_RootOrder
       value: 63
@@ -74389,6 +74541,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
       propertyPath: m_Name
       value: Guncase (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154100999879791832, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba92d36a9eb010748bc7483011b28065, type: 3}
@@ -74622,7 +74786,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29342
+  m_Name: pb_Mesh29338
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -75577,6 +75741,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
       propertyPath: m_Name
       value: Locker (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ef71cfc31787448a39788785fa88ad, type: 3}

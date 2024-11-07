@@ -4,6 +4,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class EnemyRangeAttackBehaviour : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public GameObject shootTarget;
     public Animator animator;
 
+    private bool queenZip = true;
 
     private void Start()
     {
@@ -90,11 +92,19 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
                         break;
                     }
                 case MODE.ENGAGE:
-                    {
+                    {            
                         animator.SetBool("Attacking", true);
                         transform.LookAt(player.position);
-                        m_Agent.speed = defaultSpeed;
-                        m_Agent.SetDestination(player.position);
+                        m_Agent.speed = defaultSpeed * 1.5f;
+                        float distance = Vector3.Distance(transform.position, player.position);
+                        if (distance >= 7)
+                        {
+                            m_Agent.SetDestination(player.position);
+                        }
+                        else
+                        {
+                            m_Agent.SetDestination(retreatPoint.position);
+                        }
                         AttackPlayer();
                         break;
                     }
@@ -153,7 +163,7 @@ public class EnemyRangeAttackBehaviour : MonoBehaviour
     public void AttackPlayer()
     {
         shootDurationCurrent -= Time.deltaTime;
-        m_Agent.SetDestination(player.position);
+        //m_Agent.SetDestination(player.position);
         if (isShocked == false && isLobotomised == false)
         {
             if (Time.time >= nexttime_ToFire && shootDurationCurrent >= 0)

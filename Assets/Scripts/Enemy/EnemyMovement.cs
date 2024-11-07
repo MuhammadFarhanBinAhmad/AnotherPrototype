@@ -29,9 +29,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform m_CenterPoint;
 
     public Transform m_Target;
-    private AudioSource audioSource;
     public bool canDetect = true;
-    public AudioClip detectedPlayer;
 
     [Header("Effects")]
     public bool isStunned;
@@ -40,6 +38,13 @@ public class EnemyMovement : MonoBehaviour
     public bool isFrozen;
     public float e_FreezeTime;
     public float e_FreezeTimeLeft;
+
+    private AudioSource audioSource;
+    public AudioClip detectedPlayer;
+    public AudioClip walkSound;
+    private float walkAudioCooldown = 0.4f;
+    private float walkAudioCurrent;
+    public bool queenZip = false;
 
 
     private void Start()
@@ -125,6 +130,20 @@ public class EnemyMovement : MonoBehaviour
             animator.SetBool("Disabled", true);
         } else {
             animator.SetBool("Disabled", false);
+        }
+
+        walkAudioCurrent += Time.deltaTime;
+        if (walkAudioCurrent >= walkAudioCooldown)
+        {
+            walkAudioCurrent = walkAudioCooldown;
+        }
+        if (walkAudioCurrent == walkAudioCooldown)
+        {
+            if (p_Mode == MODE.ATTACKING)
+            {
+                walkAudioCurrent = 0;
+                PlayWalkSound();
+            }
         }
     }
     public void StunEnemy()
@@ -217,6 +236,20 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         p_Mode = MODE.PATROL;
+    }
+
+    void PlayWalkSound()
+    {
+        if (gameObject.name == "Jack")
+        {
+            audioSource.pitch = (Random.Range(0.6f, 1f));
+            audioSource.PlayOneShot(walkSound);
+        }
+        if (gameObject.name == "Queen")
+        {
+            audioSource.pitch = (Random.Range(0.6f, 1f));
+            audioSource.PlayOneShot(walkSound);
+        }
     }
 
     void OnDrawGizmos()
