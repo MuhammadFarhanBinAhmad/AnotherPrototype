@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
-    PlayerUI s_PlayerUI;
+    public PlayerUI s_PlayerUI;
 
     [Header("General")]
     public string p_WeaponName;
@@ -76,6 +76,12 @@ public class PlayerWeaponManager : MonoBehaviour
     private float o_BulletMaxDamage;
     private int o_TotalAmmo;
 
+    private void OnEnable()
+    {
+        s_PlayerUI = FindObjectOfType<PlayerUI>();
+        s_PlayerUI.UpdateWeaponUI();
+    }
+
     private void Start()
     {
         s_PlayerUI = FindObjectOfType<PlayerUI>();
@@ -91,6 +97,12 @@ public class PlayerWeaponManager : MonoBehaviour
         startingRotation.z = p_Spawnpos.transform.rotation.z;
 
         o_TotalAmmo = p_TotalAmmo;
+    }
+
+    private IEnumerator AssignUIAgain()
+    {
+        yield return new WaitForSeconds(1);
+        s_PlayerUI = FindObjectOfType<PlayerUI>();
     }
     public void ChangeWeapon(Weapon wt)
     {
@@ -347,7 +359,7 @@ public class PlayerWeaponManager : MonoBehaviour
             }
             else // 1 bullet, dead center
             {
-                p_Spawnpos.transform.localRotation = Quaternion.identity;
+                //p_Spawnpos.transform.localRotation = Quaternion.identity;
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);

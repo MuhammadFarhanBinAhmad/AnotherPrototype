@@ -32,7 +32,7 @@ public class HolgerManager : MonoBehaviour
         {
             QuitGame();
         }
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             RespawnHolger();
         }
