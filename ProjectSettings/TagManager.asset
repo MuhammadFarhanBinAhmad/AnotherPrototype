@@ -10,6 +10,8 @@ TagManager:
   - EnemyYeeter
   - ShockAura
   - Model
+  - Arm
+  - ArmJoint
   layers:
   - Default
   - TransparentFX
