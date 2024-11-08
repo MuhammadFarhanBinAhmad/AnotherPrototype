@@ -663,7 +663,7 @@ MonoBehaviour:
   e_ShockTimeLeft: 0
   isLobotomised: 0
   shootTarget: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 503631005}
 --- !u!82 &9060116034025686768
 AudioSource:
   m_ObjectHideFlags: 0

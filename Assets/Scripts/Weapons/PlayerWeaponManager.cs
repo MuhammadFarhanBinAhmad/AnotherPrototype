@@ -76,6 +76,8 @@ public class PlayerWeaponManager : MonoBehaviour
     private float o_BulletMaxDamage;
     private int o_TotalAmmo;
 
+    [SerializeField] ArmMaterial armMaterial;
+
     private void Start()
     {
         s_PlayerUI = FindObjectOfType<PlayerUI>();
@@ -98,6 +100,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
             //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+            armMaterial.ChangeMaterial(p_ProjectileElement);
             p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
             Weapon weapon = w.GetComponent<Weapon>();
             weapon.p_WeaponName = p_WeaponName;
@@ -152,6 +155,7 @@ public class PlayerWeaponManager : MonoBehaviour
         GameObject m = Instantiate(p_WeaponModel, currWeaponObject.transform.position, currWeaponObject.transform.rotation); // generate weapon model
         p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
         //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+        armMaterial.ChangeMaterial(p_ProjectileElement);
         m.transform.parent = currWeaponObject.transform;
         initialWeapon = m;
         s_PlayerUI.PickUpWeaponUI(null);
@@ -159,8 +163,6 @@ public class PlayerWeaponManager : MonoBehaviour
         WeaponEquipped = true;
 
         s_PlayerUI.UpdateWeaponUI();
-
-
     }
     public void ClearWeapon()
     {
@@ -357,6 +359,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         GameObject w = Instantiate(WeaponObject, p_Spawnpos.position, p_Spawnpos.rotation);
         //AssignModelColour(p_WeaponMaterial, p_ProjectileElement);
+        armMaterial.ChangeMaterial(p_ProjectileElement);
         p_WeaponModel.GetComponent<Renderer>().material = p_WeaponMaterial;
         Weapon weapon = w.GetComponent<Weapon>();
         weapon.p_WeaponName = p_WeaponName;
@@ -418,6 +421,8 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             weaponMaterial.color = freezeColour;
         }
+
+        
     }
 
     public void GodMode()
