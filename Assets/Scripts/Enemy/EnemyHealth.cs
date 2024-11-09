@@ -28,13 +28,19 @@ public class EnemyHealth : MonoBehaviour
 
     public PlayerFist playerFist; // to reset grab status if enemy burn to death while held
     public RoomManager roomManager; // to reset leader status on death
+    public bool assignFist = true; // false if specialscene
 
+    [SerializeField]
+    public Animator crosshairAnim;
 
     private void Start()
     {
         health = maxHealth;
 
-        playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
+        if (assignFist == true)
+        {
+            playerFist = GameObject.FindGameObjectWithTag("LeftFist").GetComponent<PlayerFist>();
+        }
         if (gameObject.transform.parent != null)
         {
             roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
@@ -45,16 +51,13 @@ public class EnemyHealth : MonoBehaviour
         health -= dmg;
         e_EnemyUI.UpdateEnemyHealth();
 
-        //if (GetComponent<EnemyMeleeAttackBehaviour>() != null) // start aggro on player when hit
-        //{
-        //    GetComponent<EnemyMeleeAttackBehaviour>().isAttacking = true;
-        //    GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
-        //}
-        //if (GetComponent<EnemyRangeAttackBehaviour>() != null)
-        //{
-        //    GetComponent<EnemyRangeAttackBehaviour>().isAttacking = true;
-        //}
-        transform.LookAt(playerFist.transform.position);
+        crosshairAnim.SetTrigger("Pulse");
+
+
+        if (playerFist != null)
+        {
+            transform.LookAt(playerFist.transform.position);
+        }
 
         if (health <= 0)
         {
@@ -103,7 +106,10 @@ public class EnemyHealth : MonoBehaviour
     public void Die()
     {
         Instantiate(DeathSoundObject);
-        playerFist.GrabDeath();
+        if (playerFist != null)
+        {
+            playerFist.GrabDeath();
+        }
 
         if (GetComponent<EnemyRangeAttackBehaviour>() != null)
         {

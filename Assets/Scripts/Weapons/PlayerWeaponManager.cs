@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
-    PlayerUI s_PlayerUI;
+    public PlayerUI s_PlayerUI;
+    public BarrelSmoke BarrelSmoke;
 
     [Header("General")]
     public string p_WeaponName;
@@ -75,8 +76,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private float o_BulletMinDamage;
     private float o_BulletMaxDamage;
     private int o_TotalAmmo;
-
-    [SerializeField] ArmMaterial armMaterial;
+    
 
     private void Start()
     {
@@ -94,6 +94,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
         o_TotalAmmo = p_TotalAmmo;
     }
+
     public void ChangeWeapon(Weapon wt)
     {
         if (WeaponEquipped)
@@ -226,18 +227,26 @@ public class PlayerWeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             p_ProjectileElement = "Stun";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             p_ProjectileElement = "Burn";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             p_ProjectileElement = "Shock";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             p_ProjectileElement = "Freeze";
+            s_PlayerUI.UpdateWeaponUI();
+            s_PlayerUI.UpdateTextColour();
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -341,11 +350,16 @@ public class PlayerWeaponManager : MonoBehaviour
             }
             else // 1 bullet, dead center
             {
-                p_Spawnpos.transform.localRotation = Quaternion.identity;
+                //p_Spawnpos.transform.localRotation = Quaternion.identity;
                 GameObject p = Instantiate(p_ProjectileType, p_Spawnpos.position, p_Spawnpos.rotation);
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
+
+                if (BarrelSmoke != null)
+                {
+                    BarrelSmoke.shotFired = true;
+                }
             }
         }
 
