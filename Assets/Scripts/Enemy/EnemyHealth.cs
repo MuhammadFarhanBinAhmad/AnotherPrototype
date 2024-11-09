@@ -30,6 +30,8 @@ public class EnemyHealth : MonoBehaviour
     public RoomManager roomManager; // to reset leader status on death
     public bool assignFist = true; // false if specialscene
 
+    [SerializeField]
+    public Animator crosshairAnim;
 
     private void Start()
     {
@@ -49,15 +51,9 @@ public class EnemyHealth : MonoBehaviour
         health -= dmg;
         e_EnemyUI.UpdateEnemyHealth();
 
-        //if (GetComponent<EnemyMeleeAttackBehaviour>() != null) // start aggro on player when hit
-        //{
-        //    GetComponent<EnemyMeleeAttackBehaviour>().isAttacking = true;
-        //    GetComponent<EnemyMeleeAttackBehaviour>().isLeader = true;
-        //}
-        //if (GetComponent<EnemyRangeAttackBehaviour>() != null)
-        //{
-        //    GetComponent<EnemyRangeAttackBehaviour>().isAttacking = true;
-        //}
+        crosshairAnim.SetTrigger("Pulse");
+
+
         if (playerFist != null)
         {
             transform.LookAt(playerFist.transform.position);

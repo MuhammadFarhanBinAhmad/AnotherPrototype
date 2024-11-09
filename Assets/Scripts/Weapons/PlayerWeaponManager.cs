@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerWeaponManager : MonoBehaviour
 {
     public PlayerUI s_PlayerUI;
+    public BarrelSmoke BarrelSmoke;
 
     [Header("General")]
     public string p_WeaponName;
@@ -99,11 +100,6 @@ public class PlayerWeaponManager : MonoBehaviour
         o_TotalAmmo = p_TotalAmmo;
     }
 
-    private IEnumerator AssignUIAgain()
-    {
-        yield return new WaitForSeconds(1);
-        s_PlayerUI = FindObjectOfType<PlayerUI>();
-    }
     public void ChangeWeapon(Weapon wt)
     {
         if (WeaponEquipped)
@@ -364,6 +360,11 @@ public class PlayerWeaponManager : MonoBehaviour
                 int damage = (int)(Random.Range(p_BulletMinDamage, p_BulletMaxDamage));
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileElements(p_ProjectileElement, p_ElementStackOnHit);
                 p_ProjectileType.GetComponent<PlayerProjectile>().SetProjectileStats(p_BulletSpeed, damage, p_TimeBeforeSelfDestruct, p_isPiercing);
+
+                if (BarrelSmoke != null)
+                {
+                    BarrelSmoke.shotFired = true;
+                }
             }
         }
 
