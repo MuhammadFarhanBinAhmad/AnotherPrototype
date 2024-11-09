@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061982, b: 0.029046053, a: 1}
+  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061987, b: 0.029046189, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -38476,17 +38476,33 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7884678590287326648, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: Arm
+      objectReference: {fileID: 0}
     - target: {fileID: -7675316215172735025, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7675316215172735025, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: Arm
       objectReference: {fileID: 0}
     - target: {fileID: -7094485782949196295, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7094485782949196295, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: ArmJoint
+      objectReference: {fileID: 0}
     - target: {fileID: -1506095069043465081, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1506095069043465081, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: Arm
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
       propertyPath: m_Name
@@ -38508,9 +38524,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2898403471209041896, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: ArmJoint
+      objectReference: {fileID: 0}
     - target: {fileID: 4248619398411336674, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248619398411336674, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+      propertyPath: m_TagString
+      value: Arm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
@@ -38936,6 +38960,7 @@ MonoBehaviour:
   WeaponEquipped: 1
   pickupWeapon: {fileID: 0}
   playerFist: {fileID: 296473831}
+  armMaterial: {fileID: 1007889009}
 --- !u!1001 &960079707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41867,6 +41892,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a5c6972a1ac4014b9bc61b47e606d71, type: 3}
+--- !u!1 &1007889008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2830eb765da7d9d448ab8fc11cf0065e, type: 3}
+  m_PrefabInstance: {fileID: 954471618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1007889009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007889008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab17945034955c646bff13d6bf6c0403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amc: {fileID: 0}
 --- !u!43 &1019009897
 Mesh:
   m_ObjectHideFlags: 0
@@ -59891,13 +59934,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449254087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.08418602, y: -0.96225023, z: 0.2578342, w: -0.022557586}
+  m_LocalPosition: {x: -22.024559, y: -21.28706, z: -19.43927}
+  m_LocalScale: {x: 1.824212, y: 1.968422, z: 2.25328}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2120775843}
-  m_RootOrder: 5
+  m_Father: {fileID: 233002923}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1449254089
 MonoBehaviour:
@@ -83165,7 +83208,6 @@ Transform:
   - {fileID: 150091150}
   - {fileID: 1439009522}
   - {fileID: 2138863217}
-  - {fileID: 1449254088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
