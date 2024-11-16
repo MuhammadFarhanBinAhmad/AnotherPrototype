@@ -45,6 +45,9 @@ public class EnemyHealth : MonoBehaviour
         {
             roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
         }
+        if (crosshairAnim == null) {
+            crosshairAnim = GameObject.Find("CrosshairDefault").GetComponentInChildren<Animator>();
+        }
     }
     public void TakeDamage(int dmg)
     {

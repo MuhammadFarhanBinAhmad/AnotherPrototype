@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class EnemyMovement : MonoBehaviour
     private float walkAudioCurrent;
     public bool queenZip = false;
 
+    //todo: assign scriptable object and make animator dependant
 
     private void Start()
     {
@@ -121,15 +123,17 @@ public class EnemyMovement : MonoBehaviour
             m_Agent.speed = s_MovementSpeed / 2;
             CountFreezeTimer();
         }
-        if (animator != null && m_Agent.enabled)
-        {
-            animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
-            animator.SetFloat("Speed", m_Agent.speed);
-        }
-        if(isStunned || isFrozen) {
-            animator.SetBool("Disabled", true);
-        } else {
-            animator.SetBool("Disabled", false);
+        if (SceneManager.GetActiveScene().name != "Holger Scene") { // exceptions for holger scene
+            if (animator != null && m_Agent.enabled)
+            {
+                animator.SetFloat("Remaining Distance", m_Agent.remainingDistance);
+                animator.SetFloat("Speed", m_Agent.speed);
+            }
+            if(isStunned || isFrozen) {
+                animator.SetBool("Disabled", true);
+            } else {
+                animator.SetBool("Disabled", false);
+            }
         }
 
         walkAudioCurrent += Time.deltaTime;
@@ -149,7 +153,7 @@ public class EnemyMovement : MonoBehaviour
     public void StunEnemy()
     {
         isStunned = true;
-        animator.SetTrigger("DisableTrigger");
+        if (SceneManager.GetActiveScene().name != "Holger Scene") animator.SetTrigger("DisableTrigger"); // exception for holgerscene
         e_StunTimeLeft = e_StunTime;
         //m_Agent.speed = 0;
     }
@@ -168,7 +172,7 @@ public class EnemyMovement : MonoBehaviour
     public void FreezeEnemy()
     {
         isFrozen = true;
-        animator.SetTrigger("DisableTrigger");
+        if (SceneManager.GetActiveScene().name != "Holger Scene") animator.SetTrigger("DisableTrigger");
         e_FreezeTimeLeft = e_FreezeTime;
         //m_Agent.speed = s_MovementSpeed / 2;
     }
