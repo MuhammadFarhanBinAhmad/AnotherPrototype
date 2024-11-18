@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061987, b: 0.029046189, a: 1}
+  m_IndirectSpecularColor: {r: 0.056155145, g: 0.05061982, b: 0.029046053, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -69189,7 +69189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeBlackAlpha: {fileID: 2065376594}
   fadeBlackSpeed: 1
-  enemyHolger: {fileID: 8614917101688891388, guid: ec6f0b898c9a59b45a338ab773abed32, type: 3}
+  enemyHolger: {fileID: 4697759522392549547, guid: ec6f0b898c9a59b45a338ab773abed32, type: 3}
   enemySpawnpoint: {fileID: 1064476846}
 --- !u!43 &2123192056
 Mesh:
