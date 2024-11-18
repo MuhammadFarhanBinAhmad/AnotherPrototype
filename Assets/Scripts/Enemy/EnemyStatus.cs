@@ -58,6 +58,7 @@ public class EnemyStatus : MonoBehaviour
     public EnemyRangeAttackBehaviour enemyRangeAttackBehaviour;
 
     public Animator statusAnimator;
+    public Animator modelAnimator; // for holger scene
 
 
     // Start is called before the first frame update
@@ -187,6 +188,10 @@ public class EnemyStatus : MonoBehaviour
         }
         statusAnimator.SetTrigger("Pulse");
 
+        if (modelAnimator) { // for holgerscene
+            modelAnimator.Play("Bones|Disabled");
+        }
+
         recoveryTime = stunRecovery;
         if (canResetState == true)
         {
@@ -303,6 +308,10 @@ public class EnemyStatus : MonoBehaviour
         //}
         //yield return new WaitForSeconds(2.25f);
         yield return new WaitForSeconds(recoveryTime);
+
+        if (modelAnimator) { // for holgerscene
+            modelAnimator.Play("Bones|Idle");
+        }
 
         isStunned = false;
         isBurnt = false;
