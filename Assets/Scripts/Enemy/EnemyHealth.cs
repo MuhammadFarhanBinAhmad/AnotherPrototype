@@ -32,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]
     public Animator crosshairAnim;
+    public Animator modelAnimator; // for holger
 
     private void Start()
     {
@@ -45,12 +46,19 @@ public class EnemyHealth : MonoBehaviour
         {
             roomManager = gameObject.transform.parent.gameObject.GetComponent<RoomManager>();
         }
+        if (crosshairAnim == null) {
+            crosshairAnim = GameObject.Find("CrosshairDefault").GetComponentInChildren<Animator>();
+        }
     }
     public void TakeDamage(int dmg)
     {
         health -= dmg;
         e_EnemyUI.UpdateEnemyHealth();
 
+        if (modelAnimator) { // for holgerscene
+            modelAnimator.Play("Bones|Damage");
+        }
+        
         crosshairAnim.SetTrigger("Pulse");
 
 
