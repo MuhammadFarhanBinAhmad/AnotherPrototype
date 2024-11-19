@@ -18,10 +18,13 @@ public class Guncase : MonoBehaviour
 
     public TextMeshProUGUI pickupText;
 
+    public AudioSource pickupAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         armArm.SetActive(false);
+        pickupAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,7 @@ public class Guncase : MonoBehaviour
                     fistAnimator.SetTrigger("Equip");
                     StartCoroutine(DestroyCaseArm());
                     StartCoroutine(InstantiateArmArm());
+                    pickupAudio.Play();
                 }
             }
         }
