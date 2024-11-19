@@ -7,6 +7,7 @@ public class PlayerWeaponManager : MonoBehaviour
 {
     public PlayerUI s_PlayerUI;
     public BarrelSmoke BarrelSmoke;
+    public ParticleSystem MuzzleFlash;
 
     [Header("General")]
     public string p_WeaponName;
@@ -44,6 +45,12 @@ public class PlayerWeaponManager : MonoBehaviour
     public AudioClip p_GunShotAudio;
     public AudioClip p_GunPickupAudio;
     public AudioClip p_GunActionAudio; // stuff like charging up railgun
+
+    public float initialPitch;
+    public float currentPitch;
+    public float maxPitch;
+    public float pitchCounter;
+    public float pitchCap;
 
     //[Header("SlowDownStats")]
     //public bool isSlowDown;
@@ -93,6 +100,9 @@ public class PlayerWeaponManager : MonoBehaviour
         startingRotation.z = p_Spawnpos.transform.rotation.z;
 
         o_TotalAmmo = p_TotalAmmo;
+
+        initialPitch = GetComponent<AudioSource>().pitch;
+        currentPitch = initialPitch;
     }
 
     public void ChangeWeapon(Weapon wt)
@@ -258,6 +268,12 @@ public class PlayerWeaponManager : MonoBehaviour
             GodMode();
         }
         #endregion
+
+        pitchCounter -= Time.deltaTime;
+        if (pitchCounter < 0)
+        {
+            currentPitch = initialPitch;
+        }
     }
 
     public void CheckFireMode()
@@ -360,12 +376,30 @@ public class PlayerWeaponManager : MonoBehaviour
                 {
                     BarrelSmoke.shotFired = true;
                 }
+                pitchCounter = pitchCap;
+
+                MuzzleFlash.Play();
             }
         }
 
         if (p_GunShotAudio != null)
         {
-            GetComponent<AudioSource>().PlayOneShot(p_GunShotAudio);
+            if (pitchCounter >= 0)
+            {
+                currentPitch += 0.05f;
+                if (currentPitch >= maxPitch)
+                {
+                    currentPitch = maxPitch;
+                }
+            }
+            else
+            {
+                currentPitch = initialPitch;
+            }
+
+            var AudioSource = GetComponent<AudioSource>();
+            AudioSource.pitch = currentPitch;
+            AudioSource.PlayOneShot(p_GunShotAudio);
         }
     }
 
