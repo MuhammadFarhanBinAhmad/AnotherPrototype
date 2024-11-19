@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip[] walkSounds;
+    AudioClip previousClip;
     private float walkAudioCooldown = 0.4f;
     private float walkAudioCurrent;
 
@@ -156,8 +157,14 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayWalkSound()
     {
-        AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
-        audioSource.pitch = (Random.Range(0.6f, 1f));
+        AudioClip walkSound;
+        do
+        {
+            walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
+        } while (walkSound == previousClip);
+        previousClip = walkSound;
+        audioSource.pitch = Random.Range(0.6f, 1f);
+        audioSource.volume = Random.Range(0.8f, 1f);
         audioSource.PlayOneShot(walkSound);
     }
 
