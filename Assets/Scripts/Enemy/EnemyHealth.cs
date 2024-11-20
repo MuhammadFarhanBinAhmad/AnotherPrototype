@@ -163,6 +163,12 @@ public class EnemyHealth : MonoBehaviour
 
         //FindObjectOfType<Flash>().Flashing();
         FindObjectOfType<CameraShake>().Shake(.1f, .75f, .75f);
+        modelAnimator.Play("Bones|Death");
+        StartCoroutine(DieHarder(gameObject));
+    }
+
+    IEnumerator DieHarder(GameObject gameObject) {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }

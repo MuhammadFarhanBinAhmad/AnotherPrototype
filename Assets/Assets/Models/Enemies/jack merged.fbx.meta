@@ -36,6 +36,9 @@ ModelImporter:
   - first:
       74: 5148257368981343657
     second: Bones|SideRun.R
+  - first:
+      74: 8033090602383199122
+    second: Bones|Death
   externalObjects: {}
   materials:
     materialImportMode: 2
